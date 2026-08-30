@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profil Desa Maktangguk</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f3fff6;
+    color:#163d22;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    padding:17px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(0,105,45,.96);
+    box-shadow:0 5px 20px rgba(0,80,30,.15);
+}
+
+.logo{
+    color:white;
+    font-size:21px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:7px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    background:#caff70;
+    color:#075322;
+}
+
+/* HEADER */
+.header{
+    padding:130px 7% 55px;
+    text-align:center;
+
+    background:
+        linear-gradient(135deg,#006b2d,#19c94e,#71ed76);
+
+    color:white;
+}
+
+.header small{
+    color:#dfff9b;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.header h1{
+    font-size:48px;
+    margin:12px 0;
+}
+
+.header p{
+    font-size:18px;
+}
+
+/* CONTENT */
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
+}
+
+/* FOTO */
+.photo-box{
+    width:100%;
+    background:white;
+    padding:15px;
+    border-radius:25px;
+
+    box-shadow:0 15px 40px rgba(0,100,40,.13);
+
+    text-align:center;
+    margin-bottom:45px;
+
+    animation:showPhoto 1s ease;
+}
+
+.photo-box img{
+    width:100%;
+    height:auto;
+
+    /* PENTING: gambar tidak dipotong */
+    object-fit:contain;
+
+    display:block;
+
+    border-radius:18px;
+}
+
+@keyframes showPhoto{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* PROFIL */
+.profile{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:22px;
+
+    box-shadow:0 10px 30px rgba(0,100,40,.09);
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(0,130,50,.15);
+}
+
+.card h2{
+    color:#078332;
+    margin-bottom:18px;
+}
+
+.card p{
+    line-height:1.8;
+    color:#536b5b;
+}
+
+/* DATA DESA */
+.data{
+    margin-top:25px;
+}
+
+.data-item{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #dcefe1;
+}
+
+.data-item:last-child{
+    border-bottom:none;
+}
+
+.data-item strong{
+    color:#08752f;
+}
+
+/* VISI */
+.visi{
+    margin-top:25px;
+
+    background:linear-gradient(135deg,#006b2d,#18c94d);
+    color:white;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 15px 40px rgba(0,100,40,.15);
+
+    text-align:center;
+}
+
+.visi h2{
+    margin-bottom:15px;
+    font-size:30px;
+}
+
+.visi p{
+    line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+    margin-top:70px;
+    padding:30px;
+    text-align:center;
+
+    background:#063d1c;
+    color:white;
+
+    line-height:1.8;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .header{
+        padding-top:120px;
+    }
+
+    .header h1{
+        font-size:38px;
+    }
+
+    .profile{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .photo-box{
+        padding:8px;
+    }
+
+    .photo-box img{
+        width:100%;
+        height:auto;
+    }
+
+    .data-item{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        🌿 Desa Maktangguk
+    </div>
+
+    <ul>
+        <li>
+            <a href="index.html">Beranda</a>
+        </li>
+
+        <li>
+            <a href="profil.html" class="active">Profil</a>
+        </li>
+
+        <li>
+            <a href="sejarah.html">Sejarah</a>
+        </li>
+
+        <li>
+            <a href="potensi.html">Potensi</a>
+        </li>
+
+        <li>
+            <a href="galeri.html">Galeri</a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- HEADER -->
+<header class="header">
+
+    <small>PROFIL DESA</small>
+
+    <h1>Desa Maktangguk</h1>
+
+    <p>
+        Mengenal lebih dekat Desa Maktangguk
+    </p>
+
+</header>
+
+
+<!-- ISI -->
+<main class="container">
+
+    <!-- FOTO UTUH -->
+    <div class="photo-box">
+
+        <img
+            src="profile1.jpg"
+            alt="Desa Maktangguk"
+        >
+
+    </div>
+
+
+    <!-- PROFIL -->
+    <div class="profile">
+
+        <div class="card">
+
+            <h2>🌿 Tentang Desa</h2>
+
+            <p>
+                Desa Maktangguk merupakan salah satu desa
+                yang berada di Kecamatan Tebas, Kabupaten
+                Sambas, Provinsi Kalimantan Barat.
+            </p>
+
+            <br>
+
+            <p>
+                Desa ini memiliki kehidupan masyarakat yang
+                erat dengan semangat kebersamaan, gotong
+                royong, serta potensi alam yang menjadi bagian
+                penting dalam kehidupan masyarakat.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📍 Data Desa</h2>
+
+            <div class="data">
+
+                <div class="data-item">
+                    <span>Nama Desa</span>
+                    <strong>Maktangguk</strong>
+                </div>
+
+                <div class="data-item">
+                    <span>Kecamatan</span>
+                    <strong>Tebas</strong>
+                </div>
+
+                <div class="data-item">
+                    <span>Kabupaten</span>
+                    <strong>Sambas</strong>
+                </div>
+
+                <div class="data-item">
+                    <span>Provinsi</span>
+                    <strong>Kalimantan Barat</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VISI -->
+    <div class="visi">
+
+        <h2>🤝 Maktangguk Bersatu</h2>
+
+        <p>
+            Membangun desa yang maju, nyaman, dan memiliki
+            masyarakat yang kompak dengan memanfaatkan
+            potensi desa serta menjaga budaya dan lingkungan.
+        </p>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Desa Maktangguk
+    </p>
+
+    <p>
+        Kecamatan Tebas • Kabupaten Sambas •
+        Kalimantan Barat
+    </p>
+
+</footer>
+
+</body>
+</html>
