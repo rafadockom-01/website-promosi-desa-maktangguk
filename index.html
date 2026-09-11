@@ -871,5 +871,56 @@ window.addEventListener("load", function(){
 </script>
 
 
+<section id="buku-tamu" style="padding:50px 8%; background:#f4fff6;">
+  <div style="max-width:650px;margin:auto;">
+    <h2 style="text-align:center;">Buku Tamu Desa Maktangguk</h2>
+    <p style="text-align:center;">Silakan isi pesan atau saran Anda.</p>
+
+    <form
+      action="https://script.google.com/macros/s/AKfycbwcw6BxBoJzYReMBTVdyyprPag16cqvoA302FrFnxKta6cFpU1Mm_FlVCcOQ-LBtFWl/exec"
+      method="POST"
+      target="hidden_iframe"
+      id="bukuTamuForm"
+      onsubmit="setTimeout(function(){
+        alert('Pesan sudah dikirim!');
+        document.getElementById('bukuTamuForm').reset();
+      }, 1000);"
+    >
+
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama"
+        required
+        style="width:100%;padding:12px;margin:8px 0;"
+      >
+
+      <input
+        type="text"
+        name="asal"
+        placeholder="Asal / Dusun"
+        required
+        style="width:100%;padding:12px;margin:8px 0;"
+      >
+
+      <textarea
+        name="pesan"
+        placeholder="Pesan / Saran"
+        required
+        style="width:100%;padding:12px;margin:8px 0;min-height:120px;"
+      ></textarea>
+
+      <button
+        type="submit"
+        style="padding:12px 25px;border:0;border-radius:8px;cursor:pointer;"
+      >
+        Kirim Pesan
+      </button>
+
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+  </div>
+</section>
 </body>
 </html>
