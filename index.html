@@ -1,1137 +1,811 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Desa Maktangguk</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fbfaf3;
-            color: #173b29;
-        }
-
-        /* =========================
-           PASSWORD SCREEN
-        ========================= */
-
-        #passwordScreen {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background:
-                linear-gradient(
-                    rgba(8, 50, 31, 0.82),
-                    rgba(8, 50, 31, 0.92)
-                ),
-                url("profile1.jpg") center/cover no-repeat;
-
-            transition: 0.7s ease;
-        }
-
-        .password-box {
-            width: 90%;
-            max-width: 430px;
-            padding: 40px 30px;
-
-            text-align: center;
-
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 25px;
-
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-
-            animation: passwordPop 0.8s ease;
-        }
-
-        @keyframes passwordPop {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .password-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .password-box h1 {
-            color: #145c3a;
-            margin-bottom: 8px;
-        }
-
-        .password-box p {
-            color: #666;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 14px 17px;
-
-            border: 2px solid #d6dfd7;
-            border-radius: 12px;
-
-            outline: none;
-            font-size: 16px;
-
-            transition: 0.3s;
-        }
-
-        .password-input:focus {
-            border-color: #238052;
-            box-shadow: 0 0 0 4px rgba(35,128,82,0.1);
-        }
-
-        .password-button {
-            width: 100%;
-            margin-top: 15px;
-
-            padding: 14px;
-
-            border: none;
-            border-radius: 12px;
-
-            background: #145c3a;
-            color: white;
-
-            font-size: 16px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition: 0.3s;
-        }
-
-        .password-button:hover {
-            background: #238052;
-            transform: translateY(-2px);
-        }
-
-        .voice-button {
-            margin-top: 12px;
-
-            padding: 10px 16px;
-
-            border: 1px solid #876543;
-            border-radius: 10px;
-
-            background: #f4eee3;
-            color: #6b4d30;
-
-            cursor: pointer;
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .voice-button:hover {
-            background: #eadfce;
-        }
-
-        #passwordMessage {
-            min-height: 24px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .wrong {
-            color: #c0392b;
-        }
-
-        .correct {
-            color: #238052;
-        }
-
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-
-            z-index: 1000;
-
-            background: rgba(13, 53, 36, 0.96);
-            backdrop-filter: blur(10px);
-
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-
-            padding: 15px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: white;
-            text-decoration: none;
-
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #d6b77b;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-
-            padding: 9px 13px;
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            transition: 0.3s;
-        }
-
-        .nav-menu a:hover {
-            background: #238052;
-        }
-
-
-        /* =========================
-           HERO / BERANDA
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding: 120px 20px 70px;
-
-            background:
-                linear-gradient(
-                    rgba(8, 48, 30, 0.70),
-                    rgba(8, 48, 30, 0.82)
-                ),
-                url("profile1.jpg") center/cover no-repeat;
-
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            animation: heroFade 1.2s ease;
-        }
-
-        @keyframes heroFade {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-small {
-            display: inline-block;
-
-            padding: 8px 16px;
-            margin-bottom: 18px;
-
-            border-radius: 50px;
-
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-
-            font-size: 14px;
-        }
-
-        .hero h1 {
-            font-size: clamp(38px, 7vw, 72px);
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #d6b77b;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-
-            line-height: 1.8;
-            font-size: 17px;
-
-            color: #f0f5f0;
-        }
-
-        .hero-buttons {
-            margin-top: 30px;
-
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-
-            flex-wrap: wrap;
-        }
-
-        .hero-button {
-            display: inline-block;
-
-            padding: 13px 22px;
-
-            border-radius: 10px;
-
-            text-decoration: none;
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .button-primary {
-            background: #d6b77b;
-            color: #173b29;
-        }
-
-        .button-primary:hover {
-            transform: translateY(-3px);
-        }
-
-        .button-secondary {
-            border: 1px solid rgba(255,255,255,0.6);
-            color: white;
-            background: rgba(255,255,255,0.08);
-        }
-
-        .button-secondary:hover {
-            background: rgba(255,255,255,0.18);
-        }
-
-
-        /* =========================
-           SEKILAS DESA
-        ========================= */
-
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 90px 25px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title span {
-            color: #876543;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            color: #145c3a;
-            margin-top: 8px;
-        }
-
-        .about-home {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            align-items: center;
-        }
-
-        .about-image {
-            overflow: hidden;
-            border-radius: 22px;
-
-            box-shadow: 0 15px 40px rgba(0,0,0,0.14);
-        }
-
-        .about-image img {
-            width: 100%;
-            display: block;
-
-            transition: 0.5s;
-        }
-
-        .about-image:hover img {
-            transform: scale(1.04);
-        }
-
-        .about-text h3 {
-            font-size: 30px;
-            margin-bottom: 15px;
-            color: #145c3a;
-        }
-
-        .about-text p {
-            color: #5c6b62;
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-        .quote {
-            padding: 18px 20px;
-
-            border-left: 5px solid #d6b77b;
-
-            background: #f4eee3;
-            border-radius: 10px;
-
-            font-weight: bold;
-            color: #6b4d30;
-        }
-
-
-        /* =========================
-           INFO CARDS
-        ========================= */
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            margin-top: 60px;
-        }
-
-        .info-card {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-
-            transition: 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.13);
-        }
-
-        .info-card img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-        }
-
-        .info-card-content {
-            padding: 22px;
-        }
-
-        .info-card h3 {
-            color: #145c3a;
-            margin-bottom: 8px;
-        }
-
-        .info-card p {
-            color: #68766d;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           KEUNGGULAN
-        ========================= */
-
-        .features {
-            background: #e7f1e8;
-        }
-
-        .feature-grid {
-            max-width: 1200px;
-            margin: auto;
-
-            padding: 90px 25px;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.85);
-
-            padding: 30px;
-
-            border-radius: 18px;
-
-            text-align: center;
-
-            border: 1px solid rgba(20,92,58,0.08);
-
-            transition: 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            color: #145c3a;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            color: #647168;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           CALL TO ACTION
-        ========================= */
-
-        .cta {
-            padding: 80px 25px;
-            text-align: center;
-
-            background: #145c3a;
-            color: white;
-        }
-
-        .cta h2 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            max-width: 650px;
-            margin: auto;
-
-            color: #dce9df;
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-
-            margin-top: 25px;
-
-            padding: 13px 24px;
-
-            border-radius: 10px;
-
-            background: #d6b77b;
-            color: #173b29;
-
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #0d3524;
-            color: #dce8df;
-
-            text-align: center;
-
-            padding: 28px 20px;
-        }
-
-        footer p {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .nav-container {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .nav-menu {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .nav-menu a {
-                font-size: 12px;
-                padding: 7px 9px;
-            }
-
-            .hero {
-                padding-top: 160px;
-            }
-
-            .about-home {
-                grid-template-columns: 1fr;
-            }
-
-            .info-grid,
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 70px 20px;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .password-box {
-                padding: 32px 22px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desa Maktangguk</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f1e8;
+    color:#26352b;
+}
+
+/* ================= PASSWORD ================= */
+
+#passwordScreen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        linear-gradient(rgba(0,40,20,.72),rgba(0,40,20,.72)),
+        url("profile1.jpg") center/cover;
+    transition:.7s;
+}
+
+#passwordScreen.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.password-box{
+    width:90%;
+    max-width:430px;
+    padding:40px 30px;
+    text-align:center;
+    background:rgba(255,255,255,.94);
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.password-box h1{
+    color:#245c3a;
+    margin-bottom:10px;
+}
+
+.password-box p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.password-box input{
+    width:100%;
+    padding:15px;
+    border:2px solid #d5d5d5;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+.password-box input:focus{
+    border-color:#3d8057;
+}
+
+.password-box button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#28613d;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.password-box button:hover{
+    background:#1d4c2f;
+}
+
+#error{
+    color:#d33;
+    margin-top:12px;
+    font-size:14px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 7%;
+    background:#17452c;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:22px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#d8c38a;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:60px 20px;
+    color:white;
+    background:
+        linear-gradient(rgba(15,60,35,.65),rgba(15,60,35,.75)),
+        url("profile1.jpg") center/cover;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+    text-shadow:0 3px 10px rgba(0,0,0,.4);
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    background:#d1b36a;
+    color:#173d28;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:5px;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:35px;
+    color:#205c39;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* ================= SEKILAS ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+.about-text h3{
+    font-size:30px;
+    color:#205c39;
+    margin-bottom:18px;
+}
+
+.about-text p{
+    line-height:1.8;
+    color:#555;
+    margin-bottom:15px;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+}
+
+.card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card-content h3{
+    color:#205c39;
+    margin-bottom:10px;
+}
+
+.card-content p{
+    color:#666;
+    line-height:1.6;
+}
+
+/* ================= KEUNGGULAN ================= */
+
+.features{
+    background:#e7eee6;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.feature{
+    text-align:center;
+    padding:30px 20px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.feature-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.feature h3{
+    color:#205c39;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#666;
+    line-height:1.6;
+}
+
+/* ================= MOTTO ================= */
+
+.motto{
+    text-align:center;
+    background:
+        linear-gradient(rgba(20,65,40,.9),rgba(20,65,40,.9)),
+        url("profile1.jpg") center/cover;
+    color:white;
+}
+
+.motto h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.motto p{
+    font-size:20px;
+    font-style:italic;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    text-align:center;
+    background:#f5f1e8;
+}
+
+.cta h2{
+    color:#205c39;
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#123721;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer p{
+    margin:7px;
+    color:#ddd;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:800px){
+
+    nav{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    .hero{
+        min-height:520px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- ================= PASSWORD ================= -->
 
-    <!-- =====================================
-         PASSWORD SCREEN
-    ====================================== -->
+<div id="passwordScreen">
 
-    <div id="passwordScreen">
+    <div class="password-box">
 
-        <div class="password-box">
+        <h1>🔐 Selamat Datang</h1>
 
-            <div class="password-icon">🔐</div>
+        <p>
+            Masukkan password untuk masuk<br>
+            ke Website Desa Maktangguk
+        </p>
 
-            <h1>Selamat Datang</h1>
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Masukkan password..."
+        >
+
+        <button onclick="checkPassword()">
+            🔓 Masuk ke Website
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🌿 Desa Maktangguk
+    </div>
+
+    <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="sejarah.html">Sejarah</a></li>
+        <li><a href="potensi.html">Potensi</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Selamat Datang di Desa Maktangguk</h1>
+
+        <p>
+            Kecamatan Tebas, Kabupaten Sambas,
+            Kalimantan Barat
+        </p>
+
+        <a href="#sekilas" class="btn">
+            Jelajahi Desa
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEKILAS DESA ================= -->
+
+<section id="sekilas">
+
+    <div class="section-title">
+
+        <h2>Sekilas Tentang Maktangguk</h2>
+
+        <p>
+            Mengenal Desa Maktangguk lebih dekat
+        </p>
+
+    </div>
+
+
+    <div class="about">
+
+        <img src="profile1.jpg" alt="Desa Maktangguk">
+
+        <div class="about-text">
+
+            <h3>Maktangguk Bersatu, Maktangguk Maju</h3>
 
             <p>
-                Silakan masukkan password untuk
-                masuk ke Website Desa Maktangguk.
+                Desa Maktangguk merupakan bagian dari
+                Kecamatan Tebas, Kabupaten Sambas,
+                Kalimantan Barat.
             </p>
 
-            <input
-                type="password"
-                id="passwordInput"
-                class="password-input"
-                placeholder="Masukkan password..."
-                autocomplete="off"
-            >
+            <p>
+                Website ini dibuat sebagai media informasi
+                dan promosi desa agar masyarakat dapat
+                mengenal profil, sejarah, potensi,
+                kegiatan, serta informasi Desa Maktangguk
+                dengan lebih mudah.
+            </p>
 
-            <button
-                class="password-button"
-                onclick="checkPassword()"
-            >
-                🔓 Masuk ke Website
-            </button>
-
-            <button
-                class="voice-button"
-                onclick="speakPassword()"
-            >
-                🔊 Dengarkan Password
-            </button>
-
-            <div id="passwordMessage"></div>
+            <a href="profil.html" class="btn">
+                Lihat Profil
+            </a>
 
         </div>
 
     </div>
 
+</section>
 
-    <!-- =====================================
-         NAVBAR
-    ====================================== -->
 
-    <nav>
+<!-- ================= INFORMASI ================= -->
 
-        <div class="nav-container">
+<section>
 
-            <a href="index.html" class="logo">
-                🌿 Desa <span>Maktangguk</span>
-            </a>
+    <div class="section-title">
 
-            <ul class="nav-menu">
+        <h2>Informasi Desa</h2>
 
-                <li>
-                    <a href="index.html">Beranda</a>
-                </li>
+        <p>
+            Beberapa hal yang dapat kamu lihat
+        </p>
 
-                <li>
-                    <a href="profil.html">Profil</a>
-                </li>
+    </div>
 
-                <li>
-                    <a href="sejarah.html">Sejarah</a>
-                </li>
 
-                <li>
-                    <a href="potensi.html">Potensi</a>
-                </li>
+    <div class="cards">
 
-                <li>
-                    <a href="galeri.html">Galeri</a>
-                </li>
+        <div class="card">
 
-                <li>
-                    <a href="map.html">Map</a>
-                </li>
+            <img src="profile2.jpg" alt="Kantor Desa">
 
-                <li>
-                    <a href="kontak.html">Kontak</a>
-                </li>
+            <div class="card-content">
 
-            </ul>
+                <h3>🏢 Kantor Desa</h3>
+
+                <p>
+                    Mengenal pusat pelayanan dan
+                    pemerintahan Desa Maktangguk.
+                </p>
+
+                <a href="profil.html" class="btn">
+                    Selengkapnya
+                </a>
+
+            </div>
 
         </div>
 
-    </nav>
 
+        <div class="card">
 
-    <!-- =====================================
-         BERANDA / HERO
-    ====================================== -->
+            <img src="profile3.jpg" alt="Kegiatan Masyarakat">
 
-    <header class="hero">
+            <div class="card-content">
 
-        <div class="hero-content">
+                <h3>🤝 Kegiatan Masyarakat</h3>
 
-            <div class="hero-small">
-                🌿 Website Resmi Desa Maktangguk
+                <p>
+                    Melihat berbagai kegiatan dan
+                    kehidupan masyarakat desa.
+                </p>
+
+                <a href="galeri.html" class="btn">
+                    Lihat Galeri
+                </a>
+
             </div>
 
-            <h1>
-                Selamat Datang di
-                <span>Desa Maktangguk</span>
-            </h1>
+        </div>
+
+
+        <div class="card">
+
+            <img src="profile5.jpg" alt="Potensi Perkebunan">
+
+            <div class="card-content">
+
+                <h3>🌴 Potensi Desa</h3>
+
+                <p>
+                    Mengenal potensi perkebunan dan
+                    sumber daya yang dimiliki desa.
+                </p>
+
+                <a href="potensi.html" class="btn">
+                    Lihat Potensi
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= KEUNGGULAN ================= -->
+
+<section class="features">
+
+    <div class="section-title">
+
+        <h2>Jelajahi Website Desa</h2>
+
+        <p>
+            Temukan berbagai informasi tentang
+            Desa Maktangguk
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature">
+
+            <div class="feature-icon">📖</div>
+
+            <h3>Sejarah</h3>
 
             <p>
-                Mengenal lebih dekat Desa Maktangguk,
-                Kecamatan Tebas, Kabupaten Sambas,
-                Kalimantan Barat.
+                Pelajari sejarah dan perjalanan
+                Desa Maktangguk.
             </p>
 
-            <div class="hero-buttons">
-
-                <a
-                    href="profil.html"
-                    class="hero-button button-primary"
-                >
-                    Lihat Profil Desa
-                </a>
-
-                <a
-                    href="#sekilas"
-                    class="hero-button button-secondary"
-                >
-                    Jelajahi Beranda
-                </a>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- =====================================
-         SEKILAS DESA
-    ====================================== -->
-
-    <section
-        class="section"
-        id="sekilas"
-    >
-
-        <div class="section-title">
-
-            <span>Tentang Desa</span>
-
-            <h2>Sekilas Maktangguk</h2>
+            <a href="sejarah.html" class="btn">
+                Buka
+            </a>
 
         </div>
 
 
-        <div class="about-home">
+        <div class="feature">
 
-            <div class="about-image">
+            <div class="feature-icon">🖼️</div>
 
-                <img
-                    src="profile1.jpg"
-                    alt="Desa Maktangguk"
-                >
+            <h3>Galeri</h3>
 
-            </div>
+            <p>
+                Lihat berbagai dokumentasi
+                kegiatan dan suasana desa.
+            </p>
 
-
-            <div class="about-text">
-
-                <h3>Desa yang Punya Cerita</h3>
-
-                <p>
-                    Desa Maktangguk merupakan bagian dari
-                    Kecamatan Tebas, Kabupaten Sambas,
-                    Kalimantan Barat.
-                </p>
-
-                <p>
-                    Website ini dibuat sebagai media informasi
-                    untuk mengenalkan Desa Maktangguk,
-                    mulai dari profil, sejarah, potensi,
-                    kegiatan, hingga informasi lainnya.
-                </p>
-
-                <div class="quote">
-                    “Maktangguk Bersatu, Maktangguk Maju”
-                </div>
-
-            </div>
+            <a href="galeri.html" class="btn">
+                Buka
+            </a>
 
         </div>
 
 
-        <!-- INFO CARDS -->
+        <div class="feature">
 
-        <div class="info-grid">
+            <div class="feature-icon">🗺️</div>
 
-            <div class="info-card">
+            <h3>Lokasi Desa</h3>
 
-                <img
-                    src="profile2.jpg"
-                    alt="Kantor Desa Maktangguk"
-                >
+            <p>
+                Temukan lokasi Desa Maktangguk
+                melalui halaman peta.
+            </p>
 
-                <div class="info-card-content">
-
-                    <h3>🏛️ Kantor Desa</h3>
-
-                    <p>
-                        Pusat pelayanan dan kegiatan
-                        pemerintahan Desa Maktangguk.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-card">
-
-                <img
-                    src="profile3.jpg"
-                    alt="Kegiatan masyarakat"
-                >
-
-                <div class="info-card-content">
-
-                    <h3>🤝 Masyarakat</h3>
-
-                    <p>
-                        Kehidupan masyarakat dan berbagai
-                        kegiatan sosial di lingkungan desa.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-card">
-
-                <img
-                    src="profile5.jpg"
-                    alt="Potensi perkebunan"
-                >
-
-                <div class="info-card-content">
-
-                    <h3>🌴 Potensi Alam</h3>
-
-                    <p>
-                        Salah satu potensi yang terlihat
-                        di lingkungan Desa Maktangguk.
-                    </p>
-
-                </div>
-
-            </div>
+            <a href="map.html" class="btn">
+                Buka Map
+            </a>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- =====================================
-         KEUNGGULAN WEBSITE
-    ====================================== -->
 
-    <section class="features">
+<!-- ================= MOTTO ================= -->
 
-        <div class="feature-grid">
+<section class="motto">
 
-            <div class="feature-card">
+    <h2>Maktangguk Bersatu, Maktangguk Maju</h2>
 
-                <div class="feature-icon">
-                    🏡
-                </div>
+    <p>
+        Bersama membangun desa yang lebih maju.
+    </p>
 
-                <h3>Desa & Masyarakat</h3>
+</section>
 
-                <p>
-                    Mengenal kehidupan serta lingkungan
-                    masyarakat Desa Maktangguk.
-                </p>
 
-            </div>
+<!-- ================= CTA ================= -->
 
+<section class="cta">
 
-            <div class="feature-card">
+    <h2>Ingin Mengenal Desa Maktangguk?</h2>
 
-                <div class="feature-icon">
-                    🌱
-                </div>
+    <p>
+        Jelajahi informasi lengkap tentang desa
+        melalui menu yang tersedia.
+    </p>
 
-                <h3>Potensi Desa</h3>
+    <a href="kontak.html" class="btn">
+        Hubungi Kami
+    </a>
 
-                <p>
-                    Menampilkan informasi mengenai
-                    potensi yang dimiliki desa.
-                </p>
+</section>
 
-            </div>
 
+<!-- ================= FOOTER ================= -->
 
-            <div class="feature-card">
+<footer>
 
-                <div class="feature-icon">
-                    📸
-                </div>
+    <p>
+        🌿 Website Desa Maktangguk
+    </p>
 
-                <h3>Dokumentasi</h3>
+    <p>
+        Kecamatan Tebas, Kabupaten Sambas,
+        Kalimantan Barat
+    </p>
 
-                <p>
-                    Melihat berbagai dokumentasi
-                    kegiatan dan lingkungan desa.
-                </p>
+    <p>
+        © 2026 Desa Maktangguk
+    </p>
 
-            </div>
+</footer>
 
-        </div>
 
-    </section>
+<!-- ================= JAVASCRIPT PASSWORD ================= -->
 
+<script>
 
-    <!-- =====================================
-         CTA
-    ====================================== -->
+const correctPassword = "admin";
 
-    <section class="cta">
+function checkPassword(){
 
-        <h2>Kenali Desa Maktangguk Lebih Dekat</h2>
+    const input =
+        document.getElementById("passwordInput").value;
 
-        <p>
-            Jelajahi informasi tentang profil,
-            sejarah, potensi, galeri, lokasi,
-            dan kontak Desa Maktangguk melalui
-            menu yang tersedia.
-        </p>
+    if(input === correctPassword){
 
-        <a
-            href="profil.html"
-            class="cta-button"
-        >
-            Mulai Jelajahi →
-        </a>
+        const screen =
+            document.getElementById("passwordScreen");
 
-    </section>
+        screen.classList.add("hide");
 
+        setTimeout(function(){
 
-    <!-- =====================================
-         FOOTER
-    ====================================== -->
+            screen.style.display = "none";
 
-    <footer>
+        },700);
 
-        <p>
-            © 2026 Desa Maktangguk.
-            Website Promosi Desa.
-        </p>
+    }else{
 
-        <p>
-            Kecamatan Tebas, Kabupaten Sambas,
-            Kalimantan Barat.
-        </p>
+        document.getElementById("error").textContent =
+            "❌ Password salah!";
 
-    </footer>
+        document.getElementById("passwordInput").value = "";
 
+    }
 
-    <!-- =====================================
-         JAVASCRIPT
-    ====================================== -->
+}
 
-    <script>
 
-        /* PASSWORD WEBSITE */
+/* ENTER UNTUK MASUK */
 
-        const correctPassword = "Hallo";
+document
+.getElementById("passwordInput")
+.addEventListener("keydown",function(e){
 
+    if(e.key === "Enter"){
+        checkPassword();
+    }
 
-        function checkPassword() {
+});
 
-            const input =
-                document.getElementById("passwordInput");
 
-            const message =
-                document.getElementById("passwordMessage");
+/* SUARA OTOMATIS */
 
-            const password =
-                input.value.trim();
+window.addEventListener("load",function(){
 
+    setTimeout(function(){
 
-            if (password === correctPassword) {
+        const suara =
+            new SpeechSynthesisUtterance(
+                "Password-nya admin"
+            );
 
-                message.textContent =
-                    "✓ Password benar! Selamat datang.";
+        suara.lang = "id-ID";
+        suara.rate = 0.9;
 
-                message.className = "correct";
+        speechSynthesis.speak(suara);
 
+    },1000);
 
-                setTimeout(function() {
+});
 
-                    const screen =
-                        document.getElementById("passwordScreen");
-
-                    screen.style.opacity = "0";
-
-                    setTimeout(function() {
-
-                        screen.style.display = "none";
-
-                    }, 700);
-
-                }, 500);
-
-
-            } else {
-
-                message.textContent =
-                    "✕ Password salah. Silakan coba lagi.";
-
-                message.className = "wrong";
-
-                input.value = "";
-
-                input.focus();
-
-            }
-
-        }
-
-
-        /* SUARA PASSWORD */
-
-        function speakPassword() {
-
-            if ("speechSynthesis" in window) {
-
-                window.speechSynthesis.cancel();
-
-                const speech =
-                    new SpeechSynthesisUtterance(
-                        "Password-nya Hallo"
-                    );
-
-                speech.lang = "id-ID";
-                speech.rate = 0.9;
-                speech.pitch = 1;
-
-                window.speechSynthesis.speak(speech);
-
-            } else {
-
-                alert(
-                    "Perangkat atau browser kamu tidak mendukung suara."
-                );
-
-            }
-
-        }
-
-
-        /* ENTER UNTUK LOGIN */
-
-        document
-            .getElementById("passwordInput")
-            .addEventListener("keydown", function(event) {
-
-                if (event.key === "Enter") {
-
-                    checkPassword();
-
-                }
-
-            });
-
-    </script>
+</script>
 
 </body>
 </html>
