@@ -9,7 +9,7 @@
 <style>
 
 /* =====================================================
-   RESET
+   DASAR
 ===================================================== */
 
 *{
@@ -28,7 +28,7 @@ body{
 
 
 /* =====================================================
-   ANIMASI DAUN
+   DAUN MELAYANG
 ===================================================== */
 
 .leaves{
@@ -41,16 +41,15 @@ body{
 
 .leaf{
     position:absolute;
-    top:-50px;
+    top:-60px;
     font-size:25px;
-    opacity:.55;
+    opacity:.5;
     animation:fall linear infinite;
 }
 
 .leaf:nth-child(1){
     left:8%;
     animation-duration:9s;
-    animation-delay:0s;
 }
 
 .leaf:nth-child(2){
@@ -80,15 +79,23 @@ body{
 @keyframes fall{
 
     0%{
-        transform:translateY(-60px) rotate(0deg);
+        transform:
+        translateY(-60px)
+        rotate(0deg);
     }
 
     50%{
-        transform:translateY(50vh) translateX(80px) rotate(180deg);
+        transform:
+        translateY(50vh)
+        translateX(80px)
+        rotate(180deg);
     }
 
     100%{
-        transform:translateY(110vh) translateX(-50px) rotate(360deg);
+        transform:
+        translateY(110vh)
+        translateX(-50px)
+        rotate(360deg);
     }
 
 }
@@ -109,10 +116,10 @@ nav{
 
     padding:16px 7%;
 
-    background:rgba(23,69,44,.96);
+    background:rgba(23,69,44,.97);
 
     box-shadow:
-        0 4px 20px rgba(0,0,0,.15);
+    0 4px 20px rgba(0,0,0,.15);
 }
 
 .logo{
@@ -145,6 +152,7 @@ nav a:hover{
 ===================================================== */
 
 .hero{
+
     min-height:650px;
 
     display:flex;
@@ -161,11 +169,11 @@ nav a:hover{
     overflow:hidden;
 
     background:
-        linear-gradient(
-            rgba(10,55,30,.55),
-            rgba(10,55,30,.78)
-        ),
-        url("profile1.jpg") center/cover;
+    linear-gradient(
+        rgba(10,55,30,.55),
+        rgba(10,55,30,.78)
+    ),
+    url("profile1.jpg") center/cover;
 
     animation:heroZoom 12s ease-in-out infinite alternate;
 }
@@ -183,13 +191,14 @@ nav a:hover{
 }
 
 .hero-content{
-    max-width:850px;
 
-    animation:
-        heroText 1.4s ease forwards;
+    max-width:850px;
 
     position:relative;
     z-index:2;
+
+    animation:
+    heroText 1.3s ease forwards;
 }
 
 @keyframes heroText{
@@ -207,26 +216,37 @@ nav a:hover{
 }
 
 .hero h1{
+
     font-size:55px;
+
     margin-bottom:18px;
 
     text-shadow:
-        0 4px 15px rgba(0,0,0,.5);
+    0 4px 15px rgba(0,0,0,.5);
 }
 
 .hero p{
+
     font-size:19px;
+
     line-height:1.7;
 
     margin-bottom:30px;
 }
 
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
 .btn{
+
     display:inline-block;
 
     padding:14px 26px;
 
     background:#d1b36a;
+
     color:#173d28;
 
     border-radius:30px;
@@ -239,14 +259,19 @@ nav a:hover{
 
     transition:.3s;
 
-    box-shadow:
-        0 6px 15px rgba(0,0,0,.15);
+    border:none;
+
+    cursor:pointer;
+
 }
 
 .btn:hover{
+
     transform:translateY(-4px);
+
     box-shadow:
-        0 10px 20px rgba(0,0,0,.2);
+    0 10px 20px rgba(0,0,0,.2);
+
 }
 
 
@@ -255,22 +280,33 @@ nav a:hover{
 ===================================================== */
 
 section{
+
     padding:85px 7%;
+
 }
 
 .section-title{
+
     text-align:center;
+
     margin-bottom:50px;
+
 }
 
 .section-title h2{
+
     font-size:35px;
+
     color:#205c39;
+
     margin-bottom:12px;
+
 }
 
 .section-title p{
+
     color:#777;
+
 }
 
 
@@ -279,45 +315,55 @@ section{
 ===================================================== */
 
 .about{
+
     display:grid;
 
     grid-template-columns:
-        1fr 1fr;
+    1fr 1fr;
 
     gap:50px;
 
     align-items:center;
+
 }
 
 .about img{
+
     width:100%;
 
     border-radius:25px;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.18);
+    0 15px 35px rgba(0,0,0,.18);
 
     transition:.5s;
+
 }
 
 .about img:hover{
+
     transform:scale(1.03);
+
 }
 
 .about-text h3{
+
     font-size:30px;
 
     color:#205c39;
 
     margin-bottom:18px;
+
 }
 
 .about-text p{
+
     line-height:1.8;
 
     color:#555;
 
     margin-bottom:15px;
+
 }
 
 
@@ -326,15 +372,18 @@ section{
 ===================================================== */
 
 .cards{
+
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
     gap:28px;
+
 }
 
 .card{
+
     background:white;
 
     border-radius:22px;
@@ -342,45 +391,59 @@ section{
     overflow:hidden;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.1);
+    0 10px 30px rgba(0,0,0,.1);
 
     transition:.4s;
+
 }
 
 .card:hover{
+
     transform:
-        translateY(-10px);
+    translateY(-10px);
+
 }
 
 .card img{
+
     width:100%;
+
     height:220px;
 
     object-fit:cover;
 
     transition:.5s;
+
 }
 
 .card:hover img{
+
     transform:scale(1.06);
+
 }
 
 .card-content{
+
     padding:24px;
+
 }
 
 .card-content h3{
+
     color:#205c39;
 
     margin-bottom:10px;
+
 }
 
 .card-content p{
+
     color:#666;
 
     line-height:1.6;
 
     margin-bottom:15px;
+
 }
 
 
@@ -389,19 +452,24 @@ section{
 ===================================================== */
 
 .features{
+
     background:#e7eee6;
+
 }
 
 .feature-grid{
+
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
     gap:28px;
+
 }
 
 .feature{
+
     text-align:center;
 
     padding:35px 22px;
@@ -411,23 +479,28 @@ section{
     border-radius:22px;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.08);
+    0 8px 25px rgba(0,0,0,.08);
 
     transition:.4s;
+
 }
 
 .feature:hover{
+
     transform:
-        translateY(-8px);
+    translateY(-8px);
+
 }
 
 .feature-icon{
+
     font-size:48px;
 
     margin-bottom:18px;
 
     animation:
-        floating 3s ease-in-out infinite;
+    floating 3s ease-in-out infinite;
+
 }
 
 @keyframes floating{
@@ -443,17 +516,21 @@ section{
 }
 
 .feature h3{
+
     color:#205c39;
 
     margin-bottom:10px;
+
 }
 
 .feature p{
+
     color:#666;
 
     line-height:1.6;
 
     margin-bottom:15px;
+
 }
 
 
@@ -468,25 +545,146 @@ section{
     color:white;
 
     background:
-        linear-gradient(
-            rgba(20,65,40,.9),
-            rgba(20,65,40,.9)
-        ),
-        url("profile1.jpg") center/cover;
+    linear-gradient(
+        rgba(20,65,40,.9),
+        rgba(20,65,40,.9)
+    ),
+    url("profile1.jpg") center/cover;
 
-    position:relative;
 }
 
 .motto h2{
+
     font-size:38px;
 
     margin-bottom:15px;
+
 }
 
 .motto p{
+
     font-size:20px;
 
     font-style:italic;
+
+}
+
+
+/* =====================================================
+   BUKU TAMU
+===================================================== */
+
+.guest-section{
+
+    background:#f5f1e8;
+
+}
+
+.guest-box{
+
+    max-width:750px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.1);
+
+}
+
+.guest-box h3{
+
+    text-align:center;
+
+    color:#205c39;
+
+    font-size:27px;
+
+    margin-bottom:10px;
+
+}
+
+.guest-box .description{
+
+    text-align:center;
+
+    color:#777;
+
+    margin-bottom:25px;
+
+}
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-weight:bold;
+
+    color:#31553e;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #e1e1e1;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:15px;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    border-color:#4f8a62;
+
+}
+
+.form-group textarea{
+
+    min-height:130px;
+
+    resize:vertical;
+
+}
+
+.submit-area{
+
+    text-align:center;
+
+}
+
+#status{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
 }
 
 
@@ -495,23 +693,29 @@ section{
 ===================================================== */
 
 .cta{
+
     text-align:center;
 
-    background:#f5f1e8;
+    background:#e7eee6;
+
 }
 
 .cta h2{
+
     color:#205c39;
 
     font-size:32px;
 
     margin-bottom:15px;
+
 }
 
 .cta p{
+
     color:#666;
 
-    margin-bottom:25px;
+    margin-bottom:20px;
+
 }
 
 
@@ -520,6 +724,7 @@ section{
 ===================================================== */
 
 footer{
+
     background:#123721;
 
     color:white;
@@ -527,12 +732,15 @@ footer{
     text-align:center;
 
     padding:35px 20px;
+
 }
 
 footer p{
+
     margin:8px;
 
     color:#ddd;
+
 }
 
 
@@ -541,95 +749,110 @@ footer p{
 ===================================================== */
 
 .reveal{
+
     opacity:0;
 
     transform:
-        translateY(40px);
+    translateY(40px);
 
     transition:
-        opacity .8s ease,
-        transform .8s ease;
+    opacity .8s ease,
+    transform .8s ease;
+
 }
 
 .reveal.show{
+
     opacity:1;
 
     transform:
-        translateY(0);
+    translateY(0);
+
 }
 
 
 /* =====================================================
-   RESPONSIVE HP
+   RESPONSIVE
 ===================================================== */
 
 @media(max-width:800px){
 
     nav{
+
         flex-direction:column;
 
         gap:14px;
+
     }
 
     nav ul{
+
         flex-wrap:wrap;
 
         justify-content:center;
 
         gap:12px;
+
     }
 
     .hero{
+
         min-height:550px;
+
     }
 
     .hero h1{
+
         font-size:38px;
+
     }
 
     .hero p{
+
         font-size:16px;
+
     }
 
     .about{
+
         grid-template-columns:1fr;
+
     }
 
     .cards{
+
         grid-template-columns:1fr;
+
     }
 
     .feature-grid{
+
         grid-template-columns:1fr;
+
     }
 
     section{
+
         padding:65px 5%;
+
     }
 
     .section-title h2{
+
         font-size:29px;
+
     }
 
     .motto h2{
+
         font-size:29px;
+
     }
 
-}
+    .guest-box{
 
+        padding:25px 20px;
 
-/* =====================================================
-   REDUCE MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation:none !important;
-        transition:none !important;
-        scroll-behavior:auto !important;
     }
 
 }
@@ -642,23 +865,18 @@ footer p{
 
 
 <!-- =====================================================
-     DAUN MELAYANG
+     ANIMASI DAUN
 ===================================================== -->
 
 <div class="leaves">
 
     <div class="leaf">🍃</div>
-
     <div class="leaf">🌿</div>
-
     <div class="leaf">🍃</div>
-
     <div class="leaf">🌿</div>
-
     <div class="leaf">🍃</div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -703,22 +921,9 @@ footer p{
             </a>
         </li>
 
-        <li>
-            <a href="map.html">
-                Map
-            </a>
-        </li>
-
-        <li>
-            <a href="kontak.html">
-                Kontak
-            </a>
-        </li>
-
     </ul>
 
 </nav>
-
 
 
 <!-- =====================================================
@@ -755,7 +960,6 @@ footer p{
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -824,7 +1028,6 @@ footer p{
 </section>
 
 
-
 <!-- =====================================================
      INFORMASI DESA
 ===================================================== -->
@@ -847,8 +1050,6 @@ footer p{
 
     <div class="cards">
 
-
-        <!-- KANTOR DESA -->
 
         <div class="card">
 
@@ -880,9 +1081,6 @@ footer p{
         </div>
 
 
-
-        <!-- KEGIATAN -->
-
         <div class="card">
 
             <img
@@ -912,9 +1110,6 @@ footer p{
 
         </div>
 
-
-
-        <!-- POTENSI -->
 
         <div class="card">
 
@@ -951,14 +1146,11 @@ footer p{
 </section>
 
 
-
 <!-- =====================================================
      JELAJAHI WEBSITE
 ===================================================== -->
 
-<section
-    class="features reveal"
->
+<section class="features reveal">
 
     <div class="section-title">
 
@@ -976,8 +1168,6 @@ footer p{
 
     <div class="feature-grid">
 
-
-        <!-- SEJARAH -->
 
         <div class="feature">
 
@@ -1004,9 +1194,6 @@ footer p{
         </div>
 
 
-
-        <!-- GALERI -->
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1032,29 +1219,26 @@ footer p{
         </div>
 
 
-
-        <!-- MAP -->
-
         <div class="feature">
 
             <div class="feature-icon">
-                🗺️
+                👤
             </div>
 
             <h3>
-                Lokasi Desa
+                Profil Desa
             </h3>
 
             <p>
-                Temukan lokasi Desa Maktangguk
-                melalui halaman peta.
+                Kenali informasi dan identitas
+                Desa Maktangguk.
             </p>
 
             <a
-                href="map.html"
+                href="profil.html"
                 class="btn"
             >
-                Buka Map
+                Buka
             </a>
 
         </div>
@@ -1063,7 +1247,6 @@ footer p{
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1084,6 +1267,109 @@ footer p{
 </section>
 
 
+<!-- =====================================================
+     BUKU TAMU
+===================================================== -->
+
+<section class="guest-section reveal">
+
+    <div class="section-title">
+
+        <h2>
+            📖 Buku Tamu
+        </h2>
+
+        <p>
+            Tinggalkan pesan untuk Desa Maktangguk
+        </p>
+
+    </div>
+
+
+    <div class="guest-box">
+
+        <h3>
+            ✍️ Isi Buku Tamu
+        </h3>
+
+        <p class="description">
+            Silakan isi data berikut untuk
+            meninggalkan pesan.
+        </p>
+
+
+        <form id="guestForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Asal
+                </label>
+
+                <input
+                    type="text"
+                    id="asal"
+                    placeholder="Masukkan asal"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Pesan
+                </label>
+
+                <textarea
+                    id="pesan"
+                    placeholder="Tuliskan pesan..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    class="btn"
+                    id="submitButton"
+                >
+                    📤 Kirim Pesan
+                </button>
+
+            </div>
+
+
+            <div id="status"></div>
+
+
+        </form>
+
+    </div>
+
+</section>
+
 
 <!-- =====================================================
      CTA
@@ -1092,23 +1378,22 @@ footer p{
 <section class="cta reveal">
 
     <h2>
-        Ingin Mengenal Desa Maktangguk?
+        Terima Kasih Telah Berkunjung
     </h2>
 
     <p>
-        Jelajahi informasi lengkap tentang desa
-        melalui menu yang tersedia.
+        Mari bersama mengenal dan memajukan
+        Desa Maktangguk.
     </p>
 
     <a
-        href="kontak.html"
+        href="profil.html"
         class="btn"
     >
-        📞 Hubungi Kami
+        🌿 Tentang Desa
     </a>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1133,42 +1418,45 @@ footer p{
 </footer>
 
 
-
 <!-- =====================================================
-     JAVASCRIPT ANIMASI
+     JAVASCRIPT
 ===================================================== -->
 
 <script>
+
 
 /* =====================================================
    ANIMASI SAAT SCROLL
 ===================================================== */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+document.querySelectorAll(".reveal");
 
 
 const observer =
-    new IntersectionObserver(
-        function(entries){
+new IntersectionObserver(
 
-            entries.forEach(
-                function(entry){
+    function(entries){
 
-                    if(entry.isIntersecting){
+        entries.forEach(
+            function(entry){
 
-                        entry.target.classList.add("show");
+                if(entry.isIntersecting){
 
-                    }
+                    entry.target.classList.add("show");
 
                 }
-            );
 
-        },
-        {
-            threshold:0.15
-        }
-    );
+            }
+        );
+
+    },
+
+    {
+        threshold:0.15
+    }
+
+);
 
 
 revealElements.forEach(
@@ -1181,7 +1469,7 @@ revealElements.forEach(
 
 
 /* =====================================================
-   EFEK PARALLAX HERO
+   EFEK HERO SAAT SCROLL
 ===================================================== */
 
 window.addEventListener(
@@ -1189,19 +1477,142 @@ window.addEventListener(
     function(){
 
         const hero =
-            document.querySelector(".hero");
+        document.querySelector(".hero");
 
         const scroll =
-            window.scrollY;
+        window.scrollY;
 
         if(scroll < 700){
 
             hero.style.backgroundPosition =
-                "center " +
-                (scroll * 0.25) +
-                "px";
+            "center " +
+            (scroll * 0.25) +
+            "px";
 
         }
+
+    }
+);
+
+
+/* =====================================================
+   DATABASE BUKU TAMU
+===================================================== */
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbwcw6BxBoJzYReMBTVdyyprPag16cqvoA302FrFnxKta6cFpU1Mm_FlVCcOQ-LBtFWl/exec";
+
+
+const guestForm =
+document.getElementById("guestForm");
+
+
+guestForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const nama =
+        document.getElementById("nama").value.trim();
+
+
+        const asal =
+        document.getElementById("asal").value.trim();
+
+
+        const pesan =
+        document.getElementById("pesan").value.trim();
+
+
+        const status =
+        document.getElementById("status");
+
+
+        const button =
+        document.getElementById("submitButton");
+
+
+        if(!nama || !asal || !pesan){
+
+            status.textContent =
+            "⚠️ Semua kolom harus diisi.";
+
+            status.style.color =
+            "#c0392b";
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.textContent =
+        "⏳ Mengirim...";
+
+
+        status.textContent =
+        "Sedang mengirim pesan...";
+
+        status.style.color =
+        "#777";
+
+
+        try{
+
+            await fetch(
+                WEB_APP_URL,
+                {
+                    method:"POST",
+
+                    mode:"no-cors",
+
+                    headers:{
+                        "Content-Type":
+                        "text/plain;charset=utf-8"
+                    },
+
+                    body:JSON.stringify({
+
+                        nama:nama,
+
+                        asal:asal,
+
+                        pesan:pesan
+
+                    })
+
+                }
+            );
+
+
+            status.textContent =
+            "✅ Pesan berhasil dikirim. Terima kasih!";
+
+            status.style.color =
+            "#287a45";
+
+
+            guestForm.reset();
+
+
+        }catch(error){
+
+            status.textContent =
+            "❌ Terjadi kesalahan. Silakan coba lagi.";
+
+            status.style.color =
+            "#c0392b";
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+        "📤 Kirim Pesan";
 
     }
 );
