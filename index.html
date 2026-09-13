@@ -1,1611 +1,1137 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desa Maktangguk | Beranda</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f8f3;
-    color:#18382a;
-    overflow-x:hidden
-}
-
-:root{
-    --green:#145c3a;
-    --green2:#238052;
-    --light:#e7f1e8;
-    --cream:#fbfaf3;
-    --brown:#876543;
-    --dark:#0d3524
-}
-
-/* LOADING */
-#loader{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(135deg,#0d3524,#145c3a,#2f8b58);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-    transition:1s ease
-}
-
-.loader-logo{
-    width:86px;
-    height:86px;
-    border-radius:50%;
-    background:#eef7dc;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
-    box-shadow:0 0 35px rgba(238,247,220,.35);
-    animation:pulse 1.3s infinite
-}
-
-.loader-title{
-    color:#fff;
-    font-size:28px;
-    font-weight:800;
-    margin-top:20px
-}
-
-.loader-subtitle{
-    color:#dceee2;
-    margin-top:8px
-}
-
-.loader-line{
-    width:180px;
-    height:4px;
-    background:#ffffff33;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:22px
-}
-
-.loader-line span{
-    display:block;
-    height:100%;
-    width:0;
-    background:#eef7dc;
-    animation:load 2s forwards
-}
-
-@keyframes pulse{
-    50%{transform:scale(1.1)}
-}
-
-@keyframes load{
-    to{width:100%}
-}
-
-#loader.hide{
-    opacity:0;
-    visibility:hidden
-}
-
-/* NAVBAR */
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    padding:15px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(13,53,36,.92);
-    backdrop-filter:blur(14px);
-    box-shadow:0 5px 25px #08251822
-}
-
-.logo{
-    color:#fff;
-    font-weight:800;
-    font-size:20px
-}
-
-.logo span{
-    color:#dcefa9
-}
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:5px
-}
-
-nav a{
-    color:#fff;
-    text-decoration:none;
-    padding:10px 13px;
-    border-radius:10px;
-    transition:.25s;
-    font-size:14px;
-    font-weight:600
-}
-
-nav a:hover{
-    background:#e5f0b8;
-    color:#174b32
-}
-
-/* HERO */
-.hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    padding:130px 8% 80px;
-
-    background-image:
-    linear-gradient(
-        90deg,
-        rgba(5,35,22,.82),
-        rgba(11,65,39,.55),
-        rgba(5,35,22,.28)
-    ),
-    url('profile1.jpg');
-
-    background-size:cover;
-    background-position:center;
-    overflow:hidden
-}
-
-.hero:after{
-    content:"";
-    position:absolute;
-    inset:auto 0 0;
-    height:150px;
-    background:linear-gradient(transparent,#f5f8f3);
-    z-index:1
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:780px;
-    color:#fff;
-    animation:up 1s ease both
-}
-
-.badge{
-    display:inline-block;
-    background:#e5f0b8;
-    color:#174b32;
-    padding:9px 15px;
-    border-radius:30px;
-    font-weight:800;
-    font-size:13px;
-    margin-bottom:20px;
-    box-shadow:0 8px 25px #0002
-}
-
-.hero h1{
-    font-size:clamp(44px,7vw,82px);
-    line-height:.98;
-    letter-spacing:-3px;
-    margin-bottom:20px
-}
-
-.hero h1 span{
-    color:#e5f0b8
-}
-
-.hero p{
-    font-size:18px;
-    line-height:1.75;
-    max-width:680px;
-    color:#f2f8f3
-}
-
-.buttons{
-    margin-top:28px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap
-}
-
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    padding:14px 21px;
-    border-radius:13px;
-    font-weight:800;
-    transition:.25s
-}
-
-.btn-primary{
-    background:#e5f0b8;
-    color:#174b32
-}
-
-.btn-outline{
-    border:1px solid #fff;
-    color:#fff;
-    background:#ffffff12
-}
-
-.btn:hover{
-    transform:translateY(-3px)
-}
-
-/* UMUM */
-section{
-    padding:88px 7%
-}
-
-.container{
-    max-width:1160px;
-    margin:auto
-}
-
-.title{
-    text-align:center;
-    margin-bottom:42px
-}
-
-.title small{
-    color:#8a6846;
-    letter-spacing:2px;
-    font-weight:800
-}
-
-.title h2{
-    font-size:38px;
-    margin-top:7px;
-    color:var(--dark)
-}
-
-.title p{
-    max-width:700px;
-    margin:12px auto 0;
-    color:#60756a;
-    line-height:1.7
-}
-
-/* KARTU CEPAT */
-.quick{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-    margin-top:-20px;
-    position:relative;
-    z-index:5
-}
-
-.quick-card{
-    background:#fff;
-    border-radius:24px;
-    padding:28px;
-    box-shadow:0 18px 45px #164b3020;
-    border:1px solid #dfe9df;
-    transition:.3s
-}
-
-.quick-card:hover{
-    transform:translateY(-7px)
-}
-
-.quick-img{
-    width:100%;
-    height:165px;
-    object-fit:cover;
-    border-radius:17px;
-    margin-bottom:18px
-}
-
-.quick-card h3{
-    font-size:20px;
-    margin-bottom:9px
-}
-
-.quick-card p{
-    color:#64776e;
-    line-height:1.7;
-    font-size:14px
-}
-
-.tag{
-    display:inline-block;
-    margin-top:13px;
-    padding:6px 10px;
-    background:#edf4e7;
-    color:#456b50;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:800
-}
-
-/* SEKILAS */
-.intro{
-    background:var(--cream)
-}
-
-.intro-grid{
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    gap:45px;
-    align-items:center
-}
-
-.intro-img{
-    width:100%;
-    height:430px;
-    object-fit:cover;
-    border-radius:30px;
-    box-shadow:0 22px 55px #173f2a22
-}
-
-.intro-text small{
-    color:#8a6846;
-    font-weight:800;
-    letter-spacing:2px
-}
-
-.intro-text h2{
-    font-size:42px;
-    margin:10px 0 17px;
-    color:var(--dark)
-}
-
-.intro-text p{
-    line-height:1.85;
-    color:#5e7168
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:24px
-}
-
-.stat{
-    background:#eaf2e8;
-    border-radius:16px;
-    padding:17px;
-    text-align:center
-}
-
-.stat b{
-    display:block;
-    font-size:24px;
-    color:var(--green)
-}
-
-.stat span{
-    font-size:12px;
-    color:#63766c
-}
-
-/* POTENSI */
-.potensi-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px
-}
-
-.potensi{
-    position:relative;
-    min-height:270px;
-    border-radius:24px;
-    overflow:hidden;
-    background:#174b32;
-    color:#fff;
-    box-shadow:0 18px 40px #173f2a18
-}
-
-.potensi img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    position:absolute;
-    inset:0;
-    filter:brightness(.66) saturate(.9);
-    transition:.4s
-}
-
-.potensi:hover img{
-    transform:scale(1.06);
-    filter:brightness(.58) saturate(1)
-}
-
-.potensi-content{
-    position:absolute;
-    inset:auto 0 0;
-    padding:25px;
-    background:linear-gradient(transparent,rgba(4,28,17,.92))
-}
-
-.potensi h3{
-    font-size:21px;
-    margin-bottom:7px
-}
-
-.potensi p{
-    font-size:13px;
-    line-height:1.55;
-    color:#e7efe9
-}
-
-/* GALERI */
-.gallery{
-    background:#eef3ec
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px
-}
-
-.gallery-item{
-    height:220px;
-    border-radius:19px;
-    overflow:hidden;
-    position:relative
-}
-
-.gallery-item:first-child{
-    grid-column:span 2;
-    grid-row:span 2;
-    height:455px
-}
-
-.gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.4s
-}
-
-.gallery-item:hover img{
-    transform:scale(1.06)
-}
-
-.gallery-caption{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:18px;
-    color:#fff;
-    font-weight:800;
-    background:linear-gradient(transparent,#0a281bcc)
-}
-
-/* MAP */
-.map-section{
-    background:#fff
-}
-
-.map-wrap{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:25px;
-    align-items:stretch
-}
-
-.map-info{
-    background:linear-gradient(145deg,#0d3524,#1f7149);
-    color:#fff;
-    border-radius:26px;
-    padding:32px
-}
-
-.map-info h3{
-    font-size:28px;
-    margin-bottom:13px
-}
-
-.map-info p{
-    line-height:1.8;
-    color:#e2eee6
-}
-
-.address{
-    margin-top:25px;
-    padding:15px;
-    border-radius:15px;
-    background:#ffffff12;
-    border:1px solid #ffffff1f
-}
-
-.map-frame{
-    width:100%;
-    min-height:360px;
-    border:0;
-    border-radius:26px;
-    box-shadow:0 18px 40px #173f2a18
-}
-
-/* KONTAK */
-.contact{
-    background:linear-gradient(135deg,#e9f2e7,#f9f8f0)
-}
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:.9fr 1.1fr;
-    gap:28px
-}
-
-.contact-intro{
-    background:linear-gradient(145deg,#0d3524,#1f7149);
-    border-radius:28px;
-    padding:35px;
-    color:#fff
-}
-
-.contact-intro h2{
-    font-size:34px;
-    margin-bottom:12px
-}
-
-.contact-intro p{
-    line-height:1.8;
-    color:#e4eee7
-}
-
-.socials{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:25px
-}
-
-.social{
-    padding:15px;
-    border:1px solid #ffffff2b;
-    border-radius:16px;
-    background:#ffffff0e;
-    color:#fff;
-    text-decoration:none;
-    font-weight:800;
-    transition:.25s
-}
-
-.social:hover{
-    background:#e5f0b8;
-    color:#174b32;
-    transform:translateY(-2px)
-}
-
-/* BUKU TAMU */
-.guestbook-card{
-    background:#fff;
-    border-radius:28px;
-    padding:35px;
-    box-shadow:0 18px 45px #173f2a18
-}
-
-.guestbook-card h3{
-    text-align:center;
-    color:#174b32;
-    font-size:30px;
-    margin-bottom:6px
-}
-
-.guestbook-card .sub{
-    text-align:center;
-    color:#718078;
-    font-size:14px;
-    margin-bottom:25px
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px
-}
-
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:7px
-}
-
-.field.full{
-    grid-column:1/-1
-}
-
-.field label{
-    font-weight:800;
-    font-size:13px;
-    color:#365746
-}
-
-.field input,
-.field textarea{
-    width:100%;
-    border:1px solid #d4e0d6;
-    border-radius:13px;
-    padding:13px;
-    font:inherit;
-    outline:none;
-    background:#fbfdfb
-}
-
-.field textarea{
-    min-height:120px;
-    resize:vertical
-}
-
-.field input:focus,
-.field textarea:focus{
-    border-color:#2c8a5a;
-    box-shadow:0 0 0 3px #2c8a5a18
-}
-
-.submit{
-    width:100%;
-    border:0;
-    border-radius:14px;
-    padding:14px;
-    margin-top:15px;
-    background:linear-gradient(135deg,#2b8a5b,#0d5134);
-    color:#fff;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer
-}
-
-.note{
-    text-align:center;
-    color:#8a958f;
-    font-size:11px;
-    margin-top:10px
-}
-
-/* FOOTER */
-footer{
-    background:#092d1e;
-    color:#dce9df;
-    padding:35px 7%;
-    text-align:center
-}
-
-footer strong{
-    color:#fff;
-    font-size:19px
-}
-
-footer p{
-    margin-top:8px;
-    font-size:13px;
-    line-height:1.7
-}
-
-@keyframes up{
-    from{
-        opacity:0;
-        transform:translateY(30px)
-    }
-    to{
-        opacity:1;
-        transform:none
-    }
-}
-
-/* RESPONSIVE */
-@media(max-width:850px){
-
-    nav ul{
-        display:none
-    }
-
-    .quick,
-    .potensi-grid,
-    .intro-grid,
-    .map-wrap,
-    .contact-grid{
-        grid-template-columns:1fr
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr
-    }
-
-    .gallery-item:first-child{
-        grid-column:span 2;
-        grid-row:span 1;
-        height:280px
-    }
-
-    .gallery-item{
-        height:190px
-    }
-
-    .intro-img{
-        height:320px
-    }
-
-    .form-grid{
-        grid-template-columns:1fr
-    }
-
-    .field.full{
-        grid-column:auto
-    }
-
-    .hero{
-        padding-top:125px
-    }
-
-    .hero h1{
-        letter-spacing:-2px
-    }
-
-    .socials{
-        grid-template-columns:1fr 1fr
-    }
-}
-
-@media(max-width:520px){
-
-    section{
-        padding:70px 5%
-    }
-
-    .title h2{
-        font-size:30px
-    }
-
-    .hero{
-        padding-left:6%;
-        padding-right:6%
-    }
-
-    .hero p{
-        font-size:16px
-    }
-
-    .gallery-grid{
-        gap:10px
-    }
-
-    .gallery-item{
-        height:160px
-    }
-
-    .gallery-item:first-child{
-        height:220px
-    }
-
-    .guestbook-card{
-        padding:25px 18px
-    }
-
-    .socials{
-        grid-template-columns:1fr
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Desa Maktangguk</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fbfaf3;
+            color: #173b29;
+        }
+
+        /* =========================
+           PASSWORD SCREEN
+        ========================= */
+
+        #passwordScreen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(8, 50, 31, 0.82),
+                    rgba(8, 50, 31, 0.92)
+                ),
+                url("profile1.jpg") center/cover no-repeat;
+
+            transition: 0.7s ease;
+        }
+
+        .password-box {
+            width: 90%;
+            max-width: 430px;
+            padding: 40px 30px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+            animation: passwordPop 0.8s ease;
+        }
+
+        @keyframes passwordPop {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .password-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .password-box h1 {
+            color: #145c3a;
+            margin-bottom: 8px;
+        }
+
+        .password-box p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 14px 17px;
+
+            border: 2px solid #d6dfd7;
+            border-radius: 12px;
+
+            outline: none;
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .password-input:focus {
+            border-color: #238052;
+            box-shadow: 0 0 0 4px rgba(35,128,82,0.1);
+        }
+
+        .password-button {
+            width: 100%;
+            margin-top: 15px;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #145c3a;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .password-button:hover {
+            background: #238052;
+            transform: translateY(-2px);
+        }
+
+        .voice-button {
+            margin-top: 12px;
+
+            padding: 10px 16px;
+
+            border: 1px solid #876543;
+            border-radius: 10px;
+
+            background: #f4eee3;
+            color: #6b4d30;
+
+            cursor: pointer;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .voice-button:hover {
+            background: #eadfce;
+        }
+
+        #passwordMessage {
+            min-height: 24px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: #c0392b;
+        }
+
+        .correct {
+            color: #238052;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            z-index: 1000;
+
+            background: rgba(13, 53, 36, 0.96);
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 15px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d6b77b;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+
+            padding: 9px 13px;
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background: #238052;
+        }
+
+
+        /* =========================
+           HERO / BERANDA
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 120px 20px 70px;
+
+            background:
+                linear-gradient(
+                    rgba(8, 48, 30, 0.70),
+                    rgba(8, 48, 30, 0.82)
+                ),
+                url("profile1.jpg") center/cover no-repeat;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            animation: heroFade 1.2s ease;
+        }
+
+        @keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-small {
+            display: inline-block;
+
+            padding: 8px 16px;
+            margin-bottom: 18px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 72px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d6b77b;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            line-height: 1.8;
+            font-size: 17px;
+
+            color: #f0f5f0;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button-primary {
+            background: #d6b77b;
+            color: #173b29;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-secondary {
+            border: 1px solid rgba(255,255,255,0.6);
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255,255,255,0.18);
+        }
+
+
+        /* =========================
+           SEKILAS DESA
+        ========================= */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #876543;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #145c3a;
+            margin-top: 8px;
+        }
+
+        .about-home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-image {
+            overflow: hidden;
+            border-radius: 22px;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.14);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+
+            transition: 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #145c3a;
+        }
+
+        .about-text p {
+            color: #5c6b62;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .quote {
+            padding: 18px 20px;
+
+            border-left: 5px solid #d6b77b;
+
+            background: #f4eee3;
+            border-radius: 10px;
+
+            font-weight: bold;
+            color: #6b4d30;
+        }
+
+
+        /* =========================
+           INFO CARDS
+        ========================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 60px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.13);
+        }
+
+        .info-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .info-card-content {
+            padding: 22px;
+        }
+
+        .info-card h3 {
+            color: #145c3a;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #68766d;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           KEUNGGULAN
+        ========================= */
+
+        .features {
+            background: #e7f1e8;
+        }
+
+        .feature-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 90px 25px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.85);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border: 1px solid rgba(20,92,58,0.08);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #145c3a;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #647168;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CALL TO ACTION
+        ========================= */
+
+        .cta {
+            padding: 80px 25px;
+            text-align: center;
+
+            background: #145c3a;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #dce9df;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 13px 24px;
+
+            border-radius: 10px;
+
+            background: #d6b77b;
+            color: #173b29;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0d3524;
+            color: #dce8df;
+
+            text-align: center;
+
+            padding: 28px 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-menu {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                font-size: 12px;
+                padding: 7px 9px;
+            }
+
+            .hero {
+                padding-top: 160px;
+            }
+
+            .about-home {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 70px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .password-box {
+                padding: 32px 22px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loader">
-    <div class="loader-logo">🌿</div>
-    <div class="loader-title">Desa Maktangguk</div>
-    <div class="loader-subtitle">
-        Selamat datang di website desa
-    </div>
 
-    <div class="loader-line">
-        <span></span>
-    </div>
-</div>
+    <!-- =====================================
+         PASSWORD SCREEN
+    ====================================== -->
 
+    <div id="passwordScreen">
 
-<!-- NAVBAR -->
-<nav>
+        <div class="password-box">
 
-    <div class="logo">
-        🌿 Desa <span>Maktangguk</span>
-    </div>
+            <div class="password-icon">🔐</div>
 
-    <ul>
-
-        <li>
-            <a href="index.html">
-                Beranda
-            </a>
-        </li>
-
-        <li>
-            <a href="profil.html">
-                Profil
-            </a>
-        </li>
-
-        <li>
-            <a href="sejarah.html">
-                Sejarah
-            </a>
-        </li>
-
-        <li>
-            <a href="potensi.html">
-                Potensi
-            </a>
-        </li>
-
-        <li>
-            <a href="galeri.html">
-                Galeri
-            </a>
-        </li>
-
-        <li>
-            <a href="#kontak">
-                Kontak
-            </a>
-        </li>
-
-    </ul>
-
-</nav>
-
-
-<!-- HERO / BERANDA -->
-<section class="hero" id="beranda">
-
-    <div class="hero-content">
-
-        <span class="badge">
-            🌱 Kecamatan Tebas • Kabupaten Sambas
-        </span>
-
-        <h1>
-            Selamat Datang di
-            <span>Desa Maktangguk</span>
-        </h1>
-
-        <p>
-            Mengenal desa, masyarakat, budaya, dan potensi
-            Maktangguk melalui satu website yang sederhana,
-            modern, dan informatif.
-        </p>
-
-        <div class="buttons">
-
-            <a
-                class="btn btn-primary"
-                href="profil.html"
-            >
-                Jelajahi Desa →
-            </a>
-
-            <a
-                class="btn btn-outline"
-                href="#galeri"
-            >
-                Lihat Foto
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- KARTU INFORMASI -->
-<section style="padding-top:25px;background:#f5f8f3">
-
-<div class="container quick">
-
-    <div class="quick-card">
-
-        <img
-            class="quick-img"
-            src="profile2.jpg"
-            alt="Kantor Desa Maktangguk"
-        >
-
-        <h3>
-            🏡 Kantor Desa
-        </h3>
-
-        <p>
-            Pusat pelayanan dan kegiatan pemerintahan
-            Desa Maktangguk.
-        </p>
-
-        <span class="tag">
-            Profil Desa
-        </span>
-
-    </div>
-
-
-    <div class="quick-card">
-
-        <img
-            class="quick-img"
-            src="profile3.jpg"
-            alt="Kegiatan masyarakat Desa Maktangguk"
-        >
-
-        <h3>
-            🤝 Masyarakat
-        </h3>
-
-        <p>
-            Semangat kebersamaan, kegiatan masyarakat,
-            dan kehidupan sosial desa.
-        </p>
-
-        <span class="tag">
-            Kehidupan Desa
-        </span>
-
-    </div>
-
-
-    <div class="quick-card">
-
-        <img
-            class="quick-img"
-            src="profile5.jpg"
-            alt="Potensi perkebunan Desa Maktangguk"
-        >
-
-        <h3>
-            🌴 Potensi Alam
-        </h3>
-
-        <p>
-            Salah satu gambaran potensi perkebunan
-            yang menjadi bagian dari lingkungan desa.
-        </p>
-
-        <span class="tag">
-            Potensi Desa
-        </span>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- SEKILAS DESA -->
-<section class="intro">
-
-<div class="container intro-grid">
-
-    <img
-        class="intro-img"
-        src="profile1.jpg"
-        alt="Pemandangan Desa Maktangguk"
-    >
-
-    <div class="intro-text">
-
-        <small>
-            SEKILAS MAKTANGGUK
-        </small>
-
-        <h2>
-            Desa yang Punya Cerita
-        </h2>
-
-        <p>
-            Website ini menjadi ruang untuk memperkenalkan
-            Desa Maktangguk, mulai dari profil dan sejarah
-            hingga potensi serta kegiatan masyarakat.
-            Gunakan menu di atas untuk melihat informasi
-            yang lebih lengkap.
-        </p>
-
-
-        <div class="stats">
-
-            <div class="stat">
-                <b>🌿</b>
-                <span>Desa Asri</span>
-            </div>
-
-            <div class="stat">
-                <b>🤝</b>
-                <span>Masyarakat Kompak</span>
-            </div>
-
-            <div class="stat">
-                <b>🌾</b>
-                <span>Potensi Desa</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- POTENSI -->
-<section>
-
-<div class="container">
-
-    <div class="title">
-
-        <small>
-            POTENSI
-        </small>
-
-        <h2>
-            Potensi Desa Maktangguk
-        </h2>
-
-        <p>
-            Kenali berbagai sisi desa melalui foto
-            dan informasi yang tersedia.
-        </p>
-
-    </div>
-
-
-    <div class="potensi-grid">
-
-        <div class="potensi">
-
-            <img
-                src="profile5.jpg"
-                alt="Perkebunan Desa Maktangguk"
-            >
-
-            <div class="potensi-content">
-
-                <h3>
-                    🌴 Perkebunan
-                </h3>
-
-                <p>
-                    Lingkungan perkebunan menjadi bagian
-                    dari potensi alam desa.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="potensi">
-
-            <img
-                src="profile3.jpg"
-                alt="Kegiatan masyarakat"
-            >
-
-            <div class="potensi-content">
-
-                <h3>
-                    🤝 Masyarakat & Kegiatan
-                </h3>
-
-                <p>
-                    Kebersamaan masyarakat menjadi bagian
-                    penting dari kehidupan desa.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="potensi">
-
-            <img
-                src="profile4.jpg"
-                alt="Fasilitas Desa Maktangguk"
-            >
-
-            <div class="potensi-content">
-
-                <h3>
-                    🏘️ Fasilitas Desa
-                </h3>
-
-                <p>
-                    Bangunan dan fasilitas desa mendukung
-                    aktivitas masyarakat.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- GALERI -->
-<section class="gallery" id="galeri">
-
-<div class="container">
-
-    <div class="title">
-
-        <small>
-            GALERI
-        </small>
-
-        <h2>
-            Potret Maktangguk
-        </h2>
-
-        <p>
-            Foto menggunakan koleksi gambar yang
-            sudah tersedia di website kamu.
-        </p>
-
-    </div>
-
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item">
-
-            <img
-                src="profile1.jpg"
-                alt="Pemandangan Maktangguk"
-            >
-
-            <div class="gallery-caption">
-                Pemandangan Desa Maktangguk
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="profile2.jpg"
-                alt="Kantor Desa Maktangguk"
-            >
-
-            <div class="gallery-caption">
-                Kantor Desa Maktangguk
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="profile3.jpg"
-                alt="Kegiatan masyarakat"
-            >
-
-            <div class="gallery-caption">
-                Kegiatan Masyarakat
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="profile4.jpg"
-                alt="Fasilitas desa"
-            >
-
-            <div class="gallery-caption">
-                Fasilitas Desa
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img
-                src="profile5.jpg"
-                alt="Potensi perkebunan"
-            >
-
-            <div class="gallery-caption">
-                Potensi Perkebunan
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- MAP -->
-<section class="map-section" id="lokasi">
-
-<div class="container">
-
-    <div class="title">
-
-        <small>
-            LOKASI
-        </small>
-
-        <h2>
-            Temukan Desa Maktangguk
-        </h2>
-
-        <p>
-            Lihat lokasi Desa Maktangguk melalui
-            peta berikut.
-        </p>
-
-    </div>
-
-
-    <div class="map-wrap">
-
-        <div class="map-info">
-
-            <h3>
-                📍 Desa Maktangguk
-            </h3>
+            <h1>Selamat Datang</h1>
 
             <p>
+                Silakan masukkan password untuk
+                masuk ke Website Desa Maktangguk.
+            </p>
+
+            <input
+                type="password"
+                id="passwordInput"
+                class="password-input"
+                placeholder="Masukkan password..."
+                autocomplete="off"
+            >
+
+            <button
+                class="password-button"
+                onclick="checkPassword()"
+            >
+                🔓 Masuk ke Website
+            </button>
+
+            <button
+                class="voice-button"
+                onclick="speakPassword()"
+            >
+                🔊 Dengarkan Password
+            </button>
+
+            <div id="passwordMessage"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         NAVBAR
+    ====================================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                🌿 Desa <span>Maktangguk</span>
+            </a>
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html">Beranda</a>
+                </li>
+
+                <li>
+                    <a href="profil.html">Profil</a>
+                </li>
+
+                <li>
+                    <a href="sejarah.html">Sejarah</a>
+                </li>
+
+                <li>
+                    <a href="potensi.html">Potensi</a>
+                </li>
+
+                <li>
+                    <a href="galeri.html">Galeri</a>
+                </li>
+
+                <li>
+                    <a href="map.html">Map</a>
+                </li>
+
+                <li>
+                    <a href="kontak.html">Kontak</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================
+         BERANDA / HERO
+    ====================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                🌿 Website Resmi Desa Maktangguk
+            </div>
+
+            <h1>
+                Selamat Datang di
+                <span>Desa Maktangguk</span>
+            </h1>
+
+            <p>
+                Mengenal lebih dekat Desa Maktangguk,
                 Kecamatan Tebas, Kabupaten Sambas,
                 Kalimantan Barat.
             </p>
 
-            <div class="address">
+            <div class="hero-buttons">
 
-                Gunakan peta di samping untuk melihat
-                lokasi dan petunjuk arah.
+                <a
+                    href="profil.html"
+                    class="hero-button button-primary"
+                >
+                    Lihat Profil Desa
+                </a>
+
+                <a
+                    href="#sekilas"
+                    class="hero-button button-secondary"
+                >
+                    Jelajahi Beranda
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         SEKILAS DESA
+    ====================================== -->
+
+    <section
+        class="section"
+        id="sekilas"
+    >
+
+        <div class="section-title">
+
+            <span>Tentang Desa</span>
+
+            <h2>Sekilas Maktangguk</h2>
+
+        </div>
+
+
+        <div class="about-home">
+
+            <div class="about-image">
+
+                <img
+                    src="profile1.jpg"
+                    alt="Desa Maktangguk"
+                >
+
+            </div>
+
+
+            <div class="about-text">
+
+                <h3>Desa yang Punya Cerita</h3>
+
+                <p>
+                    Desa Maktangguk merupakan bagian dari
+                    Kecamatan Tebas, Kabupaten Sambas,
+                    Kalimantan Barat.
+                </p>
+
+                <p>
+                    Website ini dibuat sebagai media informasi
+                    untuk mengenalkan Desa Maktangguk,
+                    mulai dari profil, sejarah, potensi,
+                    kegiatan, hingga informasi lainnya.
+                </p>
+
+                <div class="quote">
+                    “Maktangguk Bersatu, Maktangguk Maju”
+                </div>
 
             </div>
 
         </div>
 
 
-        <iframe
-            class="map-frame"
-            title="Peta Desa Maktangguk"
-            src="https://www.google.com/maps?q=Desa%20Maktangguk%2C%20Kecamatan%20Tebas%2C%20Kabupaten%20Sambas%2C%20Kalimantan%20Barat&output=embed"
-            loading="lazy">
-        </iframe>
+        <!-- INFO CARDS -->
 
-    </div>
+        <div class="info-grid">
 
-</div>
+            <div class="info-card">
 
-</section>
+                <img
+                    src="profile2.jpg"
+                    alt="Kantor Desa Maktangguk"
+                >
+
+                <div class="info-card-content">
+
+                    <h3>🏛️ Kantor Desa</h3>
+
+                    <p>
+                        Pusat pelayanan dan kegiatan
+                        pemerintahan Desa Maktangguk.
+                    </p>
+
+                </div>
+
+            </div>
 
 
-<!-- KONTAK + BUKU TAMU -->
-<section class="contact" id="kontak">
+            <div class="info-card">
 
-<div class="container">
+                <img
+                    src="profile3.jpg"
+                    alt="Kegiatan masyarakat"
+                >
 
-    <div class="title">
+                <div class="info-card-content">
 
-        <small>
-            KONTAK
-        </small>
+                    <h3>🤝 Masyarakat</h3>
 
-        <h2>
-            Hubungi & Tinggalkan Pesan
-        </h2>
+                    <p>
+                        Kehidupan masyarakat dan berbagai
+                        kegiatan sosial di lingkungan desa.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <img
+                    src="profile5.jpg"
+                    alt="Potensi perkebunan"
+                >
+
+                <div class="info-card-content">
+
+                    <h3>🌴 Potensi Alam</h3>
+
+                    <p>
+                        Salah satu potensi yang terlihat
+                        di lingkungan Desa Maktangguk.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         KEUNGGULAN WEBSITE
+    ====================================== -->
+
+    <section class="features">
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏡
+                </div>
+
+                <h3>Desa & Masyarakat</h3>
+
+                <p>
+                    Mengenal kehidupan serta lingkungan
+                    masyarakat Desa Maktangguk.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🌱
+                </div>
+
+                <h3>Potensi Desa</h3>
+
+                <p>
+                    Menampilkan informasi mengenai
+                    potensi yang dimiliki desa.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📸
+                </div>
+
+                <h3>Dokumentasi</h3>
+
+                <p>
+                    Melihat berbagai dokumentasi
+                    kegiatan dan lingkungan desa.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CTA
+    ====================================== -->
+
+    <section class="cta">
+
+        <h2>Kenali Desa Maktangguk Lebih Dekat</h2>
 
         <p>
-            Temukan media sosial dan sampaikan pesan
-            melalui Buku Tamu Desa Maktangguk.
+            Jelajahi informasi tentang profil,
+            sejarah, potensi, galeri, lokasi,
+            dan kontak Desa Maktangguk melalui
+            menu yang tersedia.
         </p>
 
-    </div>
+        <a
+            href="profil.html"
+            class="cta-button"
+        >
+            Mulai Jelajahi →
+        </a>
 
+    </section>
 
-    <div class="contact-grid">
 
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
 
-        <!-- MEDIA SOSIAL -->
-        <div class="contact-intro">
+    <footer>
 
-            <h2>
-                Terhubung dengan Maktangguk
-            </h2>
+        <p>
+            © 2026 Desa Maktangguk.
+            Website Promosi Desa.
+        </p>
 
-            <p>
-                Hubungi dan ikuti informasi Desa
-                Maktangguk melalui media sosial.
-            </p>
+        <p>
+            Kecamatan Tebas, Kabupaten Sambas,
+            Kalimantan Barat.
+        </p>
 
+    </footer>
 
-            <div class="socials">
 
-                <a
-                    class="social"
-                    href="#"
-                    target="_blank"
-                >
-                    💬 WhatsApp
-                </a>
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
 
+    <script>
 
-                <a
-                    class="social"
-                    href="#"
-                    target="_blank"
-                >
-                    📷 Instagram
-                </a>
+        /* PASSWORD WEBSITE */
 
+        const correctPassword = "Hallo";
 
-                <a
-                    class="social"
-                    href="#"
-                    target="_blank"
-                >
-                    🎵 TikTok
-                </a>
 
+        function checkPassword() {
 
-                <a
-                    class="social"
-                    href="#"
-                    target="_blank"
-                >
-                    💻 GitHub
-                </a>
+            const input =
+                document.getElementById("passwordInput");
 
-            </div>
+            const message =
+                document.getElementById("passwordMessage");
 
-        </div>
+            const password =
+                input.value.trim();
 
 
-        <!-- BUKU TAMU -->
-        <div class="guestbook-card">
+            if (password === correctPassword) {
 
-            <h3>
-                📖 Buku Tamu
-            </h3>
+                message.textContent =
+                    "✓ Password benar! Selamat datang.";
 
-            <div class="sub">
-                Suara dan saran Anda berarti
-                untuk Desa Maktangguk.
-            </div>
+                message.className = "correct";
 
 
-            <form
-                id="bukuTamuForm"
-                class="form-grid"
-            >
+                setTimeout(function() {
 
-                <div class="field">
+                    const screen =
+                        document.getElementById("passwordScreen");
 
-                    <label for="nama">
-                        Nama
-                    </label>
+                    screen.style.opacity = "0";
 
-                    <input
-                        id="nama"
-                        name="nama"
-                        type="text"
-                        placeholder="Masukkan nama"
-                        required
-                    >
+                    setTimeout(function() {
 
-                </div>
+                        screen.style.display = "none";
 
+                    }, 700);
 
-                <div class="field">
+                }, 500);
 
-                    <label for="asal">
-                        Asal / Dusun
-                    </label>
 
-                    <input
-                        id="asal"
-                        name="asal"
-                        type="text"
-                        placeholder="Contoh: Dusun Maktangguk"
-                        required
-                    >
+            } else {
 
-                </div>
+                message.textContent =
+                    "✕ Password salah. Silakan coba lagi.";
 
+                message.className = "wrong";
 
-                <div class="field full">
+                input.value = "";
 
-                    <label for="pesan">
-                        Pesan / Saran
-                    </label>
+                input.focus();
 
-                    <textarea
-                        id="pesan"
-                        name="pesan"
-                        placeholder="Tulis pesan atau saran kamu..."
-                        required>
-                    </textarea>
+            }
 
-                </div>
+        }
 
 
-                <div class="field full">
+        /* SUARA PASSWORD */
 
-                    <button
-                        class="submit"
-                        type="submit"
-                    >
-                        ➤ &nbsp; Kirim Pesan
-                    </button>
+        function speakPassword() {
 
-                    <div class="note">
-                        Pesan akan dikirim ke database
-                        Google Sheet Desa Maktangguk.
-                    </div>
+            if ("speechSynthesis" in window) {
 
-                </div>
+                window.speechSynthesis.cancel();
 
-            </form>
+                const speech =
+                    new SpeechSynthesisUtterance(
+                        "Password-nya Hallo"
+                    );
 
-        </div>
+                speech.lang = "id-ID";
+                speech.rate = 0.9;
+                speech.pitch = 1;
 
-    </div>
+                window.speechSynthesis.speak(speech);
 
-</div>
+            } else {
 
-</section>
+                alert(
+                    "Perangkat atau browser kamu tidak mendukung suara."
+                );
 
+            }
 
-<!-- FOOTER -->
-<footer>
+        }
 
-    <strong>
-        🌿 Desa Maktangguk
-    </strong>
 
-    <p>
-        Website informasi dan promosi Desa Maktangguk
-        <br>
-        © 2026 Desa Maktangguk
-    </p>
+        /* ENTER UNTUK LOGIN */
 
-</footer>
+        document
+            .getElementById("passwordInput")
+            .addEventListener("keydown", function(event) {
 
+                if (event.key === "Enter") {
 
-<script>
+                    checkPassword();
 
-/* LOADING */
-window.addEventListener(
-    'load',
-    () => {
-        setTimeout(
-            () => {
-                document
-                    .getElementById('loader')
-                    .classList
-                    .add('hide');
-            },
-            700
-        );
-    }
-);
-
-
-/* GOOGLE SHEET DATABASE */
-
-const WEB_APP_URL =
-'https://script.google.com/macros/s/AKfycbwcw6BxBoJzYReMBTVdyyprPag16cqvoA302FrFnxKta6cFpU1Mm_FlVCcOQ-LBtFWl/exec';
-
-
-const form =
-document.getElementById('bukuTamuForm');
-
-
-form.addEventListener(
-    'submit',
-    async function(e){
-
-        e.preventDefault();
-
-        const button =
-        form.querySelector('.submit');
-
-        button.disabled = true;
-        button.textContent = 'Mengirim...';
-
-
-        const data = {
-
-            nama:
-            document
-            .getElementById('nama')
-            .value
-            .trim(),
-
-            asal:
-            document
-            .getElementById('asal')
-            .value
-            .trim(),
-
-            pesan:
-            document
-            .getElementById('pesan')
-            .value
-            .trim()
-
-        };
-
-
-        try{
-
-            await fetch(
-                WEB_APP_URL,
-                {
-                    method:'POST',
-
-                    mode:'no-cors',
-
-                    headers:{
-                        'Content-Type':
-                        'text/plain;charset=utf-8'
-                    },
-
-                    body:
-                    JSON.stringify(data)
                 }
-            );
 
+            });
 
-            alert(
-                'Pesan sudah dikirim! Terima kasih.'
-            );
-
-            form.reset();
-
-        }
-
-
-        catch(err){
-
-            alert(
-                'Pesan gagal dikirim. Silakan coba lagi.'
-            );
-
-        }
-
-
-        button.disabled = false;
-
-        button.innerHTML =
-        '➤ &nbsp; Kirim Pesan';
-
-    }
-
-);
-
-</script>
+    </script>
 
 </body>
 </html>
