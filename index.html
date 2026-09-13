@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Desa Maktangguk</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     margin:0;
     padding:0;
@@ -14,99 +20,99 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#f5f1e8;
     color:#26352b;
+    overflow-x:hidden;
 }
 
-/* ================= PASSWORD ================= */
 
-#passwordScreen{
+/* =====================================================
+   ANIMASI DAUN
+===================================================== */
+
+.leaves{
     position:fixed;
     inset:0;
-    z-index:9999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:
-        linear-gradient(rgba(0,40,20,.72),rgba(0,40,20,.72)),
-        url("profile1.jpg") center/cover;
-    transition:.7s;
+    pointer-events:none;
+    z-index:999;
+    overflow:hidden;
 }
 
-#passwordScreen.hide{
-    opacity:0;
-    visibility:hidden;
+.leaf{
+    position:absolute;
+    top:-50px;
+    font-size:25px;
+    opacity:.55;
+    animation:fall linear infinite;
 }
 
-.password-box{
-    width:90%;
-    max-width:430px;
-    padding:40px 30px;
-    text-align:center;
-    background:rgba(255,255,255,.94);
-    border-radius:25px;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
+.leaf:nth-child(1){
+    left:8%;
+    animation-duration:9s;
+    animation-delay:0s;
 }
 
-.password-box h1{
-    color:#245c3a;
-    margin-bottom:10px;
+.leaf:nth-child(2){
+    left:25%;
+    animation-duration:12s;
+    animation-delay:2s;
 }
 
-.password-box p{
-    color:#666;
-    margin-bottom:25px;
+.leaf:nth-child(3){
+    left:45%;
+    animation-duration:10s;
+    animation-delay:4s;
 }
 
-.password-box input{
-    width:100%;
-    padding:15px;
-    border:2px solid #d5d5d5;
-    border-radius:12px;
-    outline:none;
-    font-size:16px;
-    margin-bottom:15px;
+.leaf:nth-child(4){
+    left:65%;
+    animation-duration:14s;
+    animation-delay:1s;
 }
 
-.password-box input:focus{
-    border-color:#3d8057;
+.leaf:nth-child(5){
+    left:82%;
+    animation-duration:11s;
+    animation-delay:3s;
 }
 
-.password-box button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#28613d;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+@keyframes fall{
+
+    0%{
+        transform:translateY(-60px) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(50vh) translateX(80px) rotate(180deg);
+    }
+
+    100%{
+        transform:translateY(110vh) translateX(-50px) rotate(360deg);
+    }
+
 }
 
-.password-box button:hover{
-    background:#1d4c2f;
-}
 
-#error{
-    color:#d33;
-    margin-top:12px;
-    font-size:14px;
-}
-
-/* ================= NAVBAR ================= */
+/* =====================================================
+   NAVBAR
+===================================================== */
 
 nav{
     position:sticky;
     top:0;
     z-index:1000;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:16px 7%;
-    background:#17452c;
-    box-shadow:0 3px 15px rgba(0,0,0,.15);
+
+    background:rgba(23,69,44,.96);
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,.15);
 }
 
 .logo{
@@ -116,9 +122,9 @@ nav{
 }
 
 nav ul{
-    list-style:none;
     display:flex;
     gap:22px;
+    list-style:none;
 }
 
 nav a{
@@ -126,147 +132,261 @@ nav a{
     text-decoration:none;
     font-size:14px;
     font-weight:bold;
+    transition:.3s;
 }
 
 nav a:hover{
     color:#d8c38a;
 }
 
-/* ================= HERO ================= */
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
-    min-height:620px;
+    min-height:650px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
-    padding:60px 20px;
+
+    padding:80px 20px;
+
     color:white;
+
+    position:relative;
+    overflow:hidden;
+
     background:
-        linear-gradient(rgba(15,60,35,.65),rgba(15,60,35,.75)),
+        linear-gradient(
+            rgba(10,55,30,.55),
+            rgba(10,55,30,.78)
+        ),
         url("profile1.jpg") center/cover;
+
+    animation:heroZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom{
+
+    from{
+        background-size:100%;
+    }
+
+    to{
+        background-size:110%;
+    }
+
 }
 
 .hero-content{
     max-width:850px;
+
+    animation:
+        heroText 1.4s ease forwards;
+
+    position:relative;
+    z-index:2;
+}
+
+@keyframes heroText{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .hero h1{
     font-size:55px;
-    margin-bottom:15px;
-    text-shadow:0 3px 10px rgba(0,0,0,.4);
+    margin-bottom:18px;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,.5);
 }
 
 .hero p{
     font-size:19px;
     line-height:1.7;
-    margin-bottom:28px;
+
+    margin-bottom:30px;
 }
 
 .btn{
     display:inline-block;
-    padding:14px 25px;
+
+    padding:14px 26px;
+
     background:#d1b36a;
     color:#173d28;
+
     border-radius:30px;
+
     text-decoration:none;
+
     font-weight:bold;
+
     margin:5px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 6px 15px rgba(0,0,0,.15);
 }
 
 .btn:hover{
-    transform:translateY(-2px);
+    transform:translateY(-4px);
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.2);
 }
 
-/* ================= SECTION ================= */
+
+/* =====================================================
+   SECTION
+===================================================== */
 
 section{
-    padding:80px 7%;
+    padding:85px 7%;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:45px;
+    margin-bottom:50px;
 }
 
 .section-title h2{
     font-size:35px;
     color:#205c39;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .section-title p{
     color:#777;
 }
 
-/* ================= SEKILAS ================= */
+
+/* =====================================================
+   SEKILAS DESA
+===================================================== */
 
 .about{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:45px;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:50px;
+
     align-items:center;
 }
 
 .about img{
     width:100%;
+
     border-radius:25px;
-    box-shadow:0 12px 30px rgba(0,0,0,.2);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.18);
+
+    transition:.5s;
+}
+
+.about img:hover{
+    transform:scale(1.03);
 }
 
 .about-text h3{
     font-size:30px;
+
     color:#205c39;
+
     margin-bottom:18px;
 }
 
 .about-text p{
     line-height:1.8;
+
     color:#555;
+
     margin-bottom:15px;
 }
 
-/* ================= CARDS ================= */
+
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:28px;
 }
 
 .card{
     background:white;
-    border-radius:20px;
+
+    border-radius:22px;
+
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.1);
-    transition:.3s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.1);
+
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-7px);
+    transform:
+        translateY(-10px);
 }
 
 .card img{
     width:100%;
-    height:210px;
+    height:220px;
+
     object-fit:cover;
+
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.06);
 }
 
 .card-content{
-    padding:22px;
+    padding:24px;
 }
 
 .card-content h3{
     color:#205c39;
+
     margin-bottom:10px;
 }
 
 .card-content p{
     color:#666;
+
     line-height:1.6;
+
+    margin-bottom:15px;
 }
 
-/* ================= KEUNGGULAN ================= */
+
+/* =====================================================
+   FITUR
+===================================================== */
 
 .features{
     background:#e7eee6;
@@ -274,102 +394,193 @@ section{
 
 .feature-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:28px;
 }
 
 .feature{
     text-align:center;
-    padding:30px 20px;
+
+    padding:35px 22px;
+
     background:white;
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    border-radius:22px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+
+    transition:.4s;
+}
+
+.feature:hover{
+    transform:
+        translateY(-8px);
 }
 
 .feature-icon{
-    font-size:45px;
-    margin-bottom:15px;
+    font-size:48px;
+
+    margin-bottom:18px;
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
 }
 
 .feature h3{
     color:#205c39;
+
     margin-bottom:10px;
 }
 
 .feature p{
     color:#666;
+
     line-height:1.6;
+
+    margin-bottom:15px;
 }
 
-/* ================= MOTTO ================= */
+
+/* =====================================================
+   MOTTO
+===================================================== */
 
 .motto{
+
     text-align:center;
-    background:
-        linear-gradient(rgba(20,65,40,.9),rgba(20,65,40,.9)),
-        url("profile1.jpg") center/cover;
+
     color:white;
+
+    background:
+        linear-gradient(
+            rgba(20,65,40,.9),
+            rgba(20,65,40,.9)
+        ),
+        url("profile1.jpg") center/cover;
+
+    position:relative;
 }
 
 .motto h2{
     font-size:38px;
+
     margin-bottom:15px;
 }
 
 .motto p{
     font-size:20px;
+
     font-style:italic;
 }
 
-/* ================= CTA ================= */
+
+/* =====================================================
+   CTA
+===================================================== */
 
 .cta{
     text-align:center;
+
     background:#f5f1e8;
 }
 
 .cta h2{
     color:#205c39;
+
     font-size:32px;
+
     margin-bottom:15px;
 }
 
 .cta p{
     color:#666;
+
     margin-bottom:25px;
 }
 
-/* ================= FOOTER ================= */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
     background:#123721;
+
     color:white;
+
     text-align:center;
-    padding:30px 20px;
+
+    padding:35px 20px;
 }
 
 footer p{
-    margin:7px;
+    margin:8px;
+
     color:#ddd;
 }
 
-/* ================= RESPONSIVE ================= */
+
+/* =====================================================
+   ANIMASI SCROLL
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(40px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE HP
+===================================================== */
 
 @media(max-width:800px){
 
     nav{
         flex-direction:column;
-        gap:12px;
+
+        gap:14px;
     }
 
     nav ul{
         flex-wrap:wrap;
+
         justify-content:center;
+
         gap:12px;
     }
 
     .hero{
-        min-height:520px;
+        min-height:550px;
     }
 
     .hero h1{
@@ -393,45 +604,66 @@ footer p{
     }
 
     section{
-        padding:60px 5%;
+        padding:65px 5%;
     }
+
+    .section-title h2{
+        font-size:29px;
+    }
+
+    .motto h2{
+        font-size:29px;
+    }
+
 }
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= PASSWORD ================= -->
 
-<div id="passwordScreen">
+<!-- =====================================================
+     DAUN MELAYANG
+===================================================== -->
 
-    <div class="password-box">
+<div class="leaves">
 
-        <h1>🔐 Selamat Datang</h1>
+    <div class="leaf">🍃</div>
 
-        <p>
-            Masukkan password untuk masuk<br>
-            ke Website Desa Maktangguk
-        </p>
+    <div class="leaf">🌿</div>
 
-        <input
-            type="password"
-            id="passwordInput"
-            placeholder="Masukkan password..."
-        >
+    <div class="leaf">🍃</div>
 
-        <button onclick="checkPassword()">
-            🔓 Masuk ke Website
-        </button>
+    <div class="leaf">🌿</div>
 
-        <div id="error"></div>
-
-    </div>
+    <div class="leaf">🍃</div>
 
 </div>
 
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav>
 
@@ -440,33 +672,84 @@ footer p{
     </div>
 
     <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="profil.html">Profil</a></li>
-        <li><a href="sejarah.html">Sejarah</a></li>
-        <li><a href="potensi.html">Potensi</a></li>
-        <li><a href="galeri.html">Galeri</a></li>
-        <li><a href="map.html">Map</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
+
+        <li>
+            <a href="index.html">
+                Beranda
+            </a>
+        </li>
+
+        <li>
+            <a href="profil.html">
+                Profil
+            </a>
+        </li>
+
+        <li>
+            <a href="sejarah.html">
+                Sejarah
+            </a>
+        </li>
+
+        <li>
+            <a href="potensi.html">
+                Potensi
+            </a>
+        </li>
+
+        <li>
+            <a href="galeri.html">
+                Galeri
+            </a>
+        </li>
+
+        <li>
+            <a href="map.html">
+                Map
+            </a>
+        </li>
+
+        <li>
+            <a href="kontak.html">
+                Kontak
+            </a>
+        </li>
+
     </ul>
 
 </nav>
 
 
-<!-- ================= HERO ================= -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <h1>Selamat Datang di Desa Maktangguk</h1>
+        <h1>
+            Selamat Datang di Desa Maktangguk
+        </h1>
 
         <p>
             Kecamatan Tebas, Kabupaten Sambas,
             Kalimantan Barat
         </p>
 
-        <a href="#sekilas" class="btn">
-            Jelajahi Desa
+        <a
+            href="#sekilas"
+            class="btn"
+        >
+            🌿 Jelajahi Desa
+        </a>
+
+        <a
+            href="profil.html"
+            class="btn"
+        >
+            👤 Lihat Profil
         </a>
 
     </div>
@@ -474,13 +757,21 @@ footer p{
 </section>
 
 
-<!-- ================= SEKILAS DESA ================= -->
 
-<section id="sekilas">
+<!-- =====================================================
+     SEKILAS DESA
+===================================================== -->
+
+<section
+    id="sekilas"
+    class="reveal"
+>
 
     <div class="section-title">
 
-        <h2>Sekilas Tentang Maktangguk</h2>
+        <h2>
+            Sekilas Tentang Maktangguk
+        </h2>
 
         <p>
             Mengenal Desa Maktangguk lebih dekat
@@ -491,28 +782,39 @@ footer p{
 
     <div class="about">
 
-        <img src="profile1.jpg" alt="Desa Maktangguk">
+        <img
+            src="profile1.jpg"
+            alt="Desa Maktangguk"
+        >
+
 
         <div class="about-text">
 
-            <h3>Maktangguk Bersatu, Maktangguk Maju</h3>
+            <h3>
+                Maktangguk Bersatu,
+                Maktangguk Maju
+            </h3>
 
             <p>
-                Desa Maktangguk merupakan bagian dari
-                Kecamatan Tebas, Kabupaten Sambas,
-                Kalimantan Barat.
+                Desa Maktangguk merupakan bagian
+                dari Kecamatan Tebas, Kabupaten
+                Sambas, Kalimantan Barat.
             </p>
 
             <p>
-                Website ini dibuat sebagai media informasi
-                dan promosi desa agar masyarakat dapat
-                mengenal profil, sejarah, potensi,
-                kegiatan, serta informasi Desa Maktangguk
-                dengan lebih mudah.
+                Website ini dibuat sebagai media
+                informasi dan promosi desa agar
+                masyarakat dapat mengenal profil,
+                sejarah, potensi, kegiatan, serta
+                informasi Desa Maktangguk dengan
+                lebih mudah.
             </p>
 
-            <a href="profil.html" class="btn">
-                Lihat Profil
+            <a
+                href="profil.html"
+                class="btn"
+            >
+                Baca Profil
             </a>
 
         </div>
@@ -522,16 +824,22 @@ footer p{
 </section>
 
 
-<!-- ================= INFORMASI ================= -->
 
-<section>
+<!-- =====================================================
+     INFORMASI DESA
+===================================================== -->
+
+<section class="reveal">
 
     <div class="section-title">
 
-        <h2>Informasi Desa</h2>
+        <h2>
+            Informasi Desa
+        </h2>
 
         <p>
-            Beberapa hal yang dapat kamu lihat
+            Beberapa informasi yang dapat kamu
+            jelajahi
         </p>
 
     </div>
@@ -539,20 +847,31 @@ footer p{
 
     <div class="cards">
 
+
+        <!-- KANTOR DESA -->
+
         <div class="card">
 
-            <img src="profile2.jpg" alt="Kantor Desa">
+            <img
+                src="profile2.jpg"
+                alt="Kantor Desa Maktangguk"
+            >
 
             <div class="card-content">
 
-                <h3>🏢 Kantor Desa</h3>
+                <h3>
+                    🏢 Kantor Desa
+                </h3>
 
                 <p>
                     Mengenal pusat pelayanan dan
                     pemerintahan Desa Maktangguk.
                 </p>
 
-                <a href="profil.html" class="btn">
+                <a
+                    href="profil.html"
+                    class="btn"
+                >
                     Selengkapnya
                 </a>
 
@@ -561,20 +880,31 @@ footer p{
         </div>
 
 
+
+        <!-- KEGIATAN -->
+
         <div class="card">
 
-            <img src="profile3.jpg" alt="Kegiatan Masyarakat">
+            <img
+                src="profile3.jpg"
+                alt="Kegiatan Masyarakat"
+            >
 
             <div class="card-content">
 
-                <h3>🤝 Kegiatan Masyarakat</h3>
+                <h3>
+                    🤝 Kegiatan Masyarakat
+                </h3>
 
                 <p>
                     Melihat berbagai kegiatan dan
                     kehidupan masyarakat desa.
                 </p>
 
-                <a href="galeri.html" class="btn">
+                <a
+                    href="galeri.html"
+                    class="btn"
+                >
                     Lihat Galeri
                 </a>
 
@@ -583,20 +913,31 @@ footer p{
         </div>
 
 
+
+        <!-- POTENSI -->
+
         <div class="card">
 
-            <img src="profile5.jpg" alt="Potensi Perkebunan">
+            <img
+                src="profile5.jpg"
+                alt="Potensi Perkebunan"
+            >
 
             <div class="card-content">
 
-                <h3>🌴 Potensi Desa</h3>
+                <h3>
+                    🌴 Potensi Desa
+                </h3>
 
                 <p>
                     Mengenal potensi perkebunan dan
                     sumber daya yang dimiliki desa.
                 </p>
 
-                <a href="potensi.html" class="btn">
+                <a
+                    href="potensi.html"
+                    class="btn"
+                >
                     Lihat Potensi
                 </a>
 
@@ -604,18 +945,26 @@ footer p{
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- ================= KEUNGGULAN ================= -->
 
-<section class="features">
+<!-- =====================================================
+     JELAJAHI WEBSITE
+===================================================== -->
+
+<section
+    class="features reveal"
+>
 
     <div class="section-title">
 
-        <h2>Jelajahi Website Desa</h2>
+        <h2>
+            Jelajahi Website Desa
+        </h2>
 
         <p>
             Temukan berbagai informasi tentang
@@ -627,69 +976,106 @@ footer p{
 
     <div class="feature-grid">
 
+
+        <!-- SEJARAH -->
+
         <div class="feature">
 
-            <div class="feature-icon">📖</div>
+            <div class="feature-icon">
+                📖
+            </div>
 
-            <h3>Sejarah</h3>
+            <h3>
+                Sejarah
+            </h3>
 
             <p>
                 Pelajari sejarah dan perjalanan
                 Desa Maktangguk.
             </p>
 
-            <a href="sejarah.html" class="btn">
+            <a
+                href="sejarah.html"
+                class="btn"
+            >
                 Buka
             </a>
 
         </div>
 
 
+
+        <!-- GALERI -->
+
         <div class="feature">
 
-            <div class="feature-icon">🖼️</div>
+            <div class="feature-icon">
+                🖼️
+            </div>
 
-            <h3>Galeri</h3>
+            <h3>
+                Galeri
+            </h3>
 
             <p>
-                Lihat berbagai dokumentasi
-                kegiatan dan suasana desa.
+                Lihat berbagai dokumentasi kegiatan
+                dan suasana desa.
             </p>
 
-            <a href="galeri.html" class="btn">
+            <a
+                href="galeri.html"
+                class="btn"
+            >
                 Buka
             </a>
 
         </div>
 
 
+
+        <!-- MAP -->
+
         <div class="feature">
 
-            <div class="feature-icon">🗺️</div>
+            <div class="feature-icon">
+                🗺️
+            </div>
 
-            <h3>Lokasi Desa</h3>
+            <h3>
+                Lokasi Desa
+            </h3>
 
             <p>
                 Temukan lokasi Desa Maktangguk
                 melalui halaman peta.
             </p>
 
-            <a href="map.html" class="btn">
+            <a
+                href="map.html"
+                class="btn"
+            >
                 Buka Map
             </a>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- ================= MOTTO ================= -->
 
-<section class="motto">
+<!-- =====================================================
+     MOTTO
+===================================================== -->
 
-    <h2>Maktangguk Bersatu, Maktangguk Maju</h2>
+<section class="motto reveal">
+
+    <h2>
+        Maktangguk Bersatu,
+        Maktangguk Maju
+    </h2>
 
     <p>
         Bersama membangun desa yang lebih maju.
@@ -698,25 +1084,36 @@ footer p{
 </section>
 
 
-<!-- ================= CTA ================= -->
 
-<section class="cta">
+<!-- =====================================================
+     CTA
+===================================================== -->
 
-    <h2>Ingin Mengenal Desa Maktangguk?</h2>
+<section class="cta reveal">
+
+    <h2>
+        Ingin Mengenal Desa Maktangguk?
+    </h2>
 
     <p>
         Jelajahi informasi lengkap tentang desa
         melalui menu yang tersedia.
     </p>
 
-    <a href="kontak.html" class="btn">
-        Hubungi Kami
+    <a
+        href="kontak.html"
+        class="btn"
+    >
+        📞 Hubungi Kami
     </a>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -736,76 +1133,81 @@ footer p{
 </footer>
 
 
-<!-- ================= JAVASCRIPT PASSWORD ================= -->
+
+<!-- =====================================================
+     JAVASCRIPT ANIMASI
+===================================================== -->
 
 <script>
 
-const correctPassword = "admin";
+/* =====================================================
+   ANIMASI SAAT SCROLL
+===================================================== */
 
-function checkPassword(){
-
-    const input =
-        document.getElementById("passwordInput").value;
-
-    if(input === correctPassword){
-
-        const screen =
-            document.getElementById("passwordScreen");
-
-        screen.classList.add("hide");
-
-        setTimeout(function(){
-
-            screen.style.display = "none";
-
-        },700);
-
-    }else{
-
-        document.getElementById("error").textContent =
-            "❌ Password salah!";
-
-        document.getElementById("passwordInput").value = "";
-
-    }
-
-}
+const revealElements =
+    document.querySelectorAll(".reveal");
 
 
-/* ENTER UNTUK MASUK */
+const observer =
+    new IntersectionObserver(
+        function(entries){
 
-document
-.getElementById("passwordInput")
-.addEventListener("keydown",function(e){
+            entries.forEach(
+                function(entry){
 
-    if(e.key === "Enter"){
-        checkPassword();
-    }
+                    if(entry.isIntersecting){
 
-});
+                        entry.target.classList.add("show");
 
+                    }
 
-/* SUARA OTOMATIS */
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        const suara =
-            new SpeechSynthesisUtterance(
-                "Password-nya admin"
+                }
             );
 
-        suara.lang = "id-ID";
-        suara.rate = 0.9;
+        },
+        {
+            threshold:0.15
+        }
+    );
 
-        speechSynthesis.speak(suara);
 
-    },1000);
+revealElements.forEach(
+    function(element){
 
-});
+        observer.observe(element);
+
+    }
+);
+
+
+/* =====================================================
+   EFEK PARALLAX HERO
+===================================================== */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const hero =
+            document.querySelector(".hero");
+
+        const scroll =
+            window.scrollY;
+
+        if(scroll < 700){
+
+            hero.style.backgroundPosition =
+                "center " +
+                (scroll * 0.25) +
+                "px";
+
+        }
+
+    }
+);
 
 </script>
+
 
 </body>
 </html>
