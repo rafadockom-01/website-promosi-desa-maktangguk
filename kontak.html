@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kontak Desa Maktangguk</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4f7f5;
+      color: #234d3c;
+      overflow-x: hidden;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: #174d3a;
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav h2 {
+      margin: 0;
+      font-size: 24px;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #b7dfc7;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 55vh;
+
+      background: linear-gradient(
+        135deg,
+        #174d3a,
+        #1f6b4f,
+        #2f795c
+      );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin: 8px 0;
+    }
+
+    .hero-line {
+      width: 90px;
+      height: 4px;
+      background: white;
+      margin: 25px auto;
+      border-radius: 10px;
+    }
+
+    /* ================= DAUN JATUH ================= */
+
+    .leaf {
+      position: absolute;
+      top: -50px;
+      font-size: 25px;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    .leaf:nth-child(1) {
+      left: 5%;
+      animation-duration: 8s;
+      animation-delay: 1s;
+    }
+
+    .leaf:nth-child(2) {
+      left: 18%;
+      animation-duration: 10s;
+      animation-delay: 3s;
+    }
+
+    .leaf:nth-child(3) {
+      left: 35%;
+      animation-duration: 7s;
+      animation-delay: 2s;
+    }
+
+    .leaf:nth-child(4) {
+      left: 55%;
+      animation-duration: 11s;
+      animation-delay: 1s;
+    }
+
+    .leaf:nth-child(5) {
+      left: 72%;
+      animation-duration: 9s;
+      animation-delay: 4s;
+    }
+
+    .leaf:nth-child(6) {
+      left: 88%;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(45vh)
+                   translateX(40px)
+                   rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(75vh)
+                   translateX(-30px)
+                   rotate(360deg);
+      }
+    }
+
+    /* ================= SECTION ================= */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #174d3a;
+    }
+
+    .section-title p {
+      color: #557265;
+      font-size: 17px;
+    }
+
+    .label {
+      display: inline-block;
+      background: #1f6b4f;
+      color: white;
+      padding: 7px 17px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    /* ================= BUKU TAMU ================= */
+
+    .guestbook-section {
+      background:
+        linear-gradient(
+          rgba(23, 77, 58, 0.78),
+          rgba(23, 77, 58, 0.78)
+        ),
+        url("profile6.jpg") center/cover no-repeat;
+    }
+
+    .guestbook-wrapper {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(255,255,255,0.96);
+      padding: 40px;
+      border-radius: 22px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.20);
+    }
+
+    .guestbook-wrapper h2 {
+      text-align: center;
+      color: #174d3a;
+      font-size: 35px;
+      margin-top: 0;
+    }
+
+    .guestbook-wrapper p {
+      text-align: center;
+      color: #65786e;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #234d3c;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #cbd8d0;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #1f6b4f;
+      box-shadow: 0 0 0 3px rgba(31,107,79,0.10);
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 25px;
+      background: #1f6b4f;
+      color: white;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #174d3a;
+      transform: translateY(-2px);
+    }
+
+    /* ================= KONTAK ================= */
+
+    .contact-section {
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: #f4f7f5;
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 18px;
+      box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.13);
+    }
+
+    /* ================= LOGO SOSIAL MEDIA ================= */
+
+    .social-logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: #174d3a;
+    }
+
+    .social-logo svg {
+      width: 43px;
+      height: 43px;
+      fill: white;
+    }
+
+    .contact-card h3 {
+      color: #174d3a;
+      margin: 10px 0;
+      font-size: 23px;
+    }
+
+    .contact-card p {
+      color: #65786e;
+      margin-bottom: 20px;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      background: #1f6b4f;
+      color: white;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 22px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .contact-card a:hover {
+      background: #174d3a;
+    }
+
+    /* ================= LOKASI ================= */
+
+    .location-section {
+      background: #edf4ef;
+    }
+
+    .location-box {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+    }
+
+    .location-info {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .location-info h3 {
+      font-size: 27px;
+      color: #174d3a;
+      margin-bottom: 10px;
+    }
+
+    .location-info p {
+      color: #65786e;
+      line-height: 1.7;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 430px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ================= INFORMASI ================= */
+
+    .info-section {
+      background: white;
+    }
+
+    .info-box {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      background: #edf4ef;
+      padding: 35px;
+      border-radius: 20px;
+    }
+
+    .info-box h2 {
+      color: #174d3a;
+      margin-top: 0;
+    }
+
+    .info-box p {
+      color: #5f7168;
+      line-height: 1.8;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #103a2c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+
+      nav {
+        flex-direction: column;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      nav h2 {
+        font-size: 21px;
+      }
+
+      nav ul {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 50vh;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .guestbook-wrapper {
+        padding: 25px 20px;
+      }
+
+      .guestbook-wrapper h2 {
+        font-size: 29px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-container {
+        height: 350px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+    <div class="container">
+
+      <nav>
+
+        <h2>Desa Maktangguk</h2>
+
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="sejarah.html">Sejarah</a></li>
+          <li><a href="potensi.html">Potensi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
+
+    <div class="hero-content">
+
+      <h1>Kontak Desa Maktangguk</h1>
+
+      <div class="hero-line"></div>
+
+      <p>Kecamatan Tebas • Kabupaten Sambas</p>
+      <p>Kalimantan Barat</p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BUKU TAMU ================= -->
+
+  <section class="guestbook-section">
+
+    <div class="container">
+
+      <div class="guestbook-wrapper">
+
+        <h2>📖 Buku Tamu</h2>
+
+        <p>
+          Silakan tinggalkan pesan, saran, atau kesan
+          untuk Desa Maktangguk.
+        </p>
+
+        <form id="guestForm">
+
+          <div class="form-group">
+
+            <label for="nama">Nama</label>
+
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              placeholder="Masukkan nama kamu"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="email">Email</label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Masukkan email"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="pesan">Pesan</label>
+
+            <textarea
+              id="pesan"
+              name="pesan"
+              placeholder="Tulis pesan atau saran kamu..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-btn"
+          >
+            Kirim Pesan
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MEDIA SOSIAL ================= -->
+
+  <section class="contact-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="label">MEDIA SOSIAL</span>
+
+        <h2>Hubungi Kami</h2>
+
+        <p>
+          Temukan informasi Desa Maktangguk melalui
+          media sosial.
+        </p>
+
+      </div>
+
+
+      <div class="contact-grid">
+
+
+        <!-- ================= WHATSAPP ================= -->
+
+        <div class="contact-card">
+
+          <div class="social-logo">
+
+            <!-- LOGO WHATSAPP -->
+
+            <svg viewBox="0 0 24 24">
+              <path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0
+              C5.49 0 .16 5.33 .16 11.89c0 2.1.55 4.15
+              1.6 5.96L.05 24l6.29-1.65a11.9 11.9 0 0 0
+              5.71 1.46h.01c6.56 0 11.89-5.33 11.89-11.89
+              0-3.18-1.24-6.17-3.43-8.44zM12.06 21.78
+              h-.01a9.87 9.87 0 0 1-5.03-1.37l-.36-.21-3.73.98
+              .99-3.64-.24-.37a9.84 9.84 0 0 1-1.51-5.28
+              C2.17 6.45 6.61 2 12.06 2c2.64 0 5.12 1.03
+              6.98 2.9a9.84 9.84 0 0 1 2.89 7c0 5.45-4.43
+              9.88-9.87 9.88zm5.42-7.39c-.3-.15-1.77-.87-2.05
+              -.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94
+              1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39
+              -1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46
+              .13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5
+              .1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2
+              -.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37
+              -.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08
+              c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64
+              .71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42
+              .25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+            </svg>
+
+          </div>
+
+          <h3>WhatsApp</h3>
+
+          <p>
+            Hubungi kami melalui WhatsApp.
+          </p>
+
+          <!-- GANTI NOMOR DI SINI -->
+
+          <a
+            href="https://wa.me/6200000000000"
+            target="_blank"
+          >
+            Hubungi
+          </a>
+
+        </div>
+
+
+        <!-- ================= INSTAGRAM ================= -->
+
+        <div class="contact-card">
+
+          <div class="social-logo">
+
+            <!-- LOGO INSTAGRAM -->
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5
+              5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2
+              A3 3 0 0 0 4 7v10a3 3 0 0 0 3 3h10a3 3
+              0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5
+              A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1
+              12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12
+              12 12 0 0 0 12 9.5zM17.5 6.3a1.2 1.2
+              0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2z"/>
+
+            </svg>
+
+          </div>
+
+          <h3>Instagram</h3>
+
+          <p>
+            Ikuti informasi dan dokumentasi desa.
+          </p>
+
+          <!-- GANTI LINK INSTAGRAM DI SINI -->
+
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+
+        <!-- ================= GITHUB ================= -->
+
+        <div class="contact-card">
+
+          <div class="social-logo">
+
+            <!-- LOGO GITHUB -->
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0
+              5.08 3.29 9.38 7.86 10.9.58.11.79-.25
+              .79-.56v-2.17c-3.2.7-3.88-1.37-3.88-1.37
+              -.53-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7
+              .08-.7 1.15.08 1.76 1.18 1.76 1.18
+              1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25
+              .73-1.54-2.55-.29-5.23-1.28-5.23-5.69
+              0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47
+              .11-3.06 0 0 .96-.31 3.15 1.18a10.9
+              10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18
+              3.15-1.18.62 1.59.23 2.77.11 3.06.73.81
+              1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25
+              5.69.41.35.77 1.04.77 2.1v3.12c0 .31.21.67.8.56
+              A11.51 11.51 0 0 0 23.5 12C23.5 5.65
+              18.35.5 12 .5z"/>
+
+            </svg>
+
+          </div>
+
+          <h3>GitHub</h3>
+
+          <p>
+            Lihat website dan proyek Desa Maktangguk.
+          </p>
+
+          <!-- GANTI LINK GITHUB DI SINI -->
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= LOKASI ================= -->
+
+  <section class="location-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="label">LOKASI</span>
+
+        <h2>Lokasi Desa Maktangguk</h2>
+
+        <p>
+          Kecamatan Tebas, Kabupaten Sambas,
+          Kalimantan Barat
+        </p>
+
+      </div>
+
+
+      <div class="location-box">
+
+        <div class="location-info">
+
+          <h3>Desa Maktangguk</h3>
+
+          <p>
+            Kecamatan Tebas<br>
+            Kabupaten Sambas<br>
+            Kalimantan Barat
+          </p>
+
+        </div>
+
+
+        <!-- ================= GOOGLE MAPS ================= -->
+
+        <div class="map-container">
+
+          <iframe
+            src="https://www.google.com/maps?q=Desa%20Maktangguk%2C%20Kecamatan%20Tebas%2C%20Kabupaten%20Sambas%2C%20Kalimantan%20Barat&output=embed"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INFORMASI ================= -->
+
+  <section class="info-section">
+
+    <div class="container">
+
+      <div class="info-box">
+
+        <h2>Desa Maktangguk</h2>
+
+        <p>
+          Desa Maktangguk merupakan desa yang berada
+          di Kecamatan Tebas, Kabupaten Sambas,
+          Kalimantan Barat.
+        </p>
+
+        <p>
+          Halaman kontak ini dibuat untuk memudahkan
+          pengunjung mendapatkan informasi mengenai
+          lokasi dan media komunikasi Desa Maktangguk.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <p>
+      © 2026 Desa Maktangguk
+    </p>
+
+    <p>
+      Kecamatan Tebas | Kabupaten Sambas | Kalimantan Barat
+    </p>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    const form = document.getElementById("guestForm");
+
+    form.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      alert(
+        "Terima kasih! Pesan kamu sudah dikirim."
+      );
+
+      form.reset();
+
+    });
+
+  </script>
+
+</body>
+</html>
