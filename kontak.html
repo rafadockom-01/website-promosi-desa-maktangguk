@@ -1,856 +1,1180 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Kontak - Desa Maktangguk</title>
+<title>Kontak | Desa Maktangguk</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f4f7f5;
-      color: #234d3c;
-      overflow-x: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    /* ================= NAVBAR ================= */
+<style>
 
-    header {
-      background: #174d3a;
-      color: white;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-    }
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f5f8f6;
+    color: #214d3d;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
 
-    nav h2 {
-      font-size: 22px;
-      white-space: nowrap;
-    }
+/* ================= NAVBAR ================= */
 
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+header {
+    background: #174d3a;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
 
-    nav ul li a:hover {
-      color: #b7e4c7;
-    }
+nav {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-    /* ================= HERO ================= */
+nav h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    white-space: nowrap;
+}
 
-    .hero {
-      min-height: 55vh;
-      background: linear-gradient(
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 23px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav ul li a:hover {
+    color: #9ee2b7;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 48vh;
+    background: linear-gradient(
         135deg,
-        #174d3a,
+        #123e30,
         #1f6b4f,
-        #2f795c
-      );
+        #347d61
+    );
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 58px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: .95;
+}
+
+
+/* ================= DAUN ================= */
+
+.leaf {
+    position: absolute;
+    font-size: 28px;
+    opacity: .4;
+    animation: jatuh linear infinite;
+}
+
+.leaf:nth-child(1) {
+    left: 8%;
+    animation-duration: 9s;
+}
+
+.leaf:nth-child(2) {
+    left: 28%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.leaf:nth-child(3) {
+    left: 50%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+.leaf:nth-child(4) {
+    left: 72%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+.leaf:nth-child(5) {
+    left: 90%;
+    animation-duration: 11s;
+    animation-delay: 1s;
+}
+
+@keyframes jatuh {
+
+    0% {
+        top: -50px;
+        transform: rotate(0deg);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    100% {
+        top: 100%;
+        transform: rotate(360deg);
     }
 
-    .hero h1 {
-      font-size: 52px;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
+}
 
-    .hero p {
-      font-size: 18px;
-    }
 
-    /* ================= DAUN JATUH ================= */
+/* ================= BUKU TAMU ================= */
 
-    .leaf {
-      position: absolute;
-      top: -50px;
-      font-size: 25px;
-      opacity: 0.45;
-      animation: fall linear infinite;
-      z-index: 1;
-    }
+.guestbook {
+    min-height: 680px;
 
-    .leaf:nth-child(1) {
-      left: 10%;
-      animation-duration: 8s;
-    }
+    padding: 90px 20px;
 
-    .leaf:nth-child(2) {
-      left: 25%;
-      animation-duration: 11s;
-      animation-delay: 2s;
-    }
-
-    .leaf:nth-child(3) {
-      left: 45%;
-      animation-duration: 9s;
-      animation-delay: 1s;
-    }
-
-    .leaf:nth-child(4) {
-      left: 65%;
-      animation-duration: 12s;
-      animation-delay: 3s;
-    }
-
-    .leaf:nth-child(5) {
-      left: 85%;
-      animation-duration: 10s;
-      animation-delay: 1s;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-50px) rotate(0deg);
-      }
-
-      100% {
-        transform: translateY(65vh) rotate(360deg);
-      }
-    }
-
-    /* ================= BUKU TAMU ================= */
-
-    .guestbook-section {
-      min-height: 650px;
-      padding: 90px 0;
-
-      background:
+    background:
         linear-gradient(
-          rgba(15, 55, 40, 0.58),
-          rgba(15, 55, 40, 0.72)
+            rgba(18, 62, 48, .40),
+            rgba(18, 62, 48, .58)
         ),
         url("profile6.jpg") center center / cover no-repeat;
 
-      position: relative;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* CARD */
+
+.guestbook-card {
+
+    width: 100%;
+    max-width: 650px;
+
+    margin: auto;
+
+    padding: 45px;
+
+    background: rgba(255,255,255,.92);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+
+    backdrop-filter: blur(8px);
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* JUDUL */
+
+.guestbook-title {
+    text-align: center;
+}
+
+.guestbook-icon {
+    font-size: 48px;
+    margin-bottom: 5px;
+}
+
+.guestbook-title h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 39px;
+    color: #174d3a;
+}
+
+.guestbook-title p {
+    color: #60736a;
+    margin-top: 8px;
+}
+
+
+/* GARIS */
+
+.decor-line {
+    width: 75px;
+    height: 4px;
+
+    background: #2f795c;
+
+    border-radius: 10px;
+
+    margin: 18px auto 32px;
+}
+
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 21px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #174d3a;
+
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border: 1px solid #d2ddd7;
+
+    border-radius: 12px;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 15px;
+
+    background: rgba(255,255,255,.95);
+
+    outline: none;
+
+    transition: .3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: #2f795c;
+
+    box-shadow:
+        0 0 0 3px rgba(47,121,92,.12);
+}
+
+.form-group textarea {
+
+    height: 140px;
+
+    resize: vertical;
+}
+
+
+/* BUTTON */
+
+.btn-kirim {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #1f6b4f;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.btn-kirim:hover {
+
+    background: #174d3a;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ================= SOCIAL ================= */
+
+.contact-section {
+
+    padding: 85px 0;
+
+    background: white;
+}
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 38px;
+
+    color: #174d3a;
+
+    margin-bottom: 10px;
+}
+
+.section-title p {
+
+    color: #68776f;
+}
+
+
+/* SOCIAL GRID */
+
+.social-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 65px;
+}
+
+
+/* SOCIAL CARD */
+
+.social-card {
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: #fff;
+
+    border: 1px solid #e4ebe7;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.07);
+
+    transition: .3s;
+}
+
+.social-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.12);
+}
+
+
+/* ICON */
+
+.social-icon {
+
+    width: 70px;
+    height: 70px;
+
+    margin: auto auto 18px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+}
+
+.social-icon svg {
+
+    width: 39px;
+    height: 39px;
+
+    fill: currentColor;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp {
+
+    background:
+        linear-gradient(
+            135deg,
+            #25D366,
+            #128C7E
+        );
+}
+
+
+/* INSTAGRAM */
+
+.instagram {
+
+    background:
+        linear-gradient(
+            135deg,
+            #833AB4,
+            #E1306C,
+            #F77737,
+            #FCAF45
+        );
+}
+
+
+/* GITHUB */
+
+.github {
+
+    background:
+        linear-gradient(
+            135deg,
+            #24292e,
+            #111111
+        );
+}
+
+
+.social-card h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 24px;
+
+    color: #174d3a;
+
+    margin-bottom: 9px;
+}
+
+.social-card p {
+
+    color: #6c7872;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* SOCIAL BUTTON */
+
+.social-button {
+
+    display: inline-block;
+
+    padding: 10px 25px;
+
+    border-radius: 25px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.whatsapp-button {
+    background: #25D366;
+}
+
+.instagram-button {
+    background: linear-gradient(
+        90deg,
+        #E1306C,
+        #833AB4
+    );
+}
+
+.github-button {
+    background: #24292e;
+}
+
+.social-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ================= MAP ================= */
+
+.map-box {
+
+    background: #eef5f1;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.07);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.4fr;
+
+    gap: 30px;
+
+    align-items: center;
+}
+
+.map-info h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    color: #174d3a;
+
+    margin-bottom: 15px;
+}
+
+.map-info p {
+
+    color: #607069;
+
+    line-height: 1.7;
+}
+
+.map-container {
+
+    height: 350px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.map-container iframe {
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* ================= INFO ================= */
+
+.info-section {
+
+    padding: 70px 0;
+
+    background: #edf4f0;
+
+    text-align: center;
+}
+
+.info-card {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.06);
+}
+
+.info-card h2 {
+
+    font-family: "Playfair Display", serif;
+
+    color: #174d3a;
+
+    margin-bottom: 15px;
+}
+
+.info-card p {
+
+    color: #607069;
+
+    line-height: 1.8;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: #174d3a;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 28px;
+}
+
+footer p {
+
+    margin: 5px;
+
+    font-size: 14px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 850px) {
+
+    nav {
+        flex-direction: column;
+        padding: 15px 0;
     }
 
-    .guestbook-wrapper {
-      width: 90%;
-      max-width: 700px;
-      margin: auto;
-
-      background: rgba(255,255,255,0.94);
-      padding: 45px;
-      border-radius: 28px;
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.25);
-
-      position: relative;
-      z-index: 2;
+    nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .guestbook-title {
-      text-align: center;
-      margin-bottom: 10px;
-      color: #174d3a;
-      font-size: 34px;
+    .hero h1 {
+        font-size: 42px;
     }
-
-    .guestbook-description {
-      text-align: center;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    .line {
-      width: 70px;
-      height: 4px;
-      background: #1f6b4f;
-      margin: 15px auto 25px;
-      border-radius: 10px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #174d3a;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-
-      border: 1px solid #d2ddd7;
-      border-radius: 12px;
-
-      font-family: inherit;
-      font-size: 15px;
-
-      outline: none;
-      transition: 0.3s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: #1f6b4f;
-      box-shadow: 0 0 0 3px rgba(31,107,79,0.12);
-    }
-
-    .form-group textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .btn-kirim {
-      width: 100%;
-      padding: 15px;
-
-      border: none;
-      border-radius: 12px;
-
-      background: #1f6b4f;
-      color: white;
-
-      font-size: 16px;
-      font-weight: bold;
-
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-kirim:hover {
-      background: #174d3a;
-      transform: translateY(-2px);
-    }
-
-    /* ================= KONTAK ================= */
-
-    .contact-section {
-      padding: 80px 0;
-      background: white;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: 36px;
-      color: #174d3a;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: #666;
-    }
-
-    /* ================= SOCIAL ================= */
 
     .social-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-bottom: 70px;
+        grid-template-columns: 1fr;
     }
-
-    .social-card {
-      background: #f7faf8;
-      border-radius: 20px;
-      padding: 35px 25px;
-      text-align: center;
-
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-
-      transition: 0.3s;
-    }
-
-    .social-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-    }
-
-    .social-icon {
-      width: 65px;
-      height: 65px;
-      margin: auto auto 18px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background: #1f6b4f;
-      color: white;
-
-      border-radius: 18px;
-    }
-
-    .social-icon svg {
-      width: 35px;
-      height: 35px;
-      fill: currentColor;
-    }
-
-    .social-card h3 {
-      margin-bottom: 10px;
-      color: #174d3a;
-    }
-
-    .social-card p {
-      color: #666;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    .social-card a {
-      display: inline-block;
-      padding: 10px 20px;
-
-      background: #1f6b4f;
-      color: white;
-
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-
-      transition: 0.3s;
-    }
-
-    .social-card a:hover {
-      background: #174d3a;
-    }
-
-    /* ================= MAP ================= */
 
     .map-box {
-      background: #f7faf8;
-      padding: 25px;
-      border-radius: 25px;
-
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        grid-template-columns: 1fr;
     }
 
-    .map-box h3 {
-      color: #174d3a;
-      margin-bottom: 15px;
-      font-size: 25px;
+}
+
+
+@media(max-width: 550px) {
+
+    .guestbook {
+        padding: 60px 15px;
     }
 
-    .map-box p {
-      margin-bottom: 20px;
-      color: #666;
+    .guestbook-card {
+        padding: 28px 20px;
+    }
+
+    .guestbook-title h2 {
+        font-size: 32px;
+    }
+
+    .hero {
+        min-height: 40vh;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero p {
+        font-size: 15px;
     }
 
     .map-container {
-      width: 100%;
-      height: 400px;
-      border-radius: 18px;
-      overflow: hidden;
+        height: 280px;
     }
 
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+}
 
-    /* ================= INFO ================= */
-
-    .info-section {
-      padding: 70px 0;
-      background: #eef4f0;
-    }
-
-    .info-card {
-      max-width: 850px;
-      margin: auto;
-
-      background: white;
-      padding: 35px;
-      border-radius: 20px;
-
-      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-      text-align: center;
-    }
-
-    .info-card h2 {
-      color: #174d3a;
-      margin-bottom: 15px;
-    }
-
-    .info-card p {
-      line-height: 1.8;
-      color: #555;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      background: #174d3a;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    footer p {
-      margin: 5px;
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 800px) {
-
-      nav {
-        flex-direction: column;
-      }
-
-      nav ul {
-        gap: 12px;
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .social-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .guestbook-wrapper {
-        padding: 30px 22px;
-      }
-
-      .guestbook-title {
-        font-size: 28px;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      nav h2 {
-        font-size: 19px;
-      }
-
-      nav ul li a {
-        font-size: 13px;
-      }
-
-      .hero {
-        min-height: 45vh;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .section-title h2 {
-        font-size: 29px;
-      }
-
-      .map-container {
-        height: 300px;
-      }
-    }
-  </style>
+</style>
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVBAR ================= -->
 
 <header>
-  <div class="container">
-    <nav>
 
-      <h2>Desa Maktangguk</h2>
+<div class="container">
 
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="profil.html">Profil</a></li>
-        <li><a href="sejarah.html">Sejarah</a></li>
-        <li><a href="potensi.html">Potensi</a></li>
-        <li><a href="galeri.html">Galeri</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-      </ul>
+<nav>
 
-    </nav>
-  </div>
+<h2>Desa Maktangguk</h2>
+
+<ul>
+
+<li>
+<a href="index.html">Beranda</a>
+</li>
+
+<li>
+<a href="profil.html">Profil</a>
+</li>
+
+<li>
+<a href="sejarah.html">Sejarah</a>
+</li>
+
+<li>
+<a href="potensi.html">Potensi</a>
+</li>
+
+<li>
+<a href="galeri.html">Galeri</a>
+</li>
+
+<li>
+<a href="kontak.html">Kontak</a>
+</li>
+
+</ul>
+
+</nav>
+
+</div>
+
 </header>
+
 
 
 <!-- ================= HERO ================= -->
 
 <section class="hero">
 
-  <div class="leaf">🍃</div>
-  <div class="leaf">🍃</div>
-  <div class="leaf">🍃</div>
-  <div class="leaf">🍃</div>
-  <div class="leaf">🍃</div>
+<div class="leaf">🍃</div>
+<div class="leaf">🍃</div>
+<div class="leaf">🍃</div>
+<div class="leaf">🍃</div>
+<div class="leaf">🍃</div>
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <h1>Kontak Desa Maktangguk</h1>
+<h1>Kontak</h1>
 
-    <p>
-      Hubungi dan kenali lebih dekat Desa Maktangguk
-    </p>
+<p>
+Hubungi dan kenali lebih dekat Desa Maktangguk
+</p>
 
-  </div>
+</div>
 
 </section>
+
 
 
 <!-- ================= BUKU TAMU ================= -->
 
-<section class="guestbook-section">
+<section class="guestbook">
 
-  <div class="guestbook-wrapper">
-
-    <h2 class="guestbook-title">
-      Buku Tamu
-    </h2>
-
-    <div class="line"></div>
-
-    <p class="guestbook-description">
-      Silakan tinggalkan pesan untuk Desa Maktangguk.
-    </p>
-
-    <form id="guestbookForm">
-
-      <!-- NAMA -->
-
-      <div class="form-group">
-
-        <label for="nama">
-          Nama
-        </label>
-
-        <input
-          type="text"
-          id="nama"
-          name="nama"
-          placeholder="Masukkan nama kamu"
-          required
-        >
-
-      </div>
+<div class="guestbook-card">
 
 
-      <!-- ASAL -->
+<div class="guestbook-title">
 
-      <div class="form-group">
+<div class="guestbook-icon">
+📖
+</div>
 
-        <label for="asal">
-          Asal
-        </label>
+<h2>Buku Tamu</h2>
 
-        <input
-          type="text"
-          id="asal"
-          name="asal"
-          placeholder="Contoh: Desa Maktangguk"
-          required
-        >
+<div class="decor-line"></div>
 
-      </div>
+<p>
+Silakan tinggalkan pesan untuk Desa Maktangguk.
+</p>
+
+</div>
 
 
-      <!-- PESAN -->
-
-      <div class="form-group">
-
-        <label for="pesan">
-          Pesan
-        </label>
-
-        <textarea
-          id="pesan"
-          name="pesan"
-          placeholder="Tuliskan pesan kamu..."
-          required
-        ></textarea>
-
-      </div>
+<form id="guestbookForm">
 
 
-      <!-- TOMBOL -->
+<!-- NAMA -->
 
-      <button
-        type="submit"
-        class="btn-kirim"
-      >
-        Kirim
-      </button>
+<div class="form-group">
 
-    </form>
+<label for="nama">
+👤 Nama
+</label>
 
-  </div>
+<input
+type="text"
+id="nama"
+name="nama"
+placeholder="Masukkan nama kamu"
+required
+>
+
+</div>
+
+
+<!-- ASAL -->
+
+<div class="form-group">
+
+<label for="asal">
+📍 Asal
+</label>
+
+<input
+type="text"
+id="asal"
+name="asal"
+placeholder="Contoh: Desa Maktangguk"
+required
+>
+
+</div>
+
+
+<!-- PESAN -->
+
+<div class="form-group">
+
+<label for="pesan">
+💬 Pesan
+</label>
+
+<textarea
+id="pesan"
+name="pesan"
+placeholder="Tuliskan pesan kamu..."
+required
+></textarea>
+
+</div>
+
+
+<!-- KIRIM -->
+
+<button
+type="submit"
+class="btn-kirim"
+>
+
+➤ &nbsp; Kirim
+
+</button>
+
+</form>
+
+</div>
 
 </section>
 
 
-<!-- ================= KONTAK ================= -->
+
+<!-- ================= HUBUNGI ================= -->
 
 <section class="contact-section">
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <h2>Hubungi Kami</h2>
-
-      <p>
-        Temukan Desa Maktangguk melalui berbagai platform.
-      </p>
-
-    </div>
+<div class="container">
 
 
-    <div class="social-grid">
+<div class="section-title">
+
+<h2>Hubungi Kami</h2>
+
+<p>
+Temukan Desa Maktangguk melalui berbagai platform.
+</p>
+
+</div>
 
 
-      <!-- WHATSAPP -->
-
-      <div class="social-card">
-
-        <div class="social-icon">
-
-          <svg viewBox="0 0 24 24">
-
-            <path d="M12.04 2C6.54 2 2.08 6.45 2.08 11.94c0 1.75.46 3.46 1.34 4.96L2 22l5.24-1.37a9.91 9.91 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.45 9.96-9.94C22.01 6.45 17.54 2 12.04 2zm0 18.16h-.01a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.11.81.83-3.03-.2-.31a8.2 8.2 0 1 1 6.99 3.86zm4.52-6.16c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.01-.38.11-.51.11-.11.25-.29.38-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.88-.2-.49-.41-.42-.57-.43h-.49c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.52.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.3z"/>
-
-          </svg>
-
-        </div>
-
-        <h3>WhatsApp</h3>
-
-        <p>Hubungi kami melalui WhatsApp.</p>
-
-        <a
-          href="https://wa.me/6200000000000"
-          target="_blank"
-        >
-          Hubungi
-        </a>
-
-      </div>
+<div class="social-grid">
 
 
-      <!-- INSTAGRAM -->
+<!-- WHATSAPP -->
 
-      <div class="social-card">
+<div class="social-card">
 
-        <div class="social-icon">
+<div class="social-icon whatsapp">
 
-          <svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
 
-            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+<path d="M12.04 2C6.54 2 2.08 6.45 2.08 11.94c0 1.75.46 3.46 1.34 4.96L2 22l5.24-1.37a9.91 9.91 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.45 9.96-9.94C22.01 6.45 17.54 2 12.04 2zm0 18.16h-.01a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.11.81.83-3.03-.2-.31a8.2 8.2 0 1 1 6.99 3.86zm4.52-6.16c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.25-.01-.38.11-.51.11-.11.25-.29.38-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.88-.2-.49-.41-.42-.57-.43h-.49c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.52.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.3z"/>
 
-          </svg>
+</svg>
 
-        </div>
+</div>
 
-        <h3>Instagram</h3>
+<h3>WhatsApp</h3>
 
-        <p>Lihat informasi dan kegiatan desa.</p>
+<p>
+Hubungi kami melalui WhatsApp.
+</p>
 
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-        >
-          Instagram
-        </a>
+<a
+class="social-button whatsapp-button"
+href="https://wa.me/6200000000000"
+target="_blank"
+>
+Hubungi
+</a>
 
-      </div>
-
-
-      <!-- GITHUB -->
-
-      <div class="social-card">
-
-        <div class="social-icon">
-
-          <svg viewBox="0 0 24 24">
-
-            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.85 10.91.57.1.78-.25.78-.55v-2.16c-3.19.69-3.86-1.35-3.86-1.35-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.35.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
-
-          </svg>
-
-        </div>
-
-        <h3>GitHub</h3>
-
-        <p>Lihat proyek website Desa Maktangguk.</p>
-
-        <a
-          href="https://github.com/"
-          target="_blank"
-        >
-          GitHub
-        </a>
-
-      </div>
-
-    </div>
+</div>
 
 
-    <!-- ================= MAP ================= -->
 
-    <div class="section-title">
+<!-- INSTAGRAM -->
 
-      <h2>Lokasi Desa</h2>
+<div class="social-card">
 
-      <p>
-        Desa Maktangguk, Kecamatan Tebas, Kabupaten Sambas, Kalimantan Barat
-      </p>
+<div class="social-icon instagram">
 
-    </div>
+<svg viewBox="0 0 24 24">
+
+<path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+
+</svg>
+
+</div>
+
+<h3>Instagram</h3>
+
+<p>
+Lihat informasi dan kegiatan desa.
+</p>
+
+<a
+class="social-button instagram-button"
+href="https://www.instagram.com/"
+target="_blank"
+>
+Instagram
+</a>
+
+</div>
 
 
-    <div class="map-box">
 
-      <h3>🗺️ Peta Lokasi</h3>
+<!-- GITHUB -->
 
-      <p>
-        Lihat lokasi Desa Maktangguk melalui peta berikut.
-      </p>
+<div class="social-card">
 
-      <div class="map-container">
+<div class="social-icon github">
 
-        <iframe
-          src="https://www.google.com/maps?q=Desa%20Maktangguk,%20Kecamatan%20Tebas,%20Kabupaten%20Sambas,%20Kalimantan%20Barat&output=embed"
-          loading="lazy">
-        </iframe>
+<svg viewBox="0 0 24 24">
 
-      </div>
+<path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.85 10.91.57.1.78-.25.78-.55v-2.16c-3.19.69-3.86-1.35-3.86-1.35-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.35.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
 
-    </div>
+</svg>
 
-  </div>
+</div>
+
+<h3>GitHub</h3>
+
+<p>
+Lihat proyek website Desa Maktangguk.
+</p>
+
+<a
+class="social-button github-button"
+href="https://github.com/"
+target="_blank"
+>
+GitHub
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= MAP ================= -->
+
+<div class="map-box">
+
+
+<div class="map-info">
+
+<h3>📍 Lokasi Desa</h3>
+
+<p>
+Desa Maktangguk
+</p>
+
+<p>
+Kecamatan Tebas
+</p>
+
+<p>
+Kabupaten Sambas
+</p>
+
+<p>
+Kalimantan Barat
+</p>
+
+</div>
+
+
+<div class="map-container">
+
+<iframe
+src="https://www.google.com/maps?q=Desa%20Maktangguk,%20Kecamatan%20Tebas,%20Kabupaten%20Sambas,%20Kalimantan%20Barat&output=embed"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
 
 
 <!-- ================= INFO ================= -->
 
 <section class="info-section">
 
-  <div class="container">
+<div class="container">
 
-    <div class="info-card">
+<div class="info-card">
 
-      <h2>Desa Maktangguk</h2>
+<h2>Desa Maktangguk</h2>
 
-      <p>
-        Desa Maktangguk merupakan salah satu desa
-        yang berada di Kecamatan Tebas, Kabupaten Sambas,
-        Kalimantan Barat.
-      </p>
+<p>
+Desa Maktangguk merupakan salah satu desa
+yang berada di Kecamatan Tebas, Kabupaten Sambas,
+Kalimantan Barat.
+</p>
 
-      <p>
-        Gunakan halaman kontak ini untuk meninggalkan pesan,
-        melihat lokasi desa, serta mengakses media sosial
-        yang tersedia.
-      </p>
+<p>
+Gunakan halaman kontak ini untuk meninggalkan pesan,
+melihat lokasi desa, serta mengakses media sosial
+yang tersedia.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
+
 
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <p>
-    © 2026 Desa Maktangguk
-  </p>
+<p>
+© 2026 Desa Maktangguk
+</p>
 
-  <p>
-    Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
-  </p>
+<p>
+Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
+</p>
 
 </footer>
+
 
 
 <!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-  const form = document.getElementById("guestbookForm");
+const form =
+document.getElementById("guestbookForm");
 
-  form.addEventListener("submit", function(event) {
+form.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    const nama = document.getElementById("nama").value;
-    const asal = document.getElementById("asal").value;
-    const pesan = document.getElementById("pesan").value;
+    const nama =
+    document.getElementById("nama").value;
 
-    if (nama === "" || asal === "" || pesan === "") {
-      alert("Silakan isi semua kolom terlebih dahulu.");
-      return;
+    const asal =
+    document.getElementById("asal").value;
+
+    const pesan =
+    document.getElementById("pesan").value;
+
+
+    if (
+        nama === "" ||
+        asal === "" ||
+        pesan === ""
+    ) {
+
+        alert(
+            "Silakan isi semua kolom terlebih dahulu."
+        );
+
+        return;
+
     }
 
-    alert("Terima kasih! Pesan kamu berhasil dikirim.");
+
+    alert(
+        "Terima kasih! Pesan kamu berhasil dikirim."
+    );
+
 
     form.reset();
 
-  });
+});
 
 </script>
+
 
 </body>
 </html>
