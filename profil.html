@@ -6,7 +6,20 @@
 
 <title>Profil Desa Maktangguk</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -18,331 +31,676 @@ html{
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#f3fff6;
-    color:#163d22;
+    font-family:'Montserrat',sans-serif;
+    background:#f8f7f0;
+    color:#315b47;
 }
 
-/* NAVBAR */
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
 
-    padding:17px 7%;
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:absolute;
+    top:30px;
+    left:5%;
+    width:90%;
+    height:80px;
+
+    padding:0 40px;
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 
-    background:rgba(0,105,45,.96);
-    box-shadow:0 5px 20px rgba(0,80,30,.15);
+    background:rgba(3,65,40,.78);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    z-index:100;
 }
 
 .logo{
-    color:white;
-    font-size:21px;
-    font-weight:bold;
-}
-
-nav ul{
     display:flex;
-    list-style:none;
-    gap:7px;
-}
+    align-items:center;
+    gap:12px;
 
-nav a{
     color:white;
     text-decoration:none;
-    padding:10px 14px;
-    border-radius:10px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:27px;
+    font-weight:700;
+}
+
+.logo i{
+    color:#d9ef70;
+    font-size:32px;
+}
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:28px;
+
+    list-style:none;
+}
+
+.nav-menu a{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:28px 0;
+
+    color:white;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:500;
+
     transition:.3s;
 }
 
-nav a:hover,
-nav a.active{
-    background:#caff70;
-    color:#075322;
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:#f1d878;
 }
 
-/* HEADER */
-.header{
-    padding:130px 7% 55px;
+.nav-menu a.active::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:8px;
+
+    height:4px;
+
+    background:#f1d878;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.profile-hero{
+    position:relative;
+
+    min-height:530px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     text-align:center;
 
-    background:
-        linear-gradient(135deg,#006b2d,#19c94e,#71ed76);
+    padding:150px 20px 100px;
 
     color:white;
+
+    background:
+        linear-gradient(
+            rgba(4,77,43,.78),
+            rgba(4,77,43,.90)
+        ),
+        url("profile2.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    overflow:hidden;
 }
 
-.header small{
-    color:#dfff9b;
-    font-weight:bold;
-    letter-spacing:2px;
+.profile-hero h1{
+    position:relative;
+    z-index:5;
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:clamp(48px,7vw,78px);
+
+    margin-bottom:15px;
 }
 
-.header h1{
+.profile-hero p{
+    position:relative;
+    z-index:5;
+
+    font-family:'Playfair Display',serif;
+
+    font-style:italic;
+
+    font-size:19px;
+
+    color:#f5edc9;
+}
+
+
+/* =========================
+   ANIMASI DAUN
+========================= */
+
+.leaf{
+    position:absolute;
+
+    top:-60px;
+
+    color:#d9ed70;
+
+    opacity:.85;
+
+    animation:fall linear infinite;
+
+    z-index:3;
+}
+
+.leaf:nth-child(1){
+    left:7%;
+    font-size:30px;
+    animation-duration:8s;
+}
+
+.leaf:nth-child(2){
+    left:20%;
+    font-size:21px;
+    animation-duration:11s;
+    animation-delay:2s;
+}
+
+.leaf:nth-child(3){
+    left:35%;
+    font-size:28px;
+    animation-duration:9s;
+    animation-delay:3s;
+}
+
+.leaf:nth-child(4){
+    left:51%;
+    font-size:22px;
+    animation-duration:12s;
+    animation-delay:1s;
+}
+
+.leaf:nth-child(5){
+    left:68%;
+    font-size:32px;
+    animation-duration:10s;
+    animation-delay:4s;
+}
+
+.leaf:nth-child(6){
+    left:84%;
+    font-size:24px;
+    animation-duration:13s;
+    animation-delay:2s;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:
+        translateY(-80px)
+        rotate(0deg);
+    }
+
+    50%{
+        transform:
+        translateY(300px)
+        translateX(60px)
+        rotate(180deg);
+    }
+
+    100%{
+        transform:
+        translateY(600px)
+        translateX(-40px)
+        rotate(360deg);
+    }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:88%;
+    max-width:1150px;
+    margin:auto;
+}
+
+.profile-section{
+    padding:90px 0;
+}
+
+
+/* =========================
+   MENGENAL MAKTANGGUK
+========================= */
+
+.intro{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:55px;
+
+    align-items:center;
+
+    margin-bottom:90px;
+}
+
+.intro-image img{
+    width:100%;
+
+    height:390px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 18px 40px rgba(30,80,55,.18);
+}
+
+.intro-text h2{
+    font-family:'DM Serif Display',serif;
+
     font-size:48px;
-    margin:12px 0;
+
+    color:#12603e;
+
+    margin-bottom:10px;
 }
 
-.header p{
+.small-title{
+    font-family:'Playfair Display',serif;
+
+    font-style:italic;
+
+    color:#7b907f;
+
+    font-size:18px;
+
+    margin-bottom:25px;
+}
+
+.intro-text p{
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#536c5e;
+
+    margin-bottom:17px;
+}
+
+
+/* =========================
+   INFORMASI DESA
+========================= */
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-family:'DM Serif Display',serif;
+
+    font-size:46px;
+
+    color:#12603e;
+}
+
+.section-title p{
+    margin-top:10px;
+
+    font-family:'Playfair Display',serif;
+
+    font-style:italic;
+
+    color:#7b907f;
+
     font-size:18px;
 }
 
-/* CONTENT */
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:50px auto;
-}
 
-/* FOTO */
-.photo-box{
-    width:100%;
+/* =========================
+   LOKASI
+========================= */
+
+.location-card{
+    max-width:750px;
+
+    margin:auto;
+
     background:white;
-    padding:15px;
+
+    padding:35px;
+
     border-radius:25px;
 
-    box-shadow:0 15px 40px rgba(0,100,40,.13);
-
     text-align:center;
-    margin-bottom:45px;
 
-    animation:showPhoto 1s ease;
+    box-shadow:
+        0 10px 30px rgba(30,80,55,.10);
+
+    border:1px solid #e5eadf;
 }
 
-.photo-box img{
-    width:100%;
-    height:auto;
+.location-icon{
+    width:70px;
+    height:70px;
 
-    /* PENTING: gambar tidak dipotong */
-    object-fit:contain;
+    margin:0 auto 20px;
 
-    display:block;
-
-    border-radius:18px;
-}
-
-@keyframes showPhoto{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* PROFIL */
-.profile{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:22px;
-
-    box-shadow:0 10px 30px rgba(0,100,40,.09);
-
-    transition:.35s;
-}
-
-.card:hover{
-    transform:translateY(-7px);
-    box-shadow:0 18px 40px rgba(0,130,50,.15);
-}
-
-.card h2{
-    color:#078332;
-    margin-bottom:18px;
-}
-
-.card p{
-    line-height:1.8;
-    color:#536b5b;
-}
-
-/* DATA DESA */
-.data{
-    margin-top:25px;
-}
-
-.data-item{
     display:flex;
-    justify-content:space-between;
-    gap:20px;
+    align-items:center;
+    justify-content:center;
 
-    padding:15px 0;
+    border-radius:50%;
 
-    border-bottom:1px solid #dcefe1;
-}
+    background:#e9f2d8;
 
-.data-item:last-child{
-    border-bottom:none;
-}
+    color:#24734b;
 
-.data-item strong{
-    color:#08752f;
-}
-
-/* VISI */
-.visi{
-    margin-top:25px;
-
-    background:linear-gradient(135deg,#006b2d,#18c94d);
-    color:white;
-
-    padding:40px;
-
-    border-radius:25px;
-
-    box-shadow:0 15px 40px rgba(0,100,40,.15);
-
-    text-align:center;
-}
-
-.visi h2{
-    margin-bottom:15px;
     font-size:30px;
 }
 
-.visi p{
-    line-height:1.8;
+.location-card h3{
+    font-family:'Playfair Display',serif;
+
+    color:#145536;
+
+    font-size:25px;
+
+    margin-bottom:12px;
 }
 
-/* FOOTER */
-footer{
-    margin-top:70px;
-    padding:30px;
-    text-align:center;
+.location-card p{
+    font-size:15px;
 
-    background:#063d1c;
+    line-height:1.8;
+
+    color:#65796d;
+}
+
+
+/* =========================
+   PROFILE 6
+========================= */
+
+.profile6{
+    margin-top:45px;
+
+    width:100%;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 15px 35px rgba(30,80,55,.15);
+
+    background:white;
+}
+
+.profile6 img{
+    display:block;
+
+    width:100%;
+
+    height:450px;
+
+    object-fit:cover;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#064d2f;
+
     color:white;
 
-    line-height:1.8;
+    text-align:center;
+
+    padding:30px 20px;
 }
 
-/* MOBILE */
+.footer p{
+    margin:6px 0;
+
+    font-size:14px;
+}
+
+.footer p:first-child{
+    font-weight:600;
+
+    font-size:16px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:800px){
 
-    nav{
-        padding:15px 5%;
+    .navbar{
+        top:15px;
+        left:3%;
+
+        width:94%;
+
+        height:65px;
+
+        padding:0 20px;
     }
 
-    nav ul{
+    .logo{
+        font-size:19px;
+    }
+
+    .logo i{
+        font-size:23px;
+    }
+
+    .nav-menu{
         display:none;
     }
 
-    .header{
-        padding-top:120px;
+    .profile-hero{
+        min-height:500px;
     }
 
-    .header h1{
-        font-size:38px;
+    .profile-hero h1{
+        font-size:48px;
     }
 
-    .profile{
+    .intro{
         grid-template-columns:1fr;
+
+        gap:30px;
     }
 
-    .container{
-        width:92%;
+    .intro-image img{
+        height:300px;
     }
 
-    .photo-box{
-        padding:8px;
+    .intro-text h2{
+        font-size:40px;
     }
 
-    .photo-box img{
-        width:100%;
-        height:auto;
+    .location-card{
+        padding:28px 20px;
     }
 
-    .data-item{
-        flex-direction:column;
-        gap:5px;
+    .profile6 img{
+        height:300px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVBAR -->
-<nav>
 
-    <div class="logo">
-        🌿 Desa Maktangguk
-    </div>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <ul>
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        Desa Maktangguk
+    </a>
+
+    <ul class="nav-menu">
+
         <li>
-            <a href="index.html">Beranda</a>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Beranda
+            </a>
         </li>
 
         <li>
-            <a href="profil.html" class="active">Profil</a>
+            <a href="profil.html" class="active">
+                <i class="fa-solid fa-user"></i>
+                Profil
+            </a>
         </li>
 
         <li>
-            <a href="sejarah.html">Sejarah</a>
+            <a href="sejarah.html">
+                <i class="fa-solid fa-book-open"></i>
+                Sejarah
+            </a>
         </li>
 
         <li>
-            <a href="potensi.html">Potensi</a>
+            <a href="potensi.html">
+                <i class="fa-solid fa-seedling"></i>
+                Potensi
+            </a>
         </li>
 
         <li>
-            <a href="galeri.html">Galeri</a>
+            <a href="galeri.html">
+                <i class="fa-regular fa-image"></i>
+                Galeri
+            </a>
         </li>
+
+        <li>
+            <a href="kontak.html">
+                <i class="fa-solid fa-envelope"></i>
+                Kontak
+            </a>
+        </li>
+
     </ul>
 
 </nav>
 
 
-<!-- HEADER -->
-<header class="header">
+<!-- =========================
+     HERO
+========================= -->
 
-    <small>PROFIL DESA</small>
+<section class="profile-hero">
 
-    <h1>Desa Maktangguk</h1>
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
-    <p>
-        Mengenal lebih dekat Desa Maktangguk
-    </p>
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
-</header>
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
-<!-- ISI -->
-<main class="container">
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
-    <!-- FOTO UTUH -->
-    <div class="photo-box">
-
-        <img
-            src="profile1.jpg"
-            alt="Desa Maktangguk"
-        >
-
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
     </div>
 
 
-    <!-- PROFIL -->
-    <div class="profile">
+    <div>
 
-        <div class="card">
+        <h1>Profil Desa Maktangguk</h1>
 
-            <h2>🌿 Tentang Desa</h2>
+        <p>
+            Mengenal Maktangguk lebih dekat
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ISI PROFIL
+========================= -->
+
+<section class="profile-section">
+
+<div class="container">
+
+
+    <!-- =====================
+         MENGENAL MAKTANGGUK
+    ====================== -->
+
+    <div class="intro">
+
+        <div class="intro-image">
+
+            <img
+                src="profile2.jpg"
+                alt="Kantor Desa Maktangguk">
+
+        </div>
+
+
+        <div class="intro-text">
+
+            <h2>Mengenal Maktangguk</h2>
+
+            <p class="small-title">
+                Kecamatan Tebas • Kabupaten Sambas
+            </p>
 
             <p>
                 Desa Maktangguk merupakan salah satu desa
@@ -350,80 +708,93 @@ footer{
                 Sambas, Provinsi Kalimantan Barat.
             </p>
 
-            <br>
+            <p>
+                Desa Maktangguk menjadi bagian dari wilayah
+                Kecamatan Tebas dan memiliki lingkungan serta
+                kehidupan masyarakat yang menjadi bagian dari
+                perkembangan wilayah Kabupaten Sambas.
+            </p>
 
             <p>
-                Desa ini memiliki kehidupan masyarakat yang
-                erat dengan semangat kebersamaan, gotong
-                royong, serta potensi alam yang menjadi bagian
-                penting dalam kehidupan masyarakat.
+                Halaman profil ini memberikan gambaran singkat
+                mengenai Desa Maktangguk dan lokasi
+                administratifnya.
             </p>
 
         </div>
 
+    </div>
 
-        <div class="card">
 
-            <h2>📍 Data Desa</h2>
+    <!-- =====================
+         INFORMASI DESA
+    ====================== -->
 
-            <div class="data">
+    <div class="section-title">
 
-                <div class="data-item">
-                    <span>Nama Desa</span>
-                    <strong>Maktangguk</strong>
-                </div>
+        <h2>Informasi Desa</h2>
 
-                <div class="data-item">
-                    <span>Kecamatan</span>
-                    <strong>Tebas</strong>
-                </div>
-
-                <div class="data-item">
-                    <span>Kabupaten</span>
-                    <strong>Sambas</strong>
-                </div>
-
-                <div class="data-item">
-                    <span>Provinsi</span>
-                    <strong>Kalimantan Barat</strong>
-                </div>
-
-            </div>
-
-        </div>
+        <p>Lokasi</p>
 
     </div>
 
 
-    <!-- VISI -->
-    <div class="visi">
+    <!-- =====================
+         LOKASI
+    ====================== -->
 
-        <h2>🤝 Maktangguk Bersatu</h2>
+    <div class="location-card">
+
+        <div class="location-icon">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+        </div>
+
+        <h3>Lokasi</h3>
 
         <p>
-            Membangun desa yang maju, nyaman, dan memiliki
-            masyarakat yang kompak dengan memanfaatkan
-            potensi desa serta menjaga budaya dan lingkungan.
+            Kecamatan Tebas, Kabupaten Sambas,
+            Kalimantan Barat
         </p>
 
     </div>
 
-</main>
+
+    <!-- =====================
+         PROFILE 6
+    ====================== -->
+
+    <div class="profile6">
+
+        <img
+            src="profile6.jpg"
+            alt="Desa Maktangguk">
+
+    </div>
 
 
-<!-- FOOTER -->
-<footer>
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
 
     <p>
         © 2026 Desa Maktangguk
     </p>
 
     <p>
-        Kecamatan Tebas • Kabupaten Sambas •
-        Kalimantan Barat
+        Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
     </p>
 
 </footer>
+
 
 </body>
 </html>
