@@ -6,16 +6,15 @@
 
   <title>Potensi Desa Maktangguk</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -29,29 +28,25 @@
       overflow-x: hidden;
     }
 
-    /* =========================
-       DAUN JATUH
-    ========================= */
-
+    /* DAUN JATUH */
     .leaf {
       position: fixed;
-      top: -50px;
+      top: -40px;
+      z-index: 50;
+      pointer-events: none;
       color: #6f9f78;
       font-size: 20px;
       opacity: 0.45;
-      z-index: 50;
-      pointer-events: none;
       animation: fall linear infinite;
     }
 
     .leaf:nth-child(1) {
       left: 8%;
       animation-duration: 10s;
-      animation-delay: 0s;
     }
 
     .leaf:nth-child(2) {
-      left: 22%;
+      left: 23%;
       animation-duration: 13s;
       animation-delay: 3s;
     }
@@ -90,10 +85,14 @@
       }
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
+    /* CONTAINER */
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
 
+    /* NAVBAR */
     header {
       background: rgba(31, 107, 79, 0.97);
       color: white;
@@ -102,12 +101,6 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1150px;
-      margin: auto;
     }
 
     nav {
@@ -143,18 +136,18 @@
       color: #d8efdf;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
+    /* HERO */
     .hero {
       min-height: 70vh;
+
+      /* WARNA HIJAU SAJA */
       background:
         linear-gradient(
-          rgba(20, 75, 54, 0.70),
-          rgba(20, 75, 54, 0.78)
-        ),
-        url("sawit.jpg") center/cover no-repeat;
+          135deg,
+          #174d3a,
+          #1f6b4f,
+          #2f795c
+        );
 
       display: flex;
       align-items: center;
@@ -188,11 +181,6 @@
       margin-bottom: 15px;
     }
 
-    .hero p {
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
     .hero-line {
       width: 80px;
       height: 4px;
@@ -201,10 +189,12 @@
       border-radius: 10px;
     }
 
-    /* =========================
-       SECTION
-    ========================= */
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
 
+    /* SECTION */
     section {
       padding: 80px 0;
     }
@@ -226,10 +216,7 @@
       font-size: 15px;
     }
 
-    /* =========================
-       INTRO
-    ========================= */
-
+    /* INTRO */
     .intro {
       background: white;
     }
@@ -238,15 +225,12 @@
       max-width: 900px;
       margin: auto;
       text-align: center;
-      line-height: 1.9;
       color: #53645c;
       font-size: 16px;
+      line-height: 1.9;
     }
 
-    /* =========================
-       POTENSI CARDS
-    ========================= */
-
+    /* POTENSI */
     .potensi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -300,10 +284,7 @@
       font-weight: 600;
     }
 
-    /* =========================
-       DIAGRAM
-    ========================= */
-
+    /* DIAGRAM */
     .diagram-section {
       background: #edf4ef;
     }
@@ -360,13 +341,7 @@
       background: linear-gradient(to top, #1f6b4f, #5f9d7a);
       border-radius: 9px 9px 0 0;
       position: relative;
-      transition: 0.5s;
       animation: grow 1.3s ease;
-    }
-
-    .bar:hover {
-      filter: brightness(1.1);
-      transform: scaleX(1.08);
     }
 
     @keyframes grow {
@@ -403,10 +378,7 @@
       line-height: 1.7;
     }
 
-    /* =========================
-       INFORMASI
-    ========================= */
-
+    /* PENGEMBANGAN */
     .info-section {
       background: white;
     }
@@ -441,10 +413,7 @@
       line-height: 1.8;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
+    /* FOOTER */
     footer {
       background: #174d3a;
       color: white;
@@ -457,10 +426,7 @@
       line-height: 1.7;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
+    /* RESPONSIVE */
     @media (max-width: 900px) {
 
       nav {
@@ -555,7 +521,7 @@
 
 <body>
 
-  <!-- DAUN JATUH -->
+  <!-- DAUN -->
   <div class="leaf">🍃</div>
   <div class="leaf">🍃</div>
   <div class="leaf">🍃</div>
@@ -595,8 +561,8 @@
 
       <p>
         Mengenal berbagai potensi pertanian, perkebunan
-        dan peternakan yang dapat menjadi bagian dari
-        kehidupan masyarakat Desa Maktangguk.
+        dan peternakan yang menjadi bagian dari kehidupan
+        masyarakat Desa Maktangguk.
       </p>
 
     </div>
@@ -632,11 +598,11 @@
         <br>
 
         <p>
-          Berbagai komoditas seperti kelapa sawit, jeruk dan padi
-          dapat menjadi bagian dari sektor pertanian dan perkebunan.
-          Selain itu, kegiatan peternakan ayam dan bebek serta
-          budidaya tanaman cabai juga dapat mendukung aktivitas
-          ekonomi masyarakat.
+          Berbagai komoditas pertanian dan perkebunan serta
+          kegiatan peternakan dapat menjadi bagian dari aktivitas
+          masyarakat desa. Pengembangan potensi tersebut dapat
+          dilakukan secara berkelanjutan sesuai dengan kondisi
+          dan kebutuhan masyarakat.
         </p>
 
       </div>
@@ -646,7 +612,7 @@
   </section>
 
 
-  <!-- KARTU POTENSI -->
+  <!-- POTENSI UTAMA -->
   <section>
 
     <div class="container">
@@ -675,11 +641,10 @@
             <h3>🌴 Kelapa Sawit</h3>
 
             <p>
-              Perkebunan kelapa sawit merupakan salah satu jenis
-              kegiatan perkebunan yang dapat ditemukan di wilayah
-              pedesaan Kalimantan Barat. Tanaman ini memiliki
-              nilai ekonomi dan menjadi bagian dari kegiatan
-              perkebunan masyarakat.
+              Kelapa sawit merupakan tanaman perkebunan yang
+              dapat menjadi bagian dari kegiatan perkebunan
+              masyarakat. Pengelolaan perkebunan secara baik
+              dapat mendukung kegiatan ekonomi masyarakat.
             </p>
 
             <span class="tag">Perkebunan</span>
@@ -699,10 +664,9 @@
             <h3>🍊 Tanaman Jeruk</h3>
 
             <p>
-              Jeruk merupakan salah satu tanaman hortikultura
-              yang dapat dikembangkan melalui kegiatan pertanian
-              masyarakat. Budidaya jeruk dapat menjadi bagian
-              dari usaha pertanian yang memiliki nilai ekonomi.
+              Tanaman jeruk termasuk tanaman hortikultura yang
+              dapat dikembangkan sebagai bagian dari kegiatan
+              pertanian masyarakat dan usaha perkebunan.
             </p>
 
             <span class="tag">Hortikultura</span>
@@ -723,9 +687,8 @@
 
             <p>
               Padi merupakan tanaman pangan yang penting bagi
-              kehidupan masyarakat. Kegiatan pertanian padi dapat
-              mendukung ketersediaan pangan sekaligus menjadi
-              bagian dari aktivitas ekonomi masyarakat desa.
+              kehidupan masyarakat. Kegiatan pertanian padi
+              dapat mendukung kebutuhan pangan masyarakat.
             </p>
 
             <span class="tag">Pertanian</span>
@@ -745,10 +708,9 @@
             <h3>🐔 Peternakan Ayam</h3>
 
             <p>
-              Peternakan ayam dapat dikembangkan sebagai kegiatan
-              masyarakat di bidang peternakan. Pengelolaannya
-              dapat dilakukan dalam skala rumah tangga maupun
-              usaha yang lebih besar sesuai kemampuan masyarakat.
+              Peternakan ayam dapat menjadi salah satu kegiatan
+              produktif masyarakat. Pemeliharaan dapat dilakukan
+              dalam skala rumah tangga maupun usaha.
             </p>
 
             <span class="tag">Peternakan</span>
@@ -768,10 +730,9 @@
             <h3>🦆 Peternakan Bebek</h3>
 
             <p>
-              Pemeliharaan bebek merupakan salah satu bentuk
-              kegiatan peternakan yang dapat mendukung kebutuhan
-              pangan dan menjadi peluang usaha bagi masyarakat
-              melalui pengelolaan yang baik.
+              Pemeliharaan bebek merupakan salah satu kegiatan
+              peternakan yang dapat mendukung kebutuhan pangan
+              sekaligus menjadi kegiatan produktif masyarakat.
             </p>
 
             <span class="tag">Peternakan</span>
@@ -791,10 +752,9 @@
             <h3>🌶️ Tanaman Cabai</h3>
 
             <p>
-              Cabai merupakan tanaman hortikultura yang banyak
-              digunakan sebagai bahan pangan. Budidayanya dapat
-              dilakukan sebagai bagian dari kegiatan pertanian
-              dan dapat mendukung kebutuhan masyarakat.
+              Cabai merupakan tanaman hortikultura yang digunakan
+              sebagai bahan pangan. Budidayanya dapat menjadi
+              bagian dari kegiatan pertanian masyarakat.
             </p>
 
             <span class="tag">Hortikultura</span>
@@ -802,6 +762,7 @@
           </div>
 
         </div>
+
 
       </div>
 
@@ -820,7 +781,7 @@
         <h2>Diagram Potensi</h2>
 
         <p>
-          Gambaran visual kategori potensi yang ditampilkan
+          Gambaran visual kategori potensi desa
         </p>
 
       </div>
@@ -833,7 +794,7 @@
           <h3>Jenis Potensi Desa</h3>
 
           <p>
-            Diagram berikut merupakan ilustrasi kategori,
+            Diagram berikut merupakan ilustrasi visual,
             bukan data produksi resmi.
           </p>
 
@@ -938,6 +899,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -954,7 +916,7 @@
   </section>
 
 
-  <!-- INFORMASI -->
+  <!-- PENGEMBANGAN -->
   <section class="info-section">
 
     <div class="container">
@@ -964,7 +926,7 @@
         <h2>Pengembangan Potensi</h2>
 
         <p>
-          Potensi dapat dikembangkan secara berkelanjutan
+          Potensi desa dapat dikembangkan secara berkelanjutan
         </p>
 
       </div>
@@ -981,8 +943,8 @@
 
           <p>
             Pengembangan pertanian dapat dilakukan melalui
-            pengelolaan lahan, pemilihan komoditas dan
-            pemanfaatan teknik budidaya yang sesuai.
+            pengelolaan lahan dan teknik budidaya yang
+            sesuai dengan kondisi setempat.
           </p>
 
         </div>
@@ -1039,7 +1001,6 @@
     </p>
 
   </footer>
-
 
 </body>
 </html>
