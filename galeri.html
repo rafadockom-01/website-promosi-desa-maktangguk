@@ -1,196 +1,745 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galeri | Desa Maktangguk</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-    font-family:Arial,sans-serif;
-    background:#f3fff5;
-    color:#12351d;
-}
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:999;
-    padding:16px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#006b2d;
-}
-.logo{
-    color:white;
-    font-size:21px;
-    font-weight:bold;
-}
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:7px;
-}
-nav a{
-    color:white;
-    text-decoration:none;
-    padding:9px 13px;
-    border-radius:10px;
-}
-nav a:hover{
-    background:#65f77b;
-    color:#064d20;
-}
-.hero{
-    padding:145px 8% 75px;
-    background:linear-gradient(135deg,#006b2d,#48e86d);
-    color:white;
-}
-.hero h1{
-    font-size:55px;
-    margin-bottom:15px;
-}
-.hero p{
-    font-size:18px;
-}
-section{
-    padding:80px 8%;
-}
-.container{
-    max-width:1150px;
-    margin:auto;
-}
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-}
-.photo{
-    position:relative;
-    overflow:hidden;
-    border-radius:27px;
-    box-shadow:0 15px 40px rgba(0,100,40,.15);
-}
-.photo img{
-    width:100%;
-    height:420px;
-    object-fit:cover;
-    display:block;
-    transition:.5s;
-}
-.photo:hover img{
-    transform:scale(1.08);
-}
-.caption{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:25px;
-    color:white;
-    font-size:20px;
-    font-weight:bold;
-    background:linear-gradient(
-        transparent,
-        rgba(0,50,20,.9)
-    );
-}
-footer{
-    background:#063d1c;
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-@media(max-width:800px){
-    nav ul{display:none}
-    .gallery{
-        grid-template-columns:1fr;
+  <title>Galeri Desa Maktangguk</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
     }
-    .hero h1{
-        font-size:43px;
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4f7f5;
+      color: #234d3c;
+      overflow-x: hidden;
     }
-    .photo img{
-        height:330px;
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: #174d3a;
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
     }
-}
-</style>
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav h2 {
+      margin: 0;
+      font-size: 24px;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #b7dfc7;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 65vh;
+
+      /* TIDAK ADA FOTO DI BAGIAN JUDUL */
+      background: linear-gradient(
+        135deg,
+        #174d3a,
+        #1f6b4f,
+        #2f795c
+      );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      margin: 0 0 15px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    .hero-line {
+      width: 90px;
+      height: 4px;
+      background: white;
+      margin: 25px auto;
+      border-radius: 10px;
+    }
+
+    /* ================= DAUN JATUH ================= */
+
+    .leaf {
+      position: absolute;
+      top: -50px;
+      font-size: 25px;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    .leaf:nth-child(1) {
+      left: 5%;
+      animation-duration: 8s;
+      animation-delay: 1s;
+    }
+
+    .leaf:nth-child(2) {
+      left: 18%;
+      animation-duration: 10s;
+      animation-delay: 3s;
+    }
+
+    .leaf:nth-child(3) {
+      left: 35%;
+      animation-duration: 7s;
+      animation-delay: 2s;
+    }
+
+    .leaf:nth-child(4) {
+      left: 55%;
+      animation-duration: 11s;
+      animation-delay: 1s;
+    }
+
+    .leaf:nth-child(5) {
+      left: 72%;
+      animation-duration: 9s;
+      animation-delay: 4s;
+    }
+
+    .leaf:nth-child(6) {
+      left: 88%;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(45vh) translateX(40px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(75vh) translateX(-30px) rotate(360deg);
+      }
+    }
+
+    /* ================= GALERI ================= */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #174d3a;
+    }
+
+    .section-title p {
+      color: #557265;
+      font-size: 17px;
+    }
+
+    /* ================= GRID FOTO ================= */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+      transition: 0.4s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.16);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: 0.5s;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .gallery-info h3 {
+      margin: 0 0 8px;
+      color: #174d3a;
+      font-size: 22px;
+    }
+
+    .gallery-info p {
+      margin: 0;
+      color: #64786e;
+      font-size: 14px;
+    }
+
+    /* ================= PEMBAGIAN ================= */
+
+    .gallery-section {
+      background: white;
+    }
+
+    .potensi-section {
+      background: #edf4ef;
+    }
+
+    .label {
+      display: inline-block;
+      background: #1f6b4f;
+      color: white;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    /* ================= PENUTUP ================= */
+
+    .closing {
+      text-align: center;
+      padding: 70px 20px;
+      background: #174d3a;
+      color: white;
+    }
+
+    .closing h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .closing p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #103a2c;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+
+      nav {
+        flex-direction: column;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      nav h2 {
+        font-size: 21px;
+      }
+
+      nav ul {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 55vh;
+      }
+
+      .hero h1 {
+        font-size: 35px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card img {
+        height: 250px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
+  <!-- ================= HEADER ================= -->
 
-<div class="logo">🌿 Desa Maktangguk</div>
+  <header>
+    <div class="container">
 
-<ul>
-<li><a href="index.html">Beranda</a></li>
-<li><a href="profil.html">Profil</a></li>
-<li><a href="sejarah.html">Sejarah</a></li>
-<li><a href="potensi.html">Potensi</a></li>
-<li><a href="galeri.html">Galeri</a></li>
-</ul>
+      <nav>
 
-</nav>
+        <h2>Desa Maktangguk</h2>
 
-<div class="hero">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="sejarah.html">Sejarah</a></li>
+          <li><a href="potensi.html">Potensi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+        </ul>
 
-<div class="container">
+      </nav>
 
-<h1>Galeri Desa</h1>
-
-<p>
-Dokumentasi suasana dan kehidupan
-Desa Maktangguk.
-</p>
-
-</div>
-
-</div>
-
-<section>
-
-<div class="container">
-
-<div class="gallery">
-
-<div class="photo">
-<img src="profile1.jpg" alt="Desa Maktangguk">
-<div class="caption">🏘️ Suasana Desa</div>
-</div>
-
-<div class="photo">
-<img src="profile2.jpg" alt="Fasilitas Desa">
-<div class="caption">🏢 Kantor Desa</div>
-</div>
-
-<div class="photo">
-<img src="profile3.jpg" alt="Kegiatan masyarakat">
-<div class="caption">🕌 Kegiatan Agama Masyarakat</div>
-</div>
-
-<div class="photo">
-<img src="profile5.jpg" alt="Perkebunan">
-<div class="caption">🌴 Potensi Perkebunan</div>
-</div>
-
-<div class="photo">
-<img src="profile4.jpg" alt="Perkebunan">
-<div class="caption">🏦 Gedung Maktangguk</div>
-</div>
+    </div>
+  </header>
 
 
-</div>
+  <!-- ================= HERO ================= -->
 
-</div>
+  <section class="hero">
 
-</section>
+    <!-- Daun -->
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🍂</div>
 
-<footer>
-<p>© 2026 Desa Maktangguk</p>
-<p>Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat</p>
-</footer>
+    <div class="hero-content">
+
+      <h1>Galeri Desa Maktangguk</h1>
+
+      <div class="hero-line"></div>
+
+      <p>
+        Dokumentasi Desa Maktangguk
+      </p>
+
+      <p>
+        Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= GALERI DESA ================= -->
+
+  <section class="gallery-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="label">📸 GALERI DESA</span>
+
+        <h2>Dokumentasi Desa Maktangguk</h2>
+
+        <p>
+          Berbagai dokumentasi lingkungan dan kegiatan masyarakat Desa Maktangguk.
+        </p>
+
+      </div>
+
+
+      <div class="gallery">
+
+        <!-- PROFILE 1 -->
+
+        <div class="gallery-card">
+
+          <img
+            src="profile1.jpg"
+            alt="Pemandangan Desa Maktangguk"
+          >
+
+          <div class="gallery-info">
+
+            <h3>Pemandangan Desa</h3>
+
+            <p>
+              Gambaran lingkungan dan kawasan Desa Maktangguk.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE 2 -->
+
+        <div class="gallery-card">
+
+          <img
+            src="profile2.jpg"
+            alt="Kantor Desa Maktangguk"
+          >
+
+          <div class="gallery-info">
+
+            <h3>Kantor Desa</h3>
+
+            <p>
+              Kantor Pemerintahan Desa Maktangguk.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE 3 -->
+
+        <div class="gallery-card">
+
+          <img
+            src="profile3.jpg"
+            alt="Kegiatan Masyarakat"
+          >
+
+          <div class="gallery-info">
+
+            <h3>Kegiatan Masyarakat</h3>
+
+            <p>
+              Dokumentasi kegiatan masyarakat Desa Maktangguk.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE 4 -->
+
+        <div class="gallery-card">
+
+          <img
+            src="profile4.jpg"
+            alt="Fasilitas Desa Maktangguk"
+          >
+
+          <div class="gallery-info">
+
+            <h3>Fasilitas Desa</h3>
+
+            <p>
+              Salah satu fasilitas yang terdapat di lingkungan desa.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE 5 -->
+
+        <div class="gallery-card">
+
+          <img
+            src="profile5.jpg"
+            alt="Perkebunan Desa Maktangguk"
+          >
+
+          <div class="gallery-info">
+
+            <h3>Perkebunan</h3>
+
+            <p>
+              Lingkungan perkebunan yang terdapat di kawasan desa.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= POTENSI DESA ================= -->
+
+  <section class="potensi-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="label">🌱 POTENSI DESA</span>
+
+        <h2>Potensi Desa Maktangguk</h2>
+
+        <p>
+          Dokumentasi berbagai potensi pertanian dan peternakan desa.
+        </p>
+
+      </div>
+
+
+      <div class="gallery">
+
+
+        <!-- SAWIT -->
+
+        <div class="gallery-card">
+
+          <img
+            src="sawit.jpg"
+            alt="Kelapa Sawit"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🌴 Kelapa Sawit</h3>
+
+            <p>
+              Dokumentasi tanaman kelapa sawit.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- JERUK -->
+
+        <div class="gallery-card">
+
+          <img
+            src="jeruk.jpg"
+            alt="Tanaman Jeruk"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🍊 Tanaman Jeruk</h3>
+
+            <p>
+              Dokumentasi tanaman jeruk.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PADI -->
+
+        <div class="gallery-card">
+
+          <img
+            src="padi.jpg"
+            alt="Pertanian Padi"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🌾 Pertanian Padi</h3>
+
+            <p>
+              Dokumentasi kegiatan dan lahan pertanian padi.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- AYAM -->
+
+        <div class="gallery-card">
+
+          <img
+            src="ayam.jpg"
+            alt="Peternakan Ayam"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🐔 Peternakan Ayam</h3>
+
+            <p>
+              Dokumentasi peternakan ayam.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- BEBEK -->
+
+        <div class="gallery-card">
+
+          <img
+            src="bebek.jpg"
+            alt="Peternakan Bebek"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🦆 Peternakan Bebek</h3>
+
+            <p>
+              Dokumentasi peternakan bebek.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- CABAI -->
+
+        <div class="gallery-card">
+
+          <img
+            src="cabe.jpg"
+            alt="Tanaman Cabai"
+          >
+
+          <div class="gallery-info">
+
+            <h3>🌶️ Tanaman Cabai</h3>
+
+            <p>
+              Dokumentasi tanaman cabai.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= PENUTUP ================= -->
+
+  <section class="closing">
+
+    <h2>Desa Maktangguk 🌿</h2>
+
+    <p>
+      Galeri ini menjadi bagian dari dokumentasi visual
+      Desa Maktangguk, Kecamatan Tebas, Kabupaten Sambas,
+      Kalimantan Barat.
+    </p>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <p>
+      © 2026 Desa Maktangguk | Kecamatan Tebas | Kabupaten Sambas
+    </p>
+
+  </footer>
 
 </body>
 </html>
