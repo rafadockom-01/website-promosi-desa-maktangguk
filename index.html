@@ -1,1102 +1,939 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Desa Maktangguk</title>
+<title>Desa Maktangguk</title>
 
-    <!-- FONT ELEGAN -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
-        rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- ICON -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
 
+/* =========================
+   DASAR
+========================= */
 
-    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#f8f7f0;
+    color:#145536;
+    overflow-x:hidden;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f8f7f0;
-            color: #145536;
-            overflow-x: hidden;
-        }
 
+/* =========================
+   NAVBAR
+========================= */
 
-        /* ================================
-           NAVBAR
-        ================================= */
+.navbar{
+    position:absolute;
+    top:35px;
+    left:5%;
+    width:90%;
+    height:80px;
 
-        .navbar {
-            position: absolute;
+    padding:0 40px;
 
-            top: 35px;
-            left: 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-            width: 90%;
-            height: 80px;
+    background:rgba(3,65,40,.72);
+    border:1px solid rgba(255,255,255,.35);
 
-            padding: 0 40px;
+    backdrop-filter:blur(12px);
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    border-radius:50px;
 
-            background: rgba(3, 65, 40, 0.72);
+    z-index:100;
+}
 
-            border: 1px solid rgba(255,255,255,0.35);
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+    color:white;
+    text-decoration:none;
 
-            border-radius: 50px;
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    font-weight:700;
+}
 
-            z-index: 100;
-        }
+.logo i{
+    color:#d9ef70;
+    font-size:33px;
+}
 
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
 
-        /* LOGO */
+.nav-menu a{
+    position:relative;
 
-        .logo {
-            display: flex;
-            align-items: center;
+    display:flex;
+    align-items:center;
+    gap:9px;
 
-            gap: 12px;
+    padding:28px 0;
 
-            color: white;
+    color:white;
+    text-decoration:none;
 
-            text-decoration: none;
+    font-size:15px;
+    font-weight:500;
 
-            font-family: 'Playfair Display', serif;
+    transition:.3s;
+}
 
-            font-size: 27px;
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:#f1d878;
+}
 
-            font-weight: 700;
+.nav-menu a.active::after{
+    content:"";
 
-            white-space: nowrap;
-        }
+    position:absolute;
+    bottom:8px;
+    left:0;
+    right:0;
 
-        .logo i {
-            color: #d9ef70;
+    height:4px;
 
-            font-size: 33px;
-        }
+    background:#f1d878;
+    border-radius:10px;
+}
 
 
-        /* MENU */
+/* =========================
+   HERO
+========================= */
 
-        .nav-menu {
-            display: flex;
+.hero{
+    position:relative;
 
-            align-items: center;
+    min-height:770px;
 
-            gap: 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:150px 20px 160px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(4,77,43,.18),
+            rgba(4,77,43,.18)
+        ),
+        url("profile.6.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    overflow:hidden;
+}
+
+
+/* =========================
+   DAUN JATUH
+========================= */
+
+.leaf{
+    position:absolute;
+    top:-80px;
+
+    color:#d9ed70;
+
+    opacity:.9;
+
+    z-index:5;
+
+    pointer-events:none;
+
+    animation:jatuh linear infinite;
+}
+
+.leaf:nth-child(1){
+    left:3%;
+    font-size:30px;
+    animation-duration:8s;
+}
+
+.leaf:nth-child(2){
+    left:11%;
+    font-size:22px;
+    animation-duration:10s;
+    animation-delay:2s;
+}
+
+.leaf:nth-child(3){
+    left:20%;
+    font-size:28px;
+    animation-duration:9s;
+    animation-delay:4s;
+}
+
+.leaf:nth-child(4){
+    left:31%;
+    font-size:20px;
+    animation-duration:12s;
+    animation-delay:1s;
+}
+
+.leaf:nth-child(5){
+    left:42%;
+    font-size:32px;
+    animation-duration:10s;
+    animation-delay:3s;
+}
 
-            list-style: none;
-        }
+.leaf:nth-child(6){
+    left:53%;
+    font-size:22px;
+    animation-duration:13s;
+    animation-delay:5s;
+}
 
-        .nav-menu a {
-            position: relative;
+.leaf:nth-child(7){
+    left:64%;
+    font-size:31px;
+    animation-duration:9s;
+    animation-delay:2s;
+}
 
-            display: flex;
+.leaf:nth-child(8){
+    left:74%;
+    font-size:23px;
+    animation-duration:12s;
+    animation-delay:4s;
+}
 
-            align-items: center;
+.leaf:nth-child(9){
+    left:84%;
+    font-size:34px;
+    animation-duration:10s;
+    animation-delay:1s;
+}
 
-            gap: 9px;
+.leaf:nth-child(10){
+    left:94%;
+    font-size:21px;
+    animation-duration:13s;
+    animation-delay:3s;
+}
 
-            padding: 28px 0;
+@keyframes jatuh{
 
-            color: white;
+    0%{
+        transform:
+        translateY(-100px)
+        translateX(0)
+        rotate(0deg);
+    }
 
-            text-decoration: none;
+    30%{
+        transform:
+        translateY(230px)
+        translateX(60px)
+        rotate(120deg);
+    }
 
-            font-size: 15px;
+    60%{
+        transform:
+        translateY(500px)
+        translateX(-50px)
+        rotate(230deg);
+    }
 
-            font-weight: 500;
+    100%{
+        transform:
+        translateY(850px)
+        translateX(40px)
+        rotate(360deg);
+    }
+}
 
-            transition: 0.3s;
-        }
 
-        .nav-menu a i {
-            font-size: 19px;
-        }
+/* =========================
+   ISI HERO
+========================= */
 
-        .nav-menu a:hover {
-            color: #f1d878;
-        }
+.hero-content{
+    position:relative;
+    z-index:10;
 
-        .nav-menu a.active {
-            color: #f1d878;
-        }
+    max-width:1000px;
+}
 
-        .nav-menu a.active::after {
-            content: "";
+.welcome{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
 
-            position: absolute;
+    font-size:clamp(40px,5vw,65px);
 
-            left: 0;
-            right: 0;
+    text-shadow:0 4px 12px rgba(0,0,0,.4);
 
-            bottom: 8px;
+    margin-bottom:5px;
+}
 
-            height: 4px;
+.hero-title{
+    font-family:'DM Serif Display',serif;
 
-            background: #f1d878;
+    font-size:clamp(52px,7vw,88px);
 
-            border-radius: 10px;
-        }
+    line-height:1;
 
+    letter-spacing:1px;
 
-        /* ================================
-           HERO
-        ================================= */
+    text-shadow:0 5px 12px rgba(0,0,0,.45);
 
-        .hero {
-            position: relative;
+    margin-bottom:25px;
+}
 
-            min-height: 770px;
+.location{
+    font-size:19px;
+    line-height:1.6;
+    font-weight:500;
 
-            display: flex;
+    text-shadow:0 2px 7px rgba(0,0,0,.4);
 
-            align-items: center;
+    margin-bottom:25px;
+}
 
-            justify-content: center;
 
-            text-align: center;
+/* =========================
+   GARIS
+========================= */
 
-            padding: 150px 20px 160px;
+.line{
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            overflow: hidden;
+    gap:17px;
 
-            color: white;
+    margin-bottom:27px;
+}
 
-            /*
-              BACKGROUND YANG KAMU KIRIM
-            */
+.line span{
+    width:110px;
+    height:2px;
 
-            background-image:
-                linear-gradient(
-                    rgba(4, 77, 43, 0.18),
-                    rgba(4, 77, 43, 0.18)
-                ),
-                url("profile.6.jpg");
+    background:#f1d878;
+}
 
-            background-size: cover;
+.line i{
+    color:#dcef76;
+    font-size:22px;
+}
 
-            background-position: center;
 
-            background-repeat: no-repeat;
-        }
+/* =========================
+   DESKRIPSI
+========================= */
 
+.description{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
 
-        /* LAPISAN AGAR TEKS LEBIH JELAS */
+    font-size:17px;
+    line-height:1.8;
 
-        .hero::before {
-            content: "";
+    text-shadow:0 2px 7px rgba(0,0,0,.4);
+}
 
-            position: absolute;
 
-            inset: 0;
+/* =========================
+   TOMBOL
+========================= */
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(50,150,70,0.05),
-                    rgba(0,50,30,0.22)
-                );
+.buttons{
+    display:flex;
+    justify-content:center;
 
-            z-index: 1;
-        }
+    gap:25px;
 
+    flex-wrap:wrap;
 
-        /* ================================
-           DAUN ANIMASI
-        ================================= */
+    margin-top:35px;
+}
 
-        .falling-leaf {
-            position: absolute;
+.btn{
+    min-width:210px;
 
-            top: -80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            z-index: 5;
+    gap:11px;
 
-            color: #d5ed69;
+    padding:16px 27px;
 
-            opacity: 0.9;
+    border-radius:35px;
 
-            pointer-events: none;
+    text-decoration:none;
 
-            animation: leafFall linear infinite;
-        }
+    font-size:15px;
+    font-weight:700;
 
+    transition:.3s;
+}
 
-        .falling-leaf:nth-child(1) {
-            left: 3%;
-            font-size: 32px;
-            animation-duration: 8s;
-        }
+.btn-primary{
+    background:#f2d778;
+    color:#145334;
 
-        .falling-leaf:nth-child(2) {
-            left: 10%;
-            font-size: 22px;
-            animation-duration: 11s;
-            animation-delay: 2s;
-        }
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
 
-        .falling-leaf:nth-child(3) {
-            left: 18%;
-            font-size: 29px;
-            animation-duration: 9s;
-            animation-delay: 4s;
-        }
+.btn-primary:hover{
+    transform:translateY(-5px);
+    background:#f8e497;
+}
 
-        .falling-leaf:nth-child(4) {
-            left: 27%;
-            font-size: 20px;
-            animation-duration: 12s;
-            animation-delay: 1s;
-        }
+.btn-secondary{
+    color:white;
 
-        .falling-leaf:nth-child(5) {
-            left: 37%;
-            font-size: 34px;
-            animation-duration: 10s;
-            animation-delay: 3s;
-        }
+    background:rgba(3,70,43,.38);
 
-        .falling-leaf:nth-child(6) {
-            left: 46%;
-            font-size: 21px;
-            animation-duration: 13s;
-            animation-delay: 5s;
-        }
+    border:2px solid white;
+}
 
-        .falling-leaf:nth-child(7) {
-            left: 55%;
-            font-size: 31px;
-            animation-duration: 9s;
-            animation-delay: 2s;
-        }
+.btn-secondary:hover{
+    background:white;
+    color:#125337;
 
-        .falling-leaf:nth-child(8) {
-            left: 65%;
-            font-size: 23px;
-            animation-duration: 12s;
-            animation-delay: 4s;
-        }
+    transform:translateY(-5px);
+}
 
-        .falling-leaf:nth-child(9) {
-            left: 74%;
-            font-size: 35px;
-            animation-duration: 10s;
-            animation-delay: 1s;
-        }
 
-        .falling-leaf:nth-child(10) {
-            left: 83%;
-            font-size: 21px;
-            animation-duration: 13s;
-            animation-delay: 3s;
-        }
+/* =========================
+   WAVE
+========================= */
 
-        .falling-leaf:nth-child(11) {
-            left: 91%;
-            font-size: 33px;
-            animation-duration: 9s;
-            animation-delay: 5s;
-        }
+.wave{
+    position:absolute;
 
-        .falling-leaf:nth-child(12) {
-            left: 97%;
-            font-size: 20px;
-            animation-duration: 11s;
-            animation-delay: 2s;
-        }
+    bottom:-1px;
+    left:0;
 
+    width:100%;
+    height:110px;
 
-        @keyframes leafFall {
+    z-index:20;
+}
 
-            0% {
-                transform:
-                    translateY(-100px)
-                    translateX(0)
-                    rotate(0deg);
-            }
+.wave svg{
+    width:100%;
+    height:100%;
+}
 
-            30% {
-                transform:
-                    translateY(220px)
-                    translateX(55px)
-                    rotate(110deg);
-            }
 
-            60% {
-                transform:
-                    translateY(500px)
-                    translateX(-50px)
-                    rotate(220deg);
-            }
+/* =========================
+   TENTANG MAKTANGGUK
+========================= */
 
-            100% {
-                transform:
-                    translateY(850px)
-                    translateX(45px)
-                    rotate(360deg);
-            }
+.about{
+    position:relative;
 
-        }
+    padding:90px 8% 100px;
 
+    background:#f8f7f0;
 
-        /* ================================
-           HERO CONTENT
-        ================================= */
+    overflow:hidden;
+}
 
-        .hero-content {
-            position: relative;
+.about-container{
+    max-width:1200px;
 
-            z-index: 10;
+    margin:auto;
 
-            max-width: 1000px;
+    display:grid;
 
-            margin-top: 20px;
-        }
+    grid-template-columns:1fr 1fr;
 
+    gap:50px;
 
-        .welcome {
-            font-family: 'Playfair Display', serif;
+    align-items:center;
+}
 
-            font-style: italic;
 
-            font-size: clamp(40px, 5vw, 65px);
+/* GAMBAR KIRI */
 
-            line-height: 1.1;
+.about-image{
+    order:1;
+}
 
-            text-shadow:
-                0 4px 12px rgba(0,0,0,0.4);
+.about-image img{
+    width:100%;
+    height:390px;
 
-            margin-bottom: 5px;
-        }
+    object-fit:cover;
 
+    display:block;
 
-        .hero-title {
-            font-family: 'DM Serif Display', serif;
+    border-radius:22px;
 
-            font-size: clamp(52px, 7vw, 88px);
+    box-shadow:
+    0 15px 35px rgba(25,80,52,.18);
 
-            line-height: 1;
+    transition:.4s;
+}
 
-            letter-spacing: 1px;
+.about-image img:hover{
+    transform:scale(1.02);
+}
 
-            color: white;
 
-            text-shadow:
-                0 5px 12px rgba(0,0,0,0.45);
+/* TEKS KANAN */
 
-            margin-bottom: 25px;
-        }
+.about-content{
+    order:2;
+}
 
+.about-decoration{
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-        .location {
-            font-size: 19px;
+    margin-bottom:15px;
+}
 
-            line-height: 1.6;
+.about-decoration i{
+    color:#14704a;
+    font-size:28px;
+}
 
-            font-weight: 500;
+.about-decoration span{
+    width:65px;
+    height:4px;
 
-            color: white;
+    background:#14704a;
 
-            text-shadow:
-                0 2px 7px rgba(0,0,0,0.4);
+    border-radius:10px;
+}
 
-            margin-bottom: 25px;
-        }
+.about h2{
+    font-family:'DM Serif Display',serif;
 
+    font-size:clamp(38px,4vw,52px);
 
-        /* ================================
-           GARIS
-        ================================= */
+    color:#12603e;
 
-        .line-decoration {
-            display: flex;
+    margin-bottom:10px;
+}
 
-            align-items: center;
+.subtitle{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
 
-            justify-content: center;
+    font-size:19px;
 
-            gap: 17px;
+    color:#637b6d;
 
-            margin-bottom: 27px;
-        }
+    margin-bottom:28px;
+}
 
-        .line-decoration span {
-            width: 110px;
+.about-text{
+    font-size:15px;
 
-            height: 2px;
+    line-height:1.9;
 
-            background: #f1d878;
-        }
+    color:#536c5e;
 
-        .line-decoration i {
-            color: #dcef76;
+    margin-bottom:17px;
+}
 
-            font-size: 22px;
-        }
 
+/* DAUN DI TENTANG */
 
-        /* ================================
-           DESKRIPSI
-        ================================= */
+.about-leaf{
+    position:absolute;
 
-        .hero-description {
-            max-width: 700px;
+    color:#72a447;
 
-            margin: auto;
+    opacity:.35;
 
-            font-family: 'Playfair Display', serif;
+    font-size:30px;
 
-            font-style: italic;
+    animation:melayang 5s ease-in-out infinite;
+}
 
-            font-size: 17px;
+.about-leaf.one{
+    top:70px;
+    right:43%;
+}
 
-            line-height: 1.8;
+.about-leaf.two{
+    bottom:70px;
+    right:8%;
 
-            color: white;
+    animation-delay:2s;
+}
 
-            text-shadow:
-                0 2px 7px rgba(0,0,0,0.4);
-        }
+@keyframes melayang{
 
+    0%,100%{
+        transform:
+        translateY(0)
+        rotate(0deg);
+    }
 
-        /* ================================
-           BUTTON
-        ================================= */
+    50%{
+        transform:
+        translateY(-18px)
+        rotate(25deg);
+    }
+}
 
-        .buttons {
-            display: flex;
 
-            justify-content: center;
+/* =========================
+   FOOTER
+========================= */
 
-            gap: 25px;
+.footer{
+    background:#064d2f;
 
-            flex-wrap: wrap;
+    color:white;
 
-            margin-top: 35px;
-        }
+    text-align:center;
 
+    padding:30px 20px;
 
-        .btn {
-            min-width: 210px;
+    font-family:'Montserrat',sans-serif;
+}
 
-            display: flex;
+.footer p{
+    margin:6px 0;
 
-            align-items: center;
+    font-size:15px;
 
-            justify-content: center;
+    letter-spacing:.3px;
+}
 
-            gap: 11px;
+.footer p:first-child{
+    font-weight:600;
+    font-size:16px;
+}
 
-            padding: 16px 27px;
 
-            border-radius: 35px;
+/* =========================
+   HP
+========================= */
 
-            text-decoration: none;
+@media(max-width:750px){
 
-            font-size: 15px;
+    .navbar{
+        top:15px;
+        left:3%;
 
-            font-weight: 700;
+        width:94%;
+        height:65px;
 
-            transition: 0.3s;
-        }
+        padding:0 20px;
+    }
 
+    .logo{
+        font-size:19px;
+    }
 
-        .btn-primary {
-            background: #f2d778;
+    .logo i{
+        font-size:25px;
+    }
 
-            color: #145334;
+    .nav-menu{
+        display:none;
+    }
 
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.2);
-        }
+    .hero{
+        min-height:720px;
+        padding-top:120px;
+    }
 
-        .btn-primary:hover {
-            transform: translateY(-5px);
+    .welcome{
+        font-size:40px;
+    }
 
-            background: #f8e497;
-        }
+    .hero-title{
+        font-size:53px;
+    }
 
+    .location{
+        font-size:15px;
+    }
 
-        .btn-secondary {
-            color: white;
+    .description{
+        font-size:15px;
+    }
 
-            background: rgba(3,70,43,0.38);
+    .buttons{
+        gap:12px;
+    }
 
-            border: 2px solid white;
-        }
+    .btn{
+        min-width:190px;
+        padding:14px 20px;
+    }
 
-        .btn-secondary:hover {
-            background: white;
+    .about{
+        padding:70px 6%;
+    }
 
-            color: #125337;
+    .about-container{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
 
-            transform: translateY(-5px);
-        }
+    .about-image{
+        order:1;
+    }
 
+    .about-content{
+        order:2;
+    }
 
-        /* ================================
-           WAVE
-        ================================= */
+    .about-image img{
+        height:280px;
+    }
 
-        .wave {
-            position: absolute;
+}
 
-            bottom: -1px;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 105px;
-
-            z-index: 20;
-        }
-
-        .wave svg {
-            width: 100%;
-
-            height: 100%;
-        }
-
-
-        /* ================================
-           TENTANG MAKTANGGUK
-        ================================= */
-
-        .about {
-            position: relative;
-
-            padding: 90px 8% 100px;
-
-            background: #f8f7f0;
-
-            overflow: hidden;
-        }
-
-
-        .about-container {
-
-            max-width: 1200px;
-
-            margin: auto;
-
-            display: grid;
-
-            /*
-              GAMBAR KIRI
-              TEKS KANAN
-            */
-
-            grid-template-columns: 0.95fr 1.05fr;
-
-            gap: 40px;
-
-            align-items: center;
-        }
-
-
-        /* ================================
-           FOTO KIRI
-        ================================= */
-
-        .about-image {
-            order: 1;
-
-            position: relative;
-        }
-
-        .about-image img {
-
-            width: 100%;
-
-            height: 370px;
-
-            object-fit: cover;
-
-            display: block;
-
-            border-radius: 22px;
-
-            box-shadow:
-                0 15px 35px rgba(25,80,52,0.18);
-
-            transition: 0.4s;
-        }
-
-        .about-image img:hover {
-            transform: scale(1.02);
-        }
-
-
-        /* ================================
-           TEKS KANAN
-        ================================= */
-
-        .about-content {
-            order: 2;
-        }
-
-
-        .section-decoration {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 17px;
-
-            margin-bottom: 17px;
-        }
-
-        .section-decoration i {
-
-            color: #14704a;
-
-            font-size: 27px;
-        }
-
-        .section-decoration span {
-
-            width: 65px;
-
-            height: 4px;
-
-            background: #14704a;
-
-            border-radius: 10px;
-        }
-
-
-        .about h2 {
-
-            font-family: 'DM Serif Display', serif;
-
-            font-size: clamp(38px, 4vw, 50px);
-
-            color: #12603e;
-
-            margin-bottom: 10px;
-        }
-
-
-        .subtitle {
-
-            font-family: 'Playfair Display', serif;
-
-            font-style: italic;
-
-            font-size: 19px;
-
-            color: #637b6d;
-
-            margin-bottom: 27px;
-        }
-
-
-        .about-text {
-
-            font-size: 15px;
-
-            line-height: 1.9;
-
-            color: #536c5e;
-
-            margin-bottom: 16px;
-        }
-
-
-        /* ================================
-           DAUN DI BAGIAN TENTANG
-        ================================= */
-
-        .about-leaf {
-
-            position: absolute;
-
-            color: #7eae4b;
-
-            opacity: 0.35;
-
-            font-size: 30px;
-
-            animation: aboutLeaf 6s ease-in-out infinite;
-        }
-
-        .about-leaf.one {
-
-            top: 70px;
-
-            right: 45%;
-        }
-
-        .about-leaf.two {
-
-            bottom: 70px;
-
-            right: 7%;
-
-            animation-delay: 2s;
-        }
-
-
-        @keyframes aboutLeaf {
-
-            0%,100% {
-
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-            }
-
-            50% {
-
-                transform:
-                    translateY(-18px)
-                    rotate(25deg);
-            }
-
-        }
-
-
-        /* ================================
-           RESPONSIVE HP
-        ================================= */
-
-        @media (max-width: 1000px) {
-
-            .navbar {
-                padding: 0 25px;
-            }
-
-            .nav-menu {
-                gap: 15px;
-            }
-
-            .nav-menu a {
-                font-size: 13px;
-            }
-
-            .logo {
-                font-size: 22px;
-            }
-
-        }
-
-
-        @media (max-width: 750px) {
-
-            .navbar {
-
-                top: 15px;
-
-                width: 94%;
-
-                left: 3%;
-
-                height: 65px;
-
-                padding: 0 20px;
-            }
-
-            .logo {
-                font-size: 19px;
-            }
-
-            .logo i {
-                font-size: 25px;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-
-            .hero {
-
-                min-height: 720px;
-
-                padding-top: 120px;
-            }
-
-            .welcome {
-                font-size: 40px;
-            }
-
-            .hero-title {
-                font-size: 53px;
-            }
-
-            .location {
-                font-size: 15px;
-            }
-
-            .hero-description {
-                font-size: 15px;
-            }
-
-
-            .buttons {
-                gap: 12px;
-            }
-
-            .btn {
-                min-width: 190px;
-
-                padding: 14px 20px;
-            }
-
-
-            /* Tentang */
-
-            .about {
-
-                padding: 70px 6%;
-            }
-
-            .about-container {
-
-                grid-template-columns: 1fr;
-
-                gap: 35px;
-            }
-
-            .about-image {
-
-                order: 1;
-            }
-
-            .about-content {
-
-                order: 2;
-            }
-
-            .about-image img {
-
-                height: 280px;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =====================================
-         NAVBAR
-    ====================================== -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <nav class="navbar">
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        Desa Maktangguk
+    </a>
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="index.html" class="active">
+                <i class="fa-solid fa-house"></i>
+                Beranda
+            </a>
+        </li>
+
+        <li>
+            <a href="profil.html">
+                <i class="fa-solid fa-user"></i>
+                Profil
+            </a>
+        </li>
+
+        <li>
+            <a href="sejarah.html">
+                <i class="fa-solid fa-book-open"></i>
+                Sejarah
+            </a>
+        </li>
+
+        <li>
+            <a href="potensi.html">
+                <i class="fa-solid fa-seedling"></i>
+                Potensi
+            </a>
+        </li>
+
+        <li>
+            <a href="galeri.html">
+                <i class="fa-regular fa-image"></i>
+                Galeri
+            </a>
+        </li>
+
+        <li>
+            <a href="kontak.html">
+                <i class="fa-solid fa-envelope"></i>
+                Kontak
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
 
 
-        <a href="index.html" class="logo">
+<!-- =========================
+     HERO
+========================= -->
 
-            <i class="fa-solid fa-leaf"></i>
+<section class="hero">
 
+
+    <!-- DAUN ANIMASI -->
+
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+    <div class="leaf"><i class="fa-solid fa-leaf"></i></div>
+
+
+    <!-- ISI -->
+
+    <div class="hero-content">
+
+        <div class="welcome">
+            Selamat Datang di
+        </div>
+
+        <h1 class="hero-title">
             Desa Maktangguk
+        </h1>
 
-        </a>
+        <p class="location">
+            Kecamatan Tebas, Kabupaten Sambas,<br>
+            Kalimantan Barat
+        </p>
 
+        <div class="line">
 
-        <ul class="nav-menu">
+            <span></span>
 
-
-            <li>
-
-                <a href="index.html" class="active">
-
-                    <i class="fa-solid fa-house"></i>
-
-                    Beranda
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="profil.html">
-
-                    <i class="fa-solid fa-user"></i>
-
-                    Profil
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="sejarah.html">
-
-                    <i class="fa-solid fa-book-open"></i>
-
-                    Sejarah
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="potensi.html">
-
-                    <i class="fa-solid fa-seedling"></i>
-
-                    Potensi
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="galeri.html">
-
-                    <i class="fa-regular fa-image"></i>
-
-                    Galeri
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="kontak.html">
-
-                    <i class="fa-solid fa-envelope"></i>
-
-                    Kontak
-
-                </a>
-
-            </li>
-
-
-        </ul>
-
-    </nav>
-
-
-
-    <!-- =====================================
-         HERO
-    ====================================== -->
-
-    <section class="hero">
-
-
-        <!-- DAUN JATUH -->
-
-        <div class="falling-leaf">
             <i class="fa-solid fa-leaf"></i>
+
+            <span></span>
+
         </div>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
+        <p class="description">
+            Bersama membangun desa yang lebih maju,<br>
+            dengan potensi alam dan masyarakat yang penuh semangat.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#tentang" class="btn btn-primary">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                Jelajahi Desa
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </a>
+
+            <a href="profil.html" class="btn btn-secondary">
+
+                <i class="fa-solid fa-user"></i>
+
+                Lihat Profil
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </a>
+
         </div>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+    </div>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+    <!-- WAVE -->
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+    <div class="wave">
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+        <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+            <path
+                d="
+                M0,70
+                C180,125 300,105 460,125
+                C620,145 730,75 900,100
+                C1080,130 1190,80 1440,60
+                L1440,150
+                L0,150
+                Z"
+                fill="#f8f7f0">
+            </path>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+        </svg>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+    </div>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
+</section>
 
-        <div class="falling-leaf">
-            <i class="fa-solid fa-leaf"></i>
+
+<!-- =========================
+     TENTANG MAKTANGGUK
+========================= -->
+
+<section class="about" id="tentang">
+
+
+    <!-- DAUN -->
+
+    <div class="about-leaf one">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="about-leaf two">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+
+    <div class="about-container">
+
+
+        <!-- GAMBAR DI KIRI -->
+
+        <div class="about-image">
+
+            <img
+                src="profile1.jpg"
+                alt="Desa Maktangguk">
+
         </div>
 
 
+        <!-- TULISAN DI KANAN -->
 
-        <!-- ISI HERO -->
+        <div class="about-content">
 
-        <div class="hero-content">
-
-
-            <div class="welcome">
-                Selamat Datang di
-            </div>
-
-
-            <h1 class="hero-title">
-                Desa Maktangguk
-            </h1>
-
-
-            <p class="location">
-
-                Kecamatan Tebas, Kabupaten Sambas,<br>
-                Kalimantan Barat
-
-            </p>
-
-
-            <div class="line-decoration">
-
-                <span></span>
+            <div class="about-decoration">
 
                 <i class="fa-solid fa-leaf"></i>
 
@@ -1104,167 +941,50 @@
 
             </div>
 
+            <h2>
+                Tentang Maktangguk
+            </h2>
 
-            <p class="hero-description">
-
-                Bersama membangun desa yang lebih maju,<br>
-                dengan potensi alam dan masyarakat yang penuh semangat.
-
+            <p class="subtitle">
+                Mengenal Desa Maktangguk lebih dekat
             </p>
 
+            <p class="about-text">
+                Desa Maktangguk merupakan salah satu desa
+                yang berada di Kecamatan Tebas, Kabupaten
+                Sambas, Kalimantan Barat.
+            </p>
 
-            <div class="buttons">
-
-
-                <a href="#tentang"
-                   class="btn btn-primary">
-
-                    <i class="fa-solid fa-leaf"></i>
-
-                    Jelajahi Desa
-
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
-
-
-                <a href="profil.html"
-                   class="btn btn-secondary">
-
-                    <i class="fa-solid fa-user"></i>
-
-                    Lihat Profil
-
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
-
-
-            </div>
-
+            <p class="about-text">
+                Desa Maktangguk memiliki kehidupan masyarakat
+                yang beragam serta potensi alam dan kegiatan
+                masyarakat yang menjadi bagian penting dari
+                kehidupan desa.
+            </p>
 
         </div>
 
+    </div>
+
+</section>
 
 
-        <!-- WAVE -->
+<!-- =========================
+     FOOTER
+========================= -->
 
-        <div class="wave">
+<footer class="footer">
 
-            <svg
-                viewBox="0 0 1440 150"
-                preserveAspectRatio="none">
+    <p>
+        © 2026 Desa Maktangguk
+    </p>
 
-                <path
-                    d="
-                    M0,70
-                    C180,125 300,105 460,125
-                    C620,145 730,75 900,100
-                    C1080,130 1190,80 1440,60
-                    L1440,150
-                    L0,150
-                    Z
-                    "
-                    fill="#f8f7f0">
-                </path>
+    <p>
+        Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
+    </p>
 
-            </svg>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         TENTANG MAKTANGGUK
-    ====================================== -->
-
-    <section
-        class="about"
-        id="tentang">
-
-
-        <!-- DAUN KECIL -->
-
-        <div class="about-leaf one">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
-
-        <div class="about-leaf two">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
-
-
-
-        <div class="about-container">
-
-
-            <!-- FOTO DI KIRI -->
-
-            <div class="about-image">
-
-                <img
-                    src="profile2.jpg"
-                    alt="Kantor Desa Maktangguk">
-
-            </div>
-
-
-
-            <!-- TEKS DI KANAN -->
-
-            <div class="about-content">
-
-
-                <div class="section-decoration">
-
-                    <i class="fa-solid fa-leaf"></i>
-
-                    <span></span>
-
-                </div>
-
-
-                <h2>
-                    Tentang Maktangguk
-                </h2>
-
-
-                <p class="subtitle">
-
-                    Mengenal Desa Maktangguk lebih dekat
-
-                </p>
-
-
-                <p class="about-text">
-
-                    Desa Maktangguk merupakan salah satu desa
-                    yang berada di Kecamatan Tebas, Kabupaten
-                    Sambas, Kalimantan Barat.
-
-                </p>
-
-
-                <p class="about-text">
-
-                    Desa Maktangguk memiliki kehidupan masyarakat
-                    yang beragam serta potensi alam dan kegiatan
-                    masyarakat yang menjadi bagian penting dari
-                    kehidupan desa.
-
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-    </section>
+</footer>
 
 
 </body>
-
 </html>
