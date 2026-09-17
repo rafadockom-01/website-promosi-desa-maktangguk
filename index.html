@@ -1,1898 +1,1270 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Desa Maktangguk</title>
-
-<style>
-
-/* =========================
-   DASAR
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f5f1e8;
-    color:#26382e;
-    overflow-x:hidden;
-}
-
-
-/* =========================
-   ANIMASI DAUN
-========================= */
-
-.leaves{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:999;
-}
-
-.leaf{
-    position:absolute;
-    top:-60px;
-    font-size:24px;
-    opacity:.35;
-    animation:jatuh linear infinite;
-}
-
-.leaf:nth-child(1){
-    left:8%;
-    animation-duration:10s;
-}
-
-.leaf:nth-child(2){
-    left:28%;
-    animation-duration:13s;
-    animation-delay:2s;
-}
-
-.leaf:nth-child(3){
-    left:48%;
-    animation-duration:11s;
-    animation-delay:4s;
-}
-
-.leaf:nth-child(4){
-    left:70%;
-    animation-duration:14s;
-    animation-delay:1s;
-}
-
-.leaf:nth-child(5){
-    left:88%;
-    animation-duration:12s;
-    animation-delay:3s;
-}
-
-@keyframes jatuh{
-
-    0%{
-        transform:
-        translateY(-60px)
-        rotate(0deg);
-    }
-
-    50%{
-        transform:
-        translateY(50vh)
-        translateX(70px)
-        rotate(180deg);
-    }
-
-    100%{
-        transform:
-        translateY(110vh)
-        translateX(-60px)
-        rotate(360deg);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-}
+    <title>Desa Maktangguk</title>
 
+    <!-- FONT ELEGAN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* =========================
-   NAVBAR
-========================= */
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
 
-nav{
-    position:sticky;
-    top:15px;
-    z-index:1000;
+    <!-- ICON -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    width:92%;
-    margin:auto;
 
-    padding:15px 25px;
+    <style>
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    background:#124d36;
+        html {
+            scroll-behavior: smooth;
+        }
 
-    border-radius:45px;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f7f0;
+            color: #145536;
+            overflow-x: hidden;
+        }
 
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.18);
-}
 
-.logo{
-    color:white;
-    font-size:21px;
-    font-weight:bold;
-}
+        /* ================================
+           NAVBAR
+        ================================= */
 
-nav ul{
-    display:flex;
-    gap:24px;
-    list-style:none;
-}
+        .navbar {
+            position: absolute;
 
-nav a{
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
+            top: 35px;
+            left: 5%;
 
-    transition:.3s;
-}
+            width: 90%;
+            height: 80px;
 
-nav a:hover{
-    color:#d9c37b;
-}
+            padding: 0 40px;
 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-/* =========================
-   HERO
-========================= */
+            background: rgba(3, 65, 40, 0.72);
 
-.hero{
-    min-height:650px;
+            border: 1px solid rgba(255,255,255,0.35);
 
-    margin-top:-75px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+            border-radius: 50px;
 
-    text-align:center;
+            z-index: 100;
+        }
 
-    padding:100px 20px 70px;
 
-    color:white;
+        /* LOGO */
 
-    position:relative;
+        .logo {
+            display: flex;
+            align-items: center;
 
-    background:
-    linear-gradient(
-        rgba(13,66,42,.48),
-        rgba(13,66,42,.78)
-    ),
-    url("profile1.jpg") center/cover;
+            gap: 12px;
 
-    animation:zoomHero 12s ease-in-out infinite alternate;
-}
+            color: white;
 
-@keyframes zoomHero{
+            text-decoration: none;
 
-    from{
-        background-size:100%;
-    }
+            font-family: 'Playfair Display', serif;
 
-    to{
-        background-size:110%;
-    }
+            font-size: 27px;
 
-}
+            font-weight: 700;
 
-.hero-content{
-    max-width:850px;
+            white-space: nowrap;
+        }
 
-    animation:
-    muncul 1.3s ease;
-}
+        .logo i {
+            color: #d9ef70;
 
-@keyframes muncul{
+            font-size: 33px;
+        }
 
-    from{
-        opacity:0;
-        transform:translateY(35px);
-    }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+        /* MENU */
 
-}
+        .nav-menu {
+            display: flex;
 
-.hero h1{
-    font-size:55px;
-    margin-bottom:18px;
+            align-items: center;
 
-    text-shadow:
-    0 5px 20px rgba(0,0,0,.5);
-}
+            gap: 30px;
 
-.hero p{
-    font-size:19px;
-    line-height:1.7;
-    margin-bottom:28px;
-}
+            list-style: none;
+        }
 
+        .nav-menu a {
+            position: relative;
 
-/* =========================
-   BUTTON
-========================= */
+            display: flex;
 
-.btn{
-    display:inline-block;
+            align-items: center;
 
-    padding:13px 25px;
+            gap: 9px;
 
-    margin:5px;
+            padding: 28px 0;
 
-    background:#d1b36a;
+            color: white;
 
-    color:#173f2b;
+            text-decoration: none;
 
-    border-radius:30px;
+            font-size: 15px;
 
-    text-decoration:none;
+            font-weight: 500;
 
-    font-weight:bold;
+            transition: 0.3s;
+        }
 
-    border:none;
+        .nav-menu a i {
+            font-size: 19px;
+        }
 
-    cursor:pointer;
+        .nav-menu a:hover {
+            color: #f1d878;
+        }
 
-    transition:.3s;
-}
+        .nav-menu a.active {
+            color: #f1d878;
+        }
 
-.btn:hover{
-    transform:translateY(-4px);
+        .nav-menu a.active::after {
+            content: "";
 
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.18);
-}
+            position: absolute;
 
+            left: 0;
+            right: 0;
 
-/* =========================
-   SECTION
-========================= */
+            bottom: 8px;
 
-section{
-    padding:80px 7%;
-}
+            height: 4px;
 
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
+            background: #f1d878;
 
-.section-title h2{
-    color:#1d6245;
-    font-size:34px;
-    margin-bottom:10px;
-}
+            border-radius: 10px;
+        }
 
-.section-title p{
-    color:#718078;
-}
 
+        /* ================================
+           HERO
+        ================================= */
 
-/* =========================
-   SEKILAS DESA
-========================= */
+        .hero {
+            position: relative;
 
-.about{
-    display:grid;
+            min-height: 770px;
 
-    grid-template-columns:
-    1fr 1fr;
+            display: flex;
 
-    gap:50px;
+            align-items: center;
 
-    align-items:center;
-}
+            justify-content: center;
 
-.about img{
-    width:100%;
+            text-align: center;
 
-    border-radius:25px;
+            padding: 150px 20px 160px;
 
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.16);
+            overflow: hidden;
 
-    transition:.5s;
-}
+            color: white;
 
-.about img:hover{
-    transform:scale(1.03);
-}
+            /*
+              BACKGROUND YANG KAMU KIRIM
+            */
 
-.about-text h3{
-    color:#1d6245;
+            background-image:
+                linear-gradient(
+                    rgba(4, 77, 43, 0.18),
+                    rgba(4, 77, 43, 0.18)
+                ),
+                url("profile.6.jpg");
 
-    font-size:30px;
+            background-size: cover;
 
-    margin-bottom:18px;
-}
+            background-position: center;
 
-.about-text p{
-    color:#5f6964;
+            background-repeat: no-repeat;
+        }
 
-    line-height:1.8;
 
-    margin-bottom:15px;
-}
+        /* LAPISAN AGAR TEKS LEBIH JELAS */
 
+        .hero::before {
+            content: "";
 
-/* =========================
-   KARTU
-========================= */
+            position: absolute;
 
-.cards{
-    display:grid;
+            inset: 0;
 
-    grid-template-columns:
-    repeat(3,1fr);
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(50,150,70,0.05),
+                    rgba(0,50,30,0.22)
+                );
 
-    gap:28px;
-}
+            z-index: 1;
+        }
 
-.card{
-    background:white;
 
-    border-radius:22px;
+        /* ================================
+           DAUN ANIMASI
+        ================================= */
 
-    overflow:hidden;
+        .falling-leaf {
+            position: absolute;
 
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.1);
+            top: -80px;
 
-    transition:.4s;
-}
+            z-index: 5;
 
-.card:hover{
-    transform:translateY(-9px);
-}
+            color: #d5ed69;
 
-.card img{
-    width:100%;
-    height:220px;
+            opacity: 0.9;
 
-    object-fit:cover;
+            pointer-events: none;
 
-    transition:.5s;
-}
+            animation: leafFall linear infinite;
+        }
 
-.card:hover img{
-    transform:scale(1.05);
-}
 
-.card-content{
-    padding:23px;
-}
+        .falling-leaf:nth-child(1) {
+            left: 3%;
+            font-size: 32px;
+            animation-duration: 8s;
+        }
 
-.card-content h3{
-    color:#1d6245;
-    margin-bottom:10px;
-}
+        .falling-leaf:nth-child(2) {
+            left: 10%;
+            font-size: 22px;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
 
-.card-content p{
-    color:#66716b;
-    line-height:1.6;
-    margin-bottom:14px;
-}
+        .falling-leaf:nth-child(3) {
+            left: 18%;
+            font-size: 29px;
+            animation-duration: 9s;
+            animation-delay: 4s;
+        }
 
+        .falling-leaf:nth-child(4) {
+            left: 27%;
+            font-size: 20px;
+            animation-duration: 12s;
+            animation-delay: 1s;
+        }
 
-/* =========================
-   FITUR
-========================= */
+        .falling-leaf:nth-child(5) {
+            left: 37%;
+            font-size: 34px;
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
 
-.features{
-    background:#e5eee7;
-}
+        .falling-leaf:nth-child(6) {
+            left: 46%;
+            font-size: 21px;
+            animation-duration: 13s;
+            animation-delay: 5s;
+        }
 
-.feature-grid{
-    display:grid;
+        .falling-leaf:nth-child(7) {
+            left: 55%;
+            font-size: 31px;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
 
-    grid-template-columns:
-    repeat(3,1fr);
+        .falling-leaf:nth-child(8) {
+            left: 65%;
+            font-size: 23px;
+            animation-duration: 12s;
+            animation-delay: 4s;
+        }
 
-    gap:28px;
-}
+        .falling-leaf:nth-child(9) {
+            left: 74%;
+            font-size: 35px;
+            animation-duration: 10s;
+            animation-delay: 1s;
+        }
 
-.feature{
-    background:white;
+        .falling-leaf:nth-child(10) {
+            left: 83%;
+            font-size: 21px;
+            animation-duration: 13s;
+            animation-delay: 3s;
+        }
 
-    padding:32px 22px;
+        .falling-leaf:nth-child(11) {
+            left: 91%;
+            font-size: 33px;
+            animation-duration: 9s;
+            animation-delay: 5s;
+        }
 
-    text-align:center;
+        .falling-leaf:nth-child(12) {
+            left: 97%;
+            font-size: 20px;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
 
-    border-radius:22px;
 
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.08);
+        @keyframes leafFall {
 
-    transition:.4s;
-}
+            0% {
+                transform:
+                    translateY(-100px)
+                    translateX(0)
+                    rotate(0deg);
+            }
 
-.feature:hover{
-    transform:translateY(-8px);
-}
+            30% {
+                transform:
+                    translateY(220px)
+                    translateX(55px)
+                    rotate(110deg);
+            }
 
-.feature-icon{
-    font-size:45px;
-    margin-bottom:15px;
+            60% {
+                transform:
+                    translateY(500px)
+                    translateX(-50px)
+                    rotate(220deg);
+            }
 
-    animation:melayang 3s ease-in-out infinite;
-}
+            100% {
+                transform:
+                    translateY(850px)
+                    translateX(45px)
+                    rotate(360deg);
+            }
 
-@keyframes melayang{
+        }
 
-    0%,100%{
-        transform:translateY(0);
-    }
 
-    50%{
-        transform:translateY(-8px);
-    }
+        /* ================================
+           HERO CONTENT
+        ================================= */
 
-}
+        .hero-content {
+            position: relative;
 
-.feature h3{
-    color:#1d6245;
-    margin-bottom:10px;
-}
+            z-index: 10;
 
-.feature p{
-    color:#66716b;
-    line-height:1.6;
-    margin-bottom:12px;
-}
+            max-width: 1000px;
 
+            margin-top: 20px;
+        }
 
-/* =========================
-   MOTTO
-========================= */
 
-.motto{
-    text-align:center;
+        .welcome {
+            font-family: 'Playfair Display', serif;
 
-    color:white;
+            font-style: italic;
 
-    background:
-    linear-gradient(
-        rgba(16,75,48,.88),
-        rgba(16,75,48,.92)
-    ),
-    url("profile1.jpg") center/cover;
-}
+            font-size: clamp(40px, 5vw, 65px);
 
-.motto h2{
-    font-size:38px;
-    margin-bottom:12px;
-}
+            line-height: 1.1;
 
-.motto p{
-    font-size:19px;
-    font-style:italic;
-}
+            text-shadow:
+                0 4px 12px rgba(0,0,0,0.4);
 
+            margin-bottom: 5px;
+        }
 
-/* =================================================
-   BUKU TAMU
-================================================= */
 
-.guest-section{
+        .hero-title {
+            font-family: 'DM Serif Display', serif;
 
-    position:relative;
+            font-size: clamp(52px, 7vw, 88px);
 
-    overflow:hidden;
+            line-height: 1;
 
-    padding:
-    100px 7%
-    120px;
+            letter-spacing: 1px;
 
-    background:
+            color: white;
 
-    linear-gradient(
-        rgba(244,249,245,.88),
-        rgba(244,249,245,.94)
-    ),
+            text-shadow:
+                0 5px 12px rgba(0,0,0,0.45);
 
-    url("profile1.jpg")
-    center/cover;
-}
+            margin-bottom: 25px;
+        }
 
 
-/* daun dekorasi */
+        .location {
+            font-size: 19px;
 
-.guest-section .dekorasi-kiri{
+            line-height: 1.6;
 
-    position:absolute;
+            font-weight: 500;
 
-    left:-10px;
-    top:30px;
+            color: white;
 
-    font-size:90px;
+            text-shadow:
+                0 2px 7px rgba(0,0,0,0.4);
 
-    opacity:.35;
+            margin-bottom: 25px;
+        }
 
-    transform:rotate(-25deg);
-}
 
-.guest-section .dekorasi-kanan{
+        /* ================================
+           GARIS
+        ================================= */
 
-    position:absolute;
+        .line-decoration {
+            display: flex;
 
-    right:-5px;
-    bottom:30px;
+            align-items: center;
 
-    font-size:95px;
+            justify-content: center;
 
-    opacity:.35;
+            gap: 17px;
 
-    transform:rotate(25deg);
-}
+            margin-bottom: 27px;
+        }
 
+        .line-decoration span {
+            width: 110px;
 
-/* tulisan dekorasi kiri */
+            height: 2px;
 
-.guest-section .kata-kiri{
+            background: #f1d878;
+        }
 
-    position:absolute;
+        .line-decoration i {
+            color: #dcef76;
 
-    left:4%;
-    top:230px;
+            font-size: 22px;
+        }
 
-    width:150px;
 
-    text-align:center;
+        /* ================================
+           DESKRIPSI
+        ================================= */
 
-    color:#175d43;
+        .hero-description {
+            max-width: 700px;
 
-    font-family:
-    "Brush Script MT",
-    "Segoe Script",
-    cursive;
+            margin: auto;
 
-    font-size:24px;
+            font-family: 'Playfair Display', serif;
 
-    font-weight:bold;
+            font-style: italic;
 
-    transform:rotate(-7deg);
-}
+            font-size: 17px;
 
+            line-height: 1.8;
 
-/* tulisan dekorasi kanan */
+            color: white;
 
-.guest-section .kata-kanan{
+            text-shadow:
+                0 2px 7px rgba(0,0,0,0.4);
+        }
 
-    position:absolute;
 
-    right:3%;
-    top:170px;
+        /* ================================
+           BUTTON
+        ================================= */
 
-    width:160px;
+        .buttons {
+            display: flex;
 
-    text-align:center;
+            justify-content: center;
 
-    color:#175d43;
+            gap: 25px;
 
-    font-family:
-    "Brush Script MT",
-    "Segoe Script",
-    cursive;
+            flex-wrap: wrap;
 
-    font-size:23px;
+            margin-top: 35px;
+        }
 
-    font-weight:bold;
 
-    transform:rotate(7deg);
-}
+        .btn {
+            min-width: 210px;
 
+            display: flex;
 
-/* kartu buku tamu */
+            align-items: center;
 
-.guest-box{
+            justify-content: center;
 
-    position:relative;
+            gap: 11px;
 
-    z-index:5;
+            padding: 16px 27px;
 
-    max-width:860px;
+            border-radius: 35px;
 
-    margin:auto;
+            text-decoration: none;
 
-    padding:
-    48px 50px;
+            font-size: 15px;
 
-    background:
-    rgba(255,255,255,.96);
+            font-weight: 700;
 
-    border-radius:28px;
+            transition: 0.3s;
+        }
 
-    box-shadow:
-    0 18px 45px
-    rgba(18,75,52,.18);
-}
 
+        .btn-primary {
+            background: #f2d778;
 
-/* lingkaran ikon */
+            color: #145334;
 
-.guest-icon{
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.2);
+        }
 
-    width:78px;
-    height:78px;
+        .btn-primary:hover {
+            transform: translateY(-5px);
 
-    margin:
-    -82px auto
-    18px;
+            background: #f8e497;
+        }
 
-    display:flex;
 
-    align-items:center;
-    justify-content:center;
+        .btn-secondary {
+            color: white;
 
-    background:#145e43;
+            background: rgba(3,70,43,0.38);
 
-    color:white;
+            border: 2px solid white;
+        }
 
-    border-radius:50%;
+        .btn-secondary:hover {
+            background: white;
 
-    font-size:36px;
+            color: #125337;
 
-    box-shadow:
-    0 8px 20px
-    rgba(0,0,0,.15);
-}
+            transform: translateY(-5px);
+        }
 
 
-/* judul buku tamu */
+        /* ================================
+           WAVE
+        ================================= */
 
-.guest-title{
+        .wave {
+            position: absolute;
 
-    text-align:center;
+            bottom: -1px;
 
-    margin-bottom:5px;
+            left: 0;
 
-    color:#176247;
+            width: 100%;
 
-    font-family:
-    "Brush Script MT",
-    "Segoe Script",
-    cursive;
+            height: 105px;
 
-    font-size:48px;
+            z-index: 20;
+        }
 
-    font-weight:bold;
-}
+        .wave svg {
+            width: 100%;
 
-.guest-subtitle{
+            height: 100%;
+        }
 
-    text-align:center;
 
-    color:#245d4d;
+        /* ================================
+           TENTANG MAKTANGGUK
+        ================================= */
 
-    font-size:27px;
+        .about {
+            position: relative;
 
-    font-weight:bold;
+            padding: 90px 8% 100px;
 
-    margin-bottom:10px;
-}
+            background: #f8f7f0;
 
-.guest-description{
+            overflow: hidden;
+        }
 
-    max-width:650px;
 
-    margin:
-    0 auto
-    30px;
+        .about-container {
 
-    text-align:center;
+            max-width: 1200px;
 
-    color:#61766e;
+            margin: auto;
 
-    line-height:1.6;
+            display: grid;
 
-    font-size:16px;
-}
+            /*
+              GAMBAR KIRI
+              TEKS KANAN
+            */
 
+            grid-template-columns: 0.95fr 1.05fr;
 
-/* form */
+            gap: 40px;
 
-.form-group{
+            align-items: center;
+        }
 
-    position:relative;
 
-    margin-bottom:20px;
+        /* ================================
+           FOTO KIRI
+        ================================= */
 
-    padding:
-    11px
-    17px
-    14px
-    76px;
+        .about-image {
+            order: 1;
 
-    border:
-    2px solid
-    #c9ddd4;
+            position: relative;
+        }
 
-    background:#fcfefd;
+        .about-image img {
 
-    border-radius:17px;
+            width: 100%;
 
-    transition:.3s;
-}
+            height: 370px;
 
-.form-group:focus-within{
+            object-fit: cover;
 
-    border-color:#328761;
+            display: block;
 
-    box-shadow:
-    0 5px 18px
-    rgba(50,135,97,.12);
-}
+            border-radius: 22px;
 
+            box-shadow:
+                0 15px 35px rgba(25,80,52,0.18);
 
-/* ikon */
+            transition: 0.4s;
+        }
 
-.form-icon{
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
 
-    position:absolute;
 
-    left:12px;
-    top:12px;
+        /* ================================
+           TEKS KANAN
+        ================================= */
 
-    width:52px;
-    height:52px;
+        .about-content {
+            order: 2;
+        }
 
-    display:flex;
 
-    align-items:center;
-    justify-content:center;
+        .section-decoration {
 
-    border-radius:14px;
+            display: flex;
 
-    background:#dcefe5;
+            align-items: center;
 
-    font-size:25px;
-}
+            gap: 17px;
 
+            margin-bottom: 17px;
+        }
 
-/* label */
+        .section-decoration i {
 
-.form-group label{
+            color: #14704a;
 
-    display:block;
+            font-size: 27px;
+        }
 
-    margin-bottom:7px;
+        .section-decoration span {
 
-    color:#225d4a;
+            width: 65px;
 
-    font-size:16px;
+            height: 4px;
 
-    font-weight:bold;
-}
+            background: #14704a;
 
+            border-radius: 10px;
+        }
 
-/* input */
 
-.form-group input,
-.form-group textarea{
+        .about h2 {
 
-    width:100%;
+            font-family: 'DM Serif Display', serif;
 
-    padding:11px 12px;
+            font-size: clamp(38px, 4vw, 50px);
 
-    border:
-    1px solid
-    #d4ded9;
+            color: #12603e;
 
-    border-radius:10px;
+            margin-bottom: 10px;
+        }
 
-    outline:none;
 
-    background:white;
+        .subtitle {
 
-    font-family:Arial,sans-serif;
+            font-family: 'Playfair Display', serif;
 
-    font-size:15px;
+            font-style: italic;
 
-    color:#334a41;
+            font-size: 19px;
 
-    transition:.3s;
-}
+            color: #637b6d;
 
-.form-group input:focus,
-.form-group textarea:focus{
+            margin-bottom: 27px;
+        }
 
-    border-color:#4b9b72;
 
-    box-shadow:
-    0 0 0 3px
-    rgba(75,155,114,.1);
-}
+        .about-text {
 
-.form-group textarea{
+            font-size: 15px;
 
-    min-height:105px;
+            line-height: 1.9;
 
-    resize:vertical;
-}
+            color: #536c5e;
 
+            margin-bottom: 16px;
+        }
 
-/* tombol */
 
-.submit-area{
+        /* ================================
+           DAUN DI BAGIAN TENTANG
+        ================================= */
 
-    margin-top:24px;
-}
+        .about-leaf {
 
-.submit-area button{
+            position: absolute;
 
-    width:100%;
+            color: #7eae4b;
 
-    margin:0;
+            opacity: 0.35;
 
-    padding:17px;
+            font-size: 30px;
 
-    border:none;
+            animation: aboutLeaf 6s ease-in-out infinite;
+        }
 
-    border-radius:15px;
+        .about-leaf.one {
 
-    background:
-    linear-gradient(
-        135deg,
-        #24945f,
-        #12613f
-    );
+            top: 70px;
 
-    color:white;
+            right: 45%;
+        }
 
-    font-size:18px;
+        .about-leaf.two {
 
-    font-weight:bold;
+            bottom: 70px;
 
-    box-shadow:
-    0 8px 18px
-    rgba(20,100,65,.22);
+            right: 7%;
 
-    cursor:pointer;
+            animation-delay: 2s;
+        }
 
-    transition:.3s;
-}
 
-.submit-area button:hover{
+        @keyframes aboutLeaf {
 
-    transform:translateY(-3px);
+            0%,100% {
 
-    box-shadow:
-    0 12px 25px
-    rgba(20,100,65,.28);
-}
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
 
-.submit-area button:disabled{
+            50% {
 
-    opacity:.7;
+                transform:
+                    translateY(-18px)
+                    rotate(25deg);
+            }
 
-    cursor:not-allowed;
+        }
 
-    transform:none;
-}
 
-#status{
+        /* ================================
+           RESPONSIVE HP
+        ================================= */
 
-    text-align:center;
+        @media (max-width: 1000px) {
 
-    margin-top:17px;
+            .navbar {
+                padding: 0 25px;
+            }
 
-    font-weight:bold;
+            .nav-menu {
+                gap: 15px;
+            }
 
-    font-size:15px;
-}
+            .nav-menu a {
+                font-size: 13px;
+            }
 
+            .logo {
+                font-size: 22px;
+            }
 
-/* =========================
-   CTA
-========================= */
+        }
 
-.cta{
 
-    text-align:center;
+        @media (max-width: 750px) {
 
-    background:#e5eee7;
-}
+            .navbar {
 
-.cta h2{
+                top: 15px;
 
-    color:#1d6245;
+                width: 94%;
 
-    font-size:32px;
+                left: 3%;
 
-    margin-bottom:12px;
-}
+                height: 65px;
 
-.cta p{
+                padding: 0 20px;
+            }
 
-    color:#66716b;
+            .logo {
+                font-size: 19px;
+            }
 
-    margin-bottom:20px;
-}
+            .logo i {
+                font-size: 25px;
+            }
 
+            .nav-menu {
+                display: none;
+            }
 
-/* =========================
-   FOOTER
-========================= */
 
-footer{
+            .hero {
 
-    background:#103b29;
+                min-height: 720px;
 
-    color:white;
+                padding-top: 120px;
+            }
 
-    text-align:center;
+            .welcome {
+                font-size: 40px;
+            }
 
-    padding:35px 20px;
-}
+            .hero-title {
+                font-size: 53px;
+            }
 
-footer p{
+            .location {
+                font-size: 15px;
+            }
 
-    margin:8px;
+            .hero-description {
+                font-size: 15px;
+            }
 
-    color:#dce5df;
-}
 
+            .buttons {
+                gap: 12px;
+            }
 
-/* =========================
-   ANIMASI SCROLL
-========================= */
+            .btn {
+                min-width: 190px;
 
-.reveal{
+                padding: 14px 20px;
+            }
 
-    opacity:0;
 
-    transform:translateY(35px);
+            /* Tentang */
 
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
+            .about {
 
-.reveal.show{
+                padding: 70px 6%;
+            }
 
-    opacity:1;
+            .about-container {
 
-    transform:translateY(0);
-}
+                grid-template-columns: 1fr;
 
+                gap: 35px;
+            }
 
-/* =========================
-   HP
-========================= */
+            .about-image {
 
-@media(max-width:900px){
+                order: 1;
+            }
 
-    nav{
+            .about-content {
 
-        width:95%;
+                order: 2;
+            }
 
-        flex-direction:column;
+            .about-image img {
 
-        gap:13px;
+                height: 280px;
+            }
 
-        border-radius:25px;
-    }
+        }
 
-    nav ul{
+    </style>
 
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-        gap:12px;
-    }
-
-    .hero{
-
-        margin-top:-100px;
-
-        min-height:570px;
-    }
-
-    .hero h1{
-
-        font-size:39px;
-    }
-
-    .hero p{
-
-        font-size:16px;
-    }
-
-    .about{
-
-        grid-template-columns:1fr;
-    }
-
-    .cards{
-
-        grid-template-columns:1fr;
-    }
-
-    .feature-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .guest-section .kata-kiri,
-    .guest-section .kata-kanan{
-
-        display:none;
-    }
-
-    .guest-box{
-
-        padding:
-        45px 20px 30px;
-    }
-
-    .guest-title{
-
-        font-size:38px;
-    }
-
-    .guest-subtitle{
-
-        font-size:22px;
-    }
-
-    .form-group{
-
-        padding-left:65px;
-    }
-
-    .form-icon{
-
-        width:45px;
-        height:45px;
-
-        font-size:21px;
-    }
-
-}
-
-
-/* =========================
-   TABLET / HP KECIL
-========================= */
-
-@media(max-width:500px){
-
-    .logo{
-
-        font-size:18px;
-    }
-
-    nav a{
-
-        font-size:12px;
-    }
-
-    .hero h1{
-
-        font-size:33px;
-    }
-
-    .section-title h2{
-
-        font-size:28px;
-    }
-
-    .motto h2{
-
-        font-size:29px;
-    }
-
-    .guest-box{
-
-        border-radius:20px;
-    }
-
-}
-
-</style>
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     ANIMASI DAUN
-========================= -->
+    <!-- =====================================
+         NAVBAR
+    ====================================== -->
 
-<div class="leaves">
-
-    <div class="leaf">🍃</div>
-    <div class="leaf">🌿</div>
-    <div class="leaf">🍃</div>
-    <div class="leaf">🌿</div>
-    <div class="leaf">🍃</div>
-
-</div>
+    <nav class="navbar">
 
 
-<!-- =========================
-     NAVBAR
-========================= -->
+        <a href="index.html" class="logo">
 
-<nav>
+            <i class="fa-solid fa-leaf"></i>
 
-    <div class="logo">
-        🌿 Desa Maktangguk
-    </div>
-
-    <ul>
-
-        <li>
-            <a href="index.html">
-                Beranda
-            </a>
-        </li>
-
-        <li>
-            <a href="profil.html">
-                Profil
-            </a>
-        </li>
-
-        <li>
-            <a href="sejarah.html">
-                Sejarah
-            </a>
-        </li>
-
-        <li>
-            <a href="potensi.html">
-                Potensi
-            </a>
-        </li>
-
-        <li>
-            <a href="galeri.html">
-                Galeri
-            </a>
-        </li>
-
-    </ul>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <h1>
-            Selamat Datang di
             Desa Maktangguk
-        </h1>
 
-        <p>
-            Kecamatan Tebas, Kabupaten Sambas,
-            Kalimantan Barat
-        </p>
-
-        <a
-            href="#sekilas"
-            class="btn"
-        >
-            🌿 Jelajahi Desa
         </a>
 
-        <a
-            href="profil.html"
-            class="btn"
-        >
-            👤 Lihat Profil
-        </a>
 
-    </div>
-
-</section>
+        <ul class="nav-menu">
 
 
-<!-- =========================
-     SEKILAS
-========================= -->
+            <li>
 
-<section
-    id="sekilas"
-    class="reveal"
->
+                <a href="index.html" class="active">
 
-    <div class="section-title">
+                    <i class="fa-solid fa-house"></i>
 
-        <h2>
-            Sekilas Tentang Maktangguk
-        </h2>
+                    Beranda
 
-        <p>
-            Mengenal Desa Maktangguk lebih dekat
-        </p>
-
-    </div>
-
-
-    <div class="about">
-
-        <img
-            src="profile1.jpg"
-            alt="Desa Maktangguk"
-        >
-
-
-        <div class="about-text">
-
-            <h3>
-                Maktangguk Bersatu,
-                Maktangguk Maju
-            </h3>
-
-            <p>
-                Desa Maktangguk merupakan bagian
-                dari Kecamatan Tebas, Kabupaten
-                Sambas, Kalimantan Barat.
-            </p>
-
-            <p>
-                Website ini dibuat sebagai media
-                informasi dan promosi Desa
-                Maktangguk agar masyarakat dapat
-                mengenal desa dengan lebih mudah.
-            </p>
-
-            <a
-                href="profil.html"
-                class="btn"
-            >
-                Baca Profil
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     INFORMASI
-========================= -->
-
-<section class="reveal">
-
-    <div class="section-title">
-
-        <h2>
-            Informasi Desa
-        </h2>
-
-        <p>
-            Jelajahi informasi Desa Maktangguk
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <img
-                src="profile2.jpg"
-                alt="Kantor Desa Maktangguk"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    🏢 Kantor Desa
-                </h3>
-
-                <p>
-                    Mengenal pusat pelayanan dan
-                    pemerintahan Desa Maktangguk.
-                </p>
-
-                <a
-                    href="profil.html"
-                    class="btn"
-                >
-                    Selengkapnya
                 </a>
 
-            </div>
-
-        </div>
+            </li>
 
 
-        <div class="card">
+            <li>
 
-            <img
-                src="profile3.jpg"
-                alt="Kegiatan Masyarakat"
-            >
+                <a href="profil.html">
 
-            <div class="card-content">
+                    <i class="fa-solid fa-user"></i>
 
-                <h3>
-                    🤝 Kegiatan Masyarakat
-                </h3>
+                    Profil
 
-                <p>
-                    Melihat kegiatan dan kehidupan
-                    masyarakat Desa Maktangguk.
-                </p>
-
-                <a
-                    href="galeri.html"
-                    class="btn"
-                >
-                    Lihat Galeri
                 </a>
 
-            </div>
-
-        </div>
+            </li>
 
 
-        <div class="card">
+            <li>
 
-            <img
-                src="profile5.jpg"
-                alt="Potensi Perkebunan"
-            >
+                <a href="sejarah.html">
 
-            <div class="card-content">
+                    <i class="fa-solid fa-book-open"></i>
 
-                <h3>
-                    🌴 Potensi Desa
-                </h3>
+                    Sejarah
 
-                <p>
-                    Mengenal potensi perkebunan dan
-                    sumber daya desa.
-                </p>
-
-                <a
-                    href="potensi.html"
-                    class="btn"
-                >
-                    Lihat Potensi
                 </a>
 
-            </div>
+            </li>
 
+
+            <li>
+
+                <a href="potensi.html">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                    Potensi
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="galeri.html">
+
+                    <i class="fa-regular fa-image"></i>
+
+                    Galeri
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="kontak.html">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Kontak
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <section class="hero">
+
+
+        <!-- DAUN JATUH -->
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="falling-leaf">
+            <i class="fa-solid fa-leaf"></i>
         </div>
 
 
-    </div>
 
-</section>
+        <!-- ISI HERO -->
 
-
-<!-- =========================
-     FITUR
-========================= -->
-
-<section class="features reveal">
-
-    <div class="section-title">
-
-        <h2>
-            Jelajahi Website Desa
-        </h2>
-
-        <p>
-            Informasi Desa Maktangguk
-        </p>
-
-    </div>
+        <div class="hero-content">
 
 
-    <div class="feature-grid">
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                📖
+            <div class="welcome">
+                Selamat Datang di
             </div>
 
-            <h3>
-                Sejarah
-            </h3>
 
-            <p>
-                Pelajari sejarah Desa Maktangguk.
+            <h1 class="hero-title">
+                Desa Maktangguk
+            </h1>
+
+
+            <p class="location">
+
+                Kecamatan Tebas, Kabupaten Sambas,<br>
+                Kalimantan Barat
+
             </p>
 
-            <a
-                href="sejarah.html"
-                class="btn"
-            >
-                Buka
-            </a>
 
-        </div>
+            <div class="line-decoration">
 
+                <span></span>
 
-        <div class="feature">
+                <i class="fa-solid fa-leaf"></i>
 
-            <div class="feature-icon">
-                🖼️
+                <span></span>
+
             </div>
 
-            <h3>
-                Galeri
-            </h3>
 
-            <p>
-                Lihat dokumentasi dan suasana desa.
+            <p class="hero-description">
+
+                Bersama membangun desa yang lebih maju,<br>
+                dengan potensi alam dan masyarakat yang penuh semangat.
+
             </p>
 
-            <a
-                href="galeri.html"
-                class="btn"
-            >
-                Buka
-            </a>
 
-        </div>
+            <div class="buttons">
 
 
-        <div class="feature">
+                <a href="#tentang"
+                   class="btn btn-primary">
 
-            <div class="feature-icon">
-                👤
+                    <i class="fa-solid fa-leaf"></i>
+
+                    Jelajahi Desa
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
+                <a href="profil.html"
+                   class="btn btn-secondary">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Lihat Profil
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
             </div>
 
-            <h3>
-                Profil Desa
-            </h3>
-
-            <p>
-                Kenali identitas Desa Maktangguk.
-            </p>
-
-            <a
-                href="profil.html"
-                class="btn"
-            >
-                Buka
-            </a>
 
         </div>
 
 
-    </div>
 
-</section>
+        <!-- WAVE -->
 
+        <div class="wave">
 
-<!-- =========================
-     MOTTO
-========================= -->
+            <svg
+                viewBox="0 0 1440 150"
+                preserveAspectRatio="none">
 
-<section class="motto reveal">
+                <path
+                    d="
+                    M0,70
+                    C180,125 300,105 460,125
+                    C620,145 730,75 900,100
+                    C1080,130 1190,80 1440,60
+                    L1440,150
+                    L0,150
+                    Z
+                    "
+                    fill="#f8f7f0">
+                </path>
 
-    <h2>
-        Maktangguk Bersatu,
-        Maktangguk Maju
-    </h2>
+            </svg>
 
-    <p>
-        Bersama membangun desa yang lebih maju.
-    </p>
+        </div>
 
-</section>
-
-
-<!-- =================================================
-     BUKU TAMU
-================================================= -->
-
-<section class="guest-section reveal">
-
-
-    <!-- dekorasi -->
-
-    <div class="dekorasi-kiri">
-        🌿
-    </div>
-
-    <div class="dekorasi-kanan">
-        🍃
-    </div>
+    </section>
 
 
-    <div class="kata-kiri">
-        Suara Anda
-        Berarti untuk
-        Kami
-    </div>
+
+    <!-- =====================================
+         TENTANG MAKTANGGUK
+    ====================================== -->
+
+    <section
+        class="about"
+        id="tentang">
 
 
-    <div class="kata-kanan">
-        Bersama
-        Membangun
-        Desa Maktangguk
-        yang Lebih Baik
-    </div>
+        <!-- DAUN KECIL -->
 
+        <div class="about-leaf one">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
 
-    <!-- kartu -->
-
-    <div class="guest-box">
-
-
-        <div class="guest-icon">
-            📝
+        <div class="about-leaf two">
+            <i class="fa-solid fa-leaf"></i>
         </div>
 
 
-        <div class="guest-title">
-            Buku Tamu
-        </div>
+
+        <div class="about-container">
 
 
-        <div class="guest-subtitle">
-            Desa Maktangguk
-        </div>
+            <!-- FOTO DI KIRI -->
 
+            <div class="about-image">
 
-        <p class="guest-description">
-            Silakan isi pesan atau saran Anda.
-            Kami sangat menghargai setiap
-            masukan dari Anda.
-        </p>
+                <img
+                    src="profile2.jpg"
+                    alt="Kantor Desa Maktangguk">
 
-
-        <!-- NAMA -->
-
-        <div class="form-group">
-
-            <div class="form-icon">
-                👤
             </div>
 
-            <label for="nama">
-                Nama
-            </label>
-
-            <input
-                type="text"
-                id="nama"
-                placeholder="Masukkan nama Anda..."
-                required
-            >
-
-        </div>
 
 
-        <!-- ASAL -->
+            <!-- TEKS DI KANAN -->
 
-        <div class="form-group">
+            <div class="about-content">
 
-            <div class="form-icon">
-                📍
+
+                <div class="section-decoration">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    <span></span>
+
+                </div>
+
+
+                <h2>
+                    Tentang Maktangguk
+                </h2>
+
+
+                <p class="subtitle">
+
+                    Mengenal Desa Maktangguk lebih dekat
+
+                </p>
+
+
+                <p class="about-text">
+
+                    Desa Maktangguk merupakan salah satu desa
+                    yang berada di Kecamatan Tebas, Kabupaten
+                    Sambas, Kalimantan Barat.
+
+                </p>
+
+
+                <p class="about-text">
+
+                    Desa Maktangguk memiliki kehidupan masyarakat
+                    yang beragam serta potensi alam dan kegiatan
+                    masyarakat yang menjadi bagian penting dari
+                    kehidupan desa.
+
+                </p>
+
+
             </div>
 
-            <label for="asal">
-                Asal / Dusun
-            </label>
-
-            <input
-                type="text"
-                id="asal"
-                placeholder="Contoh: Dusun Maktangguk, Desa Maktangguk..."
-                required
-            >
 
         </div>
 
-
-        <!-- PESAN -->
-
-        <div class="form-group">
-
-            <div class="form-icon">
-                💬
-            </div>
-
-            <label for="pesan">
-                Pesan / Saran
-            </label>
-
-            <textarea
-                id="pesan"
-                placeholder="Tulis pesan atau saran Anda di sini..."
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- TOMBOL -->
-
-        <div class="submit-area">
-
-            <button
-                type="button"
-                id="submitButton"
-                onclick="kirimPesan()"
-            >
-                📤 &nbsp; Kirim Pesan
-            </button>
-
-        </div>
-
-
-        <div id="status"></div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="cta reveal">
-
-    <h2>
-        Terima Kasih Telah Berkunjung
-    </h2>
-
-    <p>
-        Mari bersama mengenal dan memajukan
-        Desa Maktangguk.
-    </p>
-
-    <a
-        href="profil.html"
-        class="btn"
-    >
-        🌿 Tentang Desa
-    </a>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <p>
-        🌿 Website Desa Maktangguk
-    </p>
-
-    <p>
-        Kecamatan Tebas, Kabupaten Sambas,
-        Kalimantan Barat
-    </p>
-
-    <p>
-        © 2026 Desa Maktangguk
-    </p>
-
-</footer>
-
-
-<!-- =================================================
-     JAVASCRIPT
-================================================= -->
-
-<script>
-
-
-/* =========================
-   ANIMASI SCROLL
-========================= */
-
-const elements =
-document.querySelectorAll(".reveal");
-
-
-const observer =
-new IntersectionObserver(
-
-    function(entries){
-
-        entries.forEach(
-            function(entry){
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("show");
-
-                }
-
-            }
-        );
-
-    },
-
-    {
-        threshold:.12
-    }
-
-);
-
-
-elements.forEach(
-    function(element){
-
-        observer.observe(element);
-
-    }
-);
-
-
-/* =========================
-   DATABASE GOOGLE SHEET
-========================= */
-
-const WEB_APP_URL = https://script.google.com/macros/s/AKfycbwibZdqvX7rfosqfJSNRTqnLtPLCoAj8uUH9lhiKZO60LtNKtYJm_LzIjuHDEfSGCJ2/exec
-
-
-async function kirimPesan(){
-
-    const nama =
-    document.getElementById("nama").value.trim();
-
-    const asal =
-    document.getElementById("asal").value.trim();
-
-    const pesan =
-    document.getElementById("pesan").value.trim();
-
-    const status =
-    document.getElementById("status");
-
-    const button =
-    document.getElementById("submitButton");
-
-
-    /* cek form */
-
-    if(
-        !nama ||
-        !asal ||
-        !pesan
-    ){
-
-        status.textContent =
-        "⚠️ Semua kolom harus diisi.";
-
-        status.style.color =
-        "#c0392b";
-
-        return;
-
-    }
-
-
-    /* tombol loading */
-
-    button.disabled = true;
-
-    button.textContent =
-    "⏳ Mengirim pesan...";
-
-    status.textContent =
-    "Sedang mengirim pesan...";
-
-    status.style.color =
-    "#687a72";
-
-
-    try{
-
-        await fetch(
-
-            WEB_APP_URL,
-
-            {
-
-                method:"POST",
-
-                mode:"no-cors",
-
-                headers:{
-                    "Content-Type":
-                    "text/plain;charset=utf-8"
-                },
-
-                body:JSON.stringify({
-
-                    nama:nama,
-
-                    asal:asal,
-
-                    pesan:pesan
-
-                })
-
-            }
-
-        );
-
-
-        /* berhasil */
-
-        status.textContent =
-        "✅ Pesan berhasil dikirim. Terima kasih!";
-
-        status.style.color =
-        "#21784d";
-
-
-        /* kosongkan form */
-
-        document.getElementById("nama").value = "";
-
-        document.getElementById("asal").value = "";
-
-        document.getElementById("pesan").value = "";
-
-
-    }
-
-    catch(error){
-
-        status.textContent =
-        "❌ Gagal mengirim pesan. Silakan coba lagi.";
-
-        status.style.color =
-        "#c0392b";
-
-    }
-
-
-    button.disabled = false;
-
-    button.textContent =
-    "📤  Kirim Pesan";
-
-}
-
-</script>
+    </section>
 
 
 </body>
+
 </html>
