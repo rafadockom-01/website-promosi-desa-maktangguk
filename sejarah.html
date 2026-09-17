@@ -3,239 +3,1061 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sejarah | Desa Maktangguk</title>
+
+<title>Sejarah Desa Maktangguk</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    background:#f3fff5;
-    color:#12351d;
+    font-family:'Montserrat',sans-serif;
+    background:#f8f7f0;
+    color:#315b47;
 }
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:999;
-    padding:16px 7%;
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:absolute;
+    top:30px;
+    left:5%;
+    width:90%;
+    height:80px;
+
+    padding:0 40px;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:#006b2d;
+    justify-content:space-between;
+
+    background:rgba(3,65,40,.78);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    z-index:100;
 }
+
 .logo{
-    color:white;
-    font-size:21px;
-    font-weight:bold;
-}
-nav ul{
     display:flex;
-    list-style:none;
-    gap:7px;
-}
-nav a{
+    align-items:center;
+    gap:12px;
+
     color:white;
     text-decoration:none;
-    padding:9px 13px;
-    border-radius:10px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:27px;
+    font-weight:700;
 }
-nav a:hover{
-    background:#65f77b;
-    color:#064d20;
+
+.logo i{
+    color:#d9ef70;
+    font-size:32px;
 }
-.hero{
-    padding:145px 8% 75px;
-    background:linear-gradient(135deg,#006b2d,#48e86d);
-    color:white;
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:28px;
+
+    list-style:none;
 }
-.hero h1{
-    font-size:55px;
-    margin-bottom:15px;
-}
-.hero p{
-    font-size:18px;
-}
-section{
-    padding:80px 8%;
-}
-.container{
-    max-width:1050px;
-    margin:auto;
-}
-.box{
-    background:white;
-    padding:35px;
-    border-radius:27px;
-    box-shadow:0 12px 35px rgba(0,100,40,.10);
-    margin-bottom:25px;
-}
-.box h2{
-    color:#08772f;
-    margin-bottom:15px;
-}
-.box p{
-    color:#587062;
-    line-height:1.8;
-}
-.box img{
-    width:100%;
-    height:430px;
-    object-fit:cover;
-    border-radius:23px;
-    margin-bottom:25px;
-}
-.quote{
-    background:#e2ffe8;
-    border-left:5px solid #39e75f;
-    padding:20px;
-    margin-top:20px;
-    border-radius:10px;
-    line-height:1.7;
-}
-.timeline{
-    border-left:4px solid #39e75f;
-    padding-left:30px;
-    margin-top:25px;
-}
-.item{
-    margin-bottom:35px;
+
+.nav-menu a{
     position:relative;
-}
-.item:before{
-    content:"";
-    width:15px;
-    height:15px;
-    border-radius:50%;
-    background:#39e75f;
-    position:absolute;
-    left:-40px;
-    top:5px;
-}
-.item h3{
-    color:#08772f;
-    margin-bottom:8px;
-}
-footer{
-    background:#063d1c;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:28px 0;
+
     color:white;
-    text-align:center;
-    padding:30px;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:500;
+
+    transition:.3s;
 }
-@media(max-width:800px){
-    nav ul{display:none}
-    .hero h1{
-        font-size:43px;
+
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:#f1d878;
+}
+
+.nav-menu a.active::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:8px;
+
+    height:4px;
+
+    background:#f1d878;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.history-hero{
+    position:relative;
+
+    min-height:500px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:140px 20px 90px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(4,77,43,.90),
+            rgba(4,77,43,.97)
+        );
+
+    overflow:hidden;
+}
+
+.history-hero h1{
+    position:relative;
+    z-index:5;
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:clamp(48px,7vw,76px);
+
+    margin-bottom:18px;
+}
+
+.history-hero p{
+    position:relative;
+    z-index:5;
+
+    font-family:'Playfair Display',serif;
+
+    font-style:italic;
+
+    font-size:20px;
+
+    color:#f5edc9;
+}
+
+
+/* =========================
+   DAUN
+========================= */
+
+.leaf{
+    position:absolute;
+
+    top:-60px;
+
+    color:#d9ed70;
+
+    opacity:.85;
+
+    animation:fall linear infinite;
+
+    z-index:3;
+}
+
+.leaf:nth-child(1){
+    left:7%;
+    font-size:30px;
+    animation-duration:8s;
+}
+
+.leaf:nth-child(2){
+    left:20%;
+    font-size:21px;
+    animation-duration:11s;
+    animation-delay:2s;
+}
+
+.leaf:nth-child(3){
+    left:35%;
+    font-size:28px;
+    animation-duration:9s;
+    animation-delay:3s;
+}
+
+.leaf:nth-child(4){
+    left:51%;
+    font-size:22px;
+    animation-duration:12s;
+    animation-delay:1s;
+}
+
+.leaf:nth-child(5){
+    left:68%;
+    font-size:32px;
+    animation-duration:10s;
+    animation-delay:4s;
+}
+
+.leaf:nth-child(6){
+    left:84%;
+    font-size:24px;
+    animation-duration:13s;
+    animation-delay:2s;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:translateY(-80px) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(300px) translateX(60px) rotate(180deg);
+    }
+
+    100%{
+        transform:translateY(600px) translateX(-40px) rotate(360deg);
     }
 }
+
+
+/* =========================
+   BAGIAN SEJARAH
+========================= */
+
+.history-section{
+    padding:90px 0;
+}
+
+.container{
+    width:88%;
+    max-width:1000px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-family:'DM Serif Display',serif;
+
+    font-size:48px;
+
+    color:#12603e;
+
+    margin-bottom:12px;
+}
+
+.section-title p{
+    font-family:'Playfair Display',serif;
+
+    font-style:italic;
+
+    font-size:18px;
+
+    color:#7b907f;
+}
+
+
+/* =========================
+   KARTU SEJARAH
+========================= */
+
+.history-card{
+    position:relative;
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 12px 35px rgba(30,80,55,.10);
+
+    border:1px solid #e5eadf;
+
+    overflow:hidden;
+}
+
+.history-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:7px;
+    height:100%;
+
+    background:#237448;
+}
+
+.history-card h3{
+    font-family:'Playfair Display',serif;
+
+    font-size:29px;
+
+    color:#145536;
+
+    margin-bottom:18px;
+
+    margin-top:10px;
+}
+
+.history-card p{
+    font-size:15px;
+
+    line-height:2;
+
+    color:#536c5e;
+
+    margin-bottom:25px;
+
+    text-align:justify;
+}
+
+
+/* =========================
+   INFO CARDS
+========================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin-top:40px;
+}
+
+.info-card{
+    background:#eaf1df;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border:1px solid #dfe8d2;
+
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 12px 25px rgba(30,80,55,.10);
+}
+
+.info-card i{
+    font-size:29px;
+
+    color:#237448;
+
+    margin-bottom:15px;
+}
+
+.info-card h3{
+    font-family:'Playfair Display',serif;
+
+    color:#145536;
+
+    font-size:22px;
+
+    margin-bottom:12px;
+}
+
+.info-card p{
+    color:#61766a;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+
+/* =========================
+   PENUTUP
+========================= */
+
+.history-ending{
+    margin-top:50px;
+
+    padding:42px;
+
+    text-align:center;
+
+    background:#064d2f;
+
+    color:white;
+
+    border-radius:25px;
+}
+
+.history-ending i{
+    font-size:35px;
+
+    color:#d9ef70;
+
+    margin-bottom:18px;
+}
+
+.history-ending h3{
+    font-family:'DM Serif Display',serif;
+
+    font-size:32px;
+
+    margin-bottom:12px;
+}
+
+.history-ending p{
+    font-family:'Playfair Display',serif;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    color:#edf3e7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#064d2f;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    margin-top:90px;
+}
+
+.footer p{
+    margin:6px 0;
+
+    font-size:14px;
+}
+
+.footer p:first-child{
+    font-weight:600;
+
+    font-size:16px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        top:15px;
+        left:3%;
+
+        width:94%;
+
+        height:65px;
+
+        padding:0 20px;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .logo i{
+        font-size:23px;
+    }
+
+    .nav-menu{
+        display:none;
+    }
+
+    .history-hero{
+        min-height:470px;
+    }
+
+    .history-hero h1{
+        font-size:48px;
+    }
+
+    .history-card{
+        padding:32px 25px;
+    }
+
+    .history-card p{
+        text-align:left;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<nav>
-<div class="logo">🌿 Desa Maktangguk</div>
 
-<ul>
-<li><a href="index.html">Beranda</a></li>
-<li><a href="profil.html">Profil</a></li>
-<li><a href="sejarah.html">Sejarah</a></li>
-<li><a href="potensi.html">Potensi</a></li>
-<li><a href="galeri.html">Galeri</a></li>
-</ul>
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+
+        <i class="fa-solid fa-leaf"></i>
+
+        Desa Maktangguk
+
+    </a>
+
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                Beranda
+
+            </a>
+        </li>
+
+
+        <li>
+            <a href="profil.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                Profil
+
+            </a>
+        </li>
+
+
+        <li>
+            <a href="sejarah.html" class="active">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                Sejarah
+
+            </a>
+        </li>
+
+
+        <li>
+            <a href="potensi.html">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                Potensi
+
+            </a>
+        </li>
+
+
+        <li>
+            <a href="galeri.html">
+
+                <i class="fa-regular fa-image"></i>
+
+                Galeri
+
+            </a>
+        </li>
+
+
+        <li>
+            <a href="kontak.html">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                Kontak
+
+            </a>
+        </li>
+
+    </ul>
+
 </nav>
 
-<div class="hero">
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="history-hero">
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+    <div class="leaf">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
+
+
+    <div>
+
+        <h1>Sejarah Desa Maktangguk</h1>
+
+        <p>
+            Mengenal perjalanan dan perkembangan Desa Maktangguk
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ISI
+========================= -->
+
+<section class="history-section">
+
 <div class="container">
-<h1>Sejarah Maktangguk</h1>
-<p>Menelusuri perjalanan Desa Maktangguk.</p>
-</div>
-</div>
 
-<section>
 
-<div class="container">
+    <div class="section-title">
 
-<div class="box">
+        <h2>Sejarah Maktangguk</h2>
 
-<img src="profile2.jpg" alt="Kegiatan masyarakat">
+        <p>
+            Perjalanan wilayah dan kehidupan masyarakat Desa Maktangguk
+        </p>
 
-<h2>📖 Asal-Usul Desa Maktangguk</h2>
+    </div>
 
-<p>
-Desa Maktangguk merupakan salah satu desa yang
-berada di Kecamatan Tebas, Kabupaten Sambas,
-Provinsi Kalimantan Barat.
-</p>
 
-<br>
+    <div class="history-card">
 
-<p>
-Untuk asal-usul nama “Maktangguk” secara khusus,
-belum ditemukan sumber resmi yang menjelaskan
-secara lengkap mengenai arti nama tersebut maupun
-tokoh yang pertama kali memberikan nama desa.
-</p>
 
-<div class="quote">
-<strong>Catatan:</strong><br>
-Cerita sejarah lokal sebaiknya dilengkapi berdasarkan
-keterangan tokoh masyarakat, orang tua/sepuh desa,
-arsip desa atau buku sejarah desa agar informasi
-yang ditampilkan benar-benar sesuai sejarah Maktangguk.
-</div>
+        <h3>Maktangguk dalam Wilayah Kecamatan Tebas</h3>
 
-</div>
+        <p>
+            Desa Maktangguk merupakan salah satu desa yang
+            berada di Kecamatan Tebas, Kabupaten Sambas,
+            Provinsi Kalimantan Barat. Dalam data administrasi
+            pemerintahan, Maktangguk tercatat dengan kode
+            wilayah desa 61.01.04.2020. Keberadaan Maktangguk
+            sebagai bagian dari Kecamatan Tebas juga tercatat
+            dalam berbagai data pemerintahan dan pelayanan
+            publik.
+        </p>
 
-<div class="box">
+        <p>
+            Kecamatan Tebas sendiri memiliki sejumlah desa
+            yang menjadi bagian dari wilayah administratifnya.
+            Maktangguk merupakan salah satu di antaranya.
+            Pemerintah Kecamatan Tebas mencantumkan
+            Maktangguk dalam daftar desa dan kelurahan yang
+            berada di wilayah kecamatan tersebut.
+        </p>
 
-<h2>🗓️ Perkembangan Desa</h2>
+        <p>
+            Posisi administratif tersebut menjadi bagian
+            penting dalam memahami perkembangan Desa
+            Maktangguk. Sebagai sebuah desa, kehidupan
+            masyarakat Maktangguk berkembang dalam hubungan
+            dengan wilayah kecamatan dan Kabupaten Sambas
+            secara lebih luas.
+        </p>
 
-<div class="timeline">
 
-<div class="item">
-<h3>🌱 Masa Perkembangan</h3>
-<p>
-Masyarakat membangun kehidupan melalui kegiatan
-pertanian, perkebunan dan aktivitas sosial.
-</p>
-</div>
+        <h3>Perkembangan Kehidupan Masyarakat</h3>
 
-<div class="item">
-<h3>🏘️ Perkembangan Wilayah</h3>
-<p>
-Desa Maktangguk memiliki wilayah dusun yang
-di antaranya adalah Dusun Karya Bakti dan
-Dusun Karya Tani.
-</p>
-</div>
+        <p>
+            Perjalanan sebuah desa tidak hanya dapat dilihat
+            melalui perubahan wilayah administrasinya.
+            Kehidupan masyarakat merupakan bagian penting
+            dari perkembangan desa. Masyarakat Desa Maktangguk
+            menjalani berbagai kegiatan sosial, pendidikan,
+            ekonomi, dan kemasyarakatan yang menjadi bagian
+            dari kehidupan sehari-hari.
+        </p>
 
-<div class="item">
-<h3>🌾 Perkembangan Ekonomi</h3>
-<p>
-Pertanian, perkebunan dan peternakan menjadi
-bagian dari potensi ekonomi masyarakat.
-</p>
-</div>
+        <p>
+            Kehidupan masyarakat desa juga berkaitan erat
+            dengan lingkungan tempat tinggal. Lingkungan
+            perdesaan menjadi ruang bagi masyarakat untuk
+            menjalankan aktivitas sehari-hari serta membangun
+            hubungan sosial dengan keluarga dan warga lainnya.
+            Hubungan tersebut menjadi bagian dari perjalanan
+            kehidupan masyarakat dari waktu ke waktu.
+        </p>
 
-<div class="item">
-<h3>🚀 Maktangguk Sekarang</h3>
-<p>
-Desa terus berkembang dan meningkatkan kehidupan
-serta pelayanan bagi masyarakat.
-</p>
-</div>
+        <p>
+            Dalam perkembangan masyarakat, pendidikan juga
+            menjadi salah satu bagian yang penting. Keberadaan
+            satuan pendidikan di wilayah Maktangguk menunjukkan
+            adanya fasilitas pendidikan yang melayani masyarakat.
+            Salah satunya adalah SDN 22 Maktangguk yang tercatat
+            berada di Dusun Karya Tani, Kecamatan Tebas,
+            Kabupaten Sambas.
+        </p>
 
-</div>
+        <p>
+            Pendidikan memberikan ruang bagi generasi muda
+            untuk memperoleh pengetahuan dan mengembangkan
+            kemampuan. Perkembangan pendidikan tersebut
+            menjadi bagian dari perjalanan masyarakat desa
+            dalam mempersiapkan generasi berikutnya.
+        </p>
 
-</div>
+
+        <h3>Masyarakat dan Kebersamaan</h3>
+
+        <p>
+            Kehidupan desa tidak dapat dipisahkan dari
+            hubungan antarwarga. Kebersamaan, kepedulian,
+            serta kerja sama merupakan bagian yang penting
+            dalam kehidupan masyarakat. Berbagai kegiatan
+            masyarakat dapat menjadi ruang untuk mempererat
+            hubungan antara satu warga dengan warga lainnya.
+        </p>
+
+        <p>
+            Semangat kebersamaan juga berkaitan dengan
+            kegiatan pembangunan desa. Pembangunan bukan
+            hanya mengenai pembangunan fisik, tetapi juga
+            mengenai bagaimana masyarakat dapat ikut terlibat
+            dalam menjaga lingkungan dan mendukung kegiatan
+            bersama.
+        </p>
+
+        <p>
+            Dalam kehidupan bermasyarakat, komunikasi dan
+            musyawarah menjadi bagian yang membantu warga
+            menyampaikan kebutuhan serta mencari jalan keluar
+            terhadap berbagai persoalan yang dihadapi bersama.
+            Nilai-nilai tersebut menjadi bagian penting dari
+            kehidupan sosial masyarakat perdesaan.
+        </p>
+
+
+        <h3>Pendidikan sebagai Bagian Perkembangan Desa</h3>
+
+        <p>
+            Keberadaan SDN 22 Maktangguk menjadi salah satu
+            catatan dalam perkembangan fasilitas pendidikan
+            di wilayah desa. Data Kementerian Pendidikan Dasar
+            dan Menengah mencatat sekolah tersebut sebagai
+            satuan pendidikan negeri yang beralamat di Dusun
+            Karya Tani, Kecamatan Tebas, Kabupaten Sambas.
+        </p>
+
+        <p>
+            Kehadiran lembaga pendidikan memiliki peran dalam
+            mendukung masyarakat, khususnya dalam memberikan
+            akses pendidikan bagi anak-anak di wilayah sekitar.
+            Sekolah juga menjadi salah satu ruang tempat
+            berlangsungnya proses pembelajaran dan pembentukan
+            generasi yang akan melanjutkan kehidupan masyarakat
+            pada masa mendatang.
+        </p>
+
+        <p>
+            Perkembangan pendidikan menunjukkan bahwa
+            perjalanan sebuah desa juga berkaitan dengan
+            perkembangan sumber daya manusia. Pendidikan
+            memberikan kesempatan kepada generasi muda untuk
+            mengenal pengetahuan, mengembangkan keterampilan,
+            dan mempersiapkan diri menghadapi perubahan zaman.
+        </p>
+
+
+        <h3>Identitas Wilayah Maktangguk</h3>
+
+        <p>
+            Maktangguk berada di Kecamatan Tebas,
+            Kabupaten Sambas, Kalimantan Barat. Data
+            administrasi mencatat Maktangguk sebagai desa
+            dengan kode 61.01.04.2020. Kode tersebut menjadi
+            salah satu identitas administratif yang digunakan
+            dalam berbagai layanan dan pendataan pemerintahan.
+        </p>
+
+        <p>
+            Data pemerintah Kabupaten Sambas juga mencantumkan
+            Maktangguk dalam berbagai pendataan wilayah
+            Kecamatan Tebas. Hal tersebut menunjukkan bahwa
+            Maktangguk merupakan bagian yang tercatat dalam
+            struktur pemerintahan dan pelayanan Kabupaten
+            Sambas.
+        </p>
+
+        <p>
+            Identitas wilayah tersebut penting bagi masyarakat
+            karena berkaitan dengan administrasi kependudukan,
+            pelayanan publik, pendidikan, pembangunan, serta
+            berbagai kegiatan pemerintahan lainnya.
+        </p>
+
+
+        <h3>Maktangguk dan Perkembangan Zaman</h3>
+
+        <p>
+            Seiring berjalannya waktu, masyarakat desa juga
+            menghadapi perubahan yang terjadi di luar wilayah
+            desa. Perkembangan teknologi informasi membuat
+            masyarakat semakin mudah mendapatkan informasi
+            dan berkomunikasi dengan lingkungan yang lebih luas.
+        </p>
+
+        <p>
+            Perubahan tersebut memberikan peluang sekaligus
+            tantangan bagi masyarakat desa. Generasi muda
+            dapat memanfaatkan perkembangan teknologi untuk
+            memperoleh pengetahuan, belajar berbagai hal baru,
+            serta memperkenalkan potensi wilayah kepada
+            masyarakat yang lebih luas.
+        </p>
+
+        <p>
+            Di sisi lain, perkembangan zaman juga membuat
+            masyarakat perlu menjaga nilai-nilai sosial yang
+            sudah menjadi bagian dari kehidupan bersama.
+            Kebersamaan, kepedulian terhadap lingkungan,
+            serta hubungan baik antarwarga tetap menjadi
+            bagian penting dalam membangun kehidupan desa.
+        </p>
+
+
+        <h3>Maktangguk pada Masa Kini</h3>
+
+        <p>
+            Pada masa kini, Desa Maktangguk terus menjadi
+            bagian dari perkembangan Kecamatan Tebas dan
+            Kabupaten Sambas. Data pemerintahan terbaru masih
+            mencantumkan Maktangguk sebagai salah satu desa
+            di Kecamatan Tebas.
+        </p>
+
+        <p>
+            Perkembangan desa dapat dilihat dari berbagai
+            sisi kehidupan masyarakat, mulai dari pendidikan,
+            kegiatan sosial, pelayanan pemerintahan, hingga
+            aktivitas ekonomi masyarakat. Setiap bagian
+            tersebut memiliki peran dalam membentuk kehidupan
+            desa secara keseluruhan.
+        </p>
+
+        <p>
+            Sejarah Desa Maktangguk dengan demikian dapat
+            dipahami sebagai perjalanan wilayah dan masyarakat
+            yang terus berkembang. Perjalanan tersebut tidak
+            berhenti pada masa lalu, tetapi terus berlanjut
+            melalui kehidupan masyarakat pada masa sekarang
+            dan generasi yang akan datang.
+        </p>
+
+
+        <h3>Melanjutkan Perjalanan Desa</h3>
+
+        <p>
+            Masa depan Desa Maktangguk akan terus berkaitan
+            dengan peran masyarakatnya. Generasi muda,
+            keluarga, tokoh masyarakat, lembaga pendidikan,
+            serta pemerintah desa memiliki peran masing-masing
+            dalam menjaga dan mengembangkan kehidupan desa.
+        </p>
+
+        <p>
+            Dengan menjaga hubungan baik antarwarga,
+            meningkatkan kepedulian terhadap lingkungan,
+            mendukung pendidikan, serta memanfaatkan
+            perkembangan teknologi secara positif, masyarakat
+            dapat ikut mengambil bagian dalam perkembangan
+            Desa Maktangguk.
+        </p>
+
+        <p>
+            Setiap perkembangan yang terjadi menjadi bagian
+            dari perjalanan desa. Oleh karena itu, sejarah
+            Maktangguk bukan hanya sesuatu yang berada di masa
+            lalu, tetapi juga perjalanan yang terus berlangsung
+            dan akan diteruskan oleh generasi berikutnya.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         INFORMASI
+    ========================== -->
+
+    <div class="info-grid">
+
+
+        <div class="info-card">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <h3>Wilayah</h3>
+
+            <p>
+                Desa Maktangguk berada di Kecamatan Tebas,
+                Kabupaten Sambas, Provinsi Kalimantan Barat.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <i class="fa-solid fa-school"></i>
+
+            <h3>Pendidikan</h3>
+
+            <p>
+                Terdapat SDN 22 Maktangguk yang tercatat
+                beralamat di Dusun Karya Tani.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <i class="fa-solid fa-people-group"></i>
+
+            <h3>Masyarakat</h3>
+
+            <p>
+                Kehidupan desa berkembang melalui hubungan
+                sosial dan kegiatan masyarakat.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <i class="fa-solid fa-building-columns"></i>
+
+            <h3>Administrasi</h3>
+
+            <p>
+                Maktangguk tercatat sebagai desa dengan kode
+                wilayah 61.01.04.2020.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         PENUTUP
+    ========================== -->
+
+    <div class="history-ending">
+
+        <i class="fa-solid fa-leaf"></i>
+
+        <h3>Perjalanan Maktangguk Terus Berlanjut</h3>
+
+        <p>
+            Dari kehidupan masyarakat hingga perkembangan
+            desa pada masa kini, setiap generasi menjadi bagian
+            dari perjalanan Desa Maktangguk.
+        </p>
+
+    </div>
+
 
 </div>
 
 </section>
 
-<footer>
-© 2026 Desa Maktangguk
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <p>
+        © 2026 Desa Maktangguk
+    </p>
+
+    <p>
+        Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
+    </p>
+
 </footer>
+
 
 </body>
 </html>
