@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Kontak Desa Maktangguk</title>
 
   <style>
@@ -20,10 +19,15 @@
       font-family: Georgia, "Times New Roman", serif;
       background: #f4f7f5;
       color: #234d3c;
-      overflow-x: hidden;
     }
 
-    /* ================= HEADER ================= */
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    /* ===== HEADER ===== */
 
     header {
       background: #174d3a;
@@ -33,12 +37,6 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1150px;
-      margin: auto;
     }
 
     nav {
@@ -75,11 +73,10 @@
       color: #b7dfc7;
     }
 
-    /* ================= HERO ================= */
+    /* ===== HERO ===== */
 
     .hero {
       min-height: 55vh;
-
       background: linear-gradient(
         135deg,
         #174d3a,
@@ -105,6 +102,7 @@
     .hero h1 {
       font-size: 52px;
       margin: 0 0 15px;
+      letter-spacing: 1px;
     }
 
     .hero p {
@@ -120,7 +118,7 @@
       border-radius: 10px;
     }
 
-    /* ================= DAUN JATUH ================= */
+    /* ===== DAUN JATUH ===== */
 
     .leaf {
       position: absolute;
@@ -173,21 +171,172 @@
       }
 
       50% {
-        transform: translateY(45vh)
-                   translateX(40px)
-                   rotate(180deg);
+        transform:
+          translateY(45vh)
+          translateX(40px)
+          rotate(180deg);
       }
 
       100% {
-        transform: translateY(75vh)
-                   translateX(-30px)
-                   rotate(360deg);
+        transform:
+          translateY(75vh)
+          translateX(-30px)
+          rotate(360deg);
       }
     }
 
-    /* ================= SECTION ================= */
+    /* ===== BUKU TAMU ===== */
 
-    section {
+    .guestbook-section {
+      position: relative;
+      min-height: 650px;
+      padding: 90px 0;
+
+      background:
+        linear-gradient(
+          rgba(15, 55, 40, 0.55),
+          rgba(15, 55, 40, 0.70)
+        ),
+        url("profile6.jpg") center center / cover no-repeat;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .guestbook-section::before {
+      content: "🍃";
+      position: absolute;
+      top: 40px;
+      left: 8%;
+      font-size: 45px;
+      opacity: 0.8;
+      transform: rotate(-25deg);
+    }
+
+    .guestbook-section::after {
+      content: "🍃";
+      position: absolute;
+      bottom: 40px;
+      right: 8%;
+      font-size: 50px;
+      opacity: 0.8;
+      transform: rotate(25deg);
+    }
+
+    .guestbook-wrapper {
+      width: 90%;
+      max-width: 800px;
+      margin: auto;
+
+      background: rgba(255,255,255,0.92);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      padding: 45px;
+
+      border-radius: 28px;
+
+      border: 1px solid rgba(255,255,255,0.7);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.30);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .guestbook-wrapper h2 {
+      text-align: center;
+      color: #174d3a;
+      font-size: 38px;
+      margin: 0 0 10px;
+    }
+
+    .guestbook-title-line {
+      width: 70px;
+      height: 4px;
+      background: #1f6b4f;
+      border-radius: 10px;
+      margin: 15px auto 20px;
+    }
+
+    .guestbook-wrapper p {
+      text-align: center;
+      color: #60766a;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #174d3a;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 17px;
+      border: 1px solid #c7d7ce;
+      border-radius: 14px;
+      background: white;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #1f6b4f;
+      box-shadow: 0 0 0 4px rgba(31,107,79,0.12);
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    /* ===== TOMBOL KIRIM HIJAU ===== */
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+
+      background: #1f6b4f;
+
+      color: white;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+      transition: 0.3s;
+
+      box-shadow:
+        0 7px 18px rgba(23,77,58,0.25);
+    }
+
+    .submit-btn:hover {
+      background: #174d3a;
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 25px rgba(23,77,58,0.30);
+    }
+
+    /* ===== MEDIA SOSIAL ===== */
+
+    .contact-section {
+      background: white;
       padding: 75px 0;
     }
 
@@ -198,7 +347,7 @@
 
     .section-title h2 {
       font-size: 38px;
-      margin-bottom: 10px;
+      margin: 10px 0;
       color: #174d3a;
     }
 
@@ -214,98 +363,6 @@
       padding: 7px 17px;
       border-radius: 20px;
       font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    /* ================= BUKU TAMU ================= */
-
-    .guestbook-section {
-      background:
-        linear-gradient(
-          rgba(23, 77, 58, 0.78),
-          rgba(23, 77, 58, 0.78)
-        ),
-        url("profile6.jpg") center/cover no-repeat;
-    }
-
-    .guestbook-wrapper {
-      max-width: 850px;
-      margin: auto;
-      background: rgba(255,255,255,0.96);
-      padding: 40px;
-      border-radius: 22px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.20);
-    }
-
-    .guestbook-wrapper h2 {
-      text-align: center;
-      color: #174d3a;
-      font-size: 35px;
-      margin-top: 0;
-    }
-
-    .guestbook-wrapper p {
-      text-align: center;
-      color: #65786e;
-      margin-bottom: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #234d3c;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid #cbd8d0;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: #1f6b4f;
-      box-shadow: 0 0 0 3px rgba(31,107,79,0.10);
-    }
-
-    .form-group textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 25px;
-      background: #1f6b4f;
-      color: white;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .submit-btn:hover {
-      background: #174d3a;
-      transform: translateY(-2px);
-    }
-
-    /* ================= KONTAK ================= */
-
-    .contact-section {
-      background: white;
     }
 
     .contact-grid {
@@ -319,31 +376,42 @@
       padding: 35px 20px;
       text-align: center;
       border-radius: 18px;
-      box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+
+      box-shadow:
+        0 7px 20px rgba(0,0,0,0.08);
+
       transition: 0.3s;
     }
 
     .contact-card:hover {
       transform: translateY(-7px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.13);
+
+      box-shadow:
+        0 12px 28px rgba(0,0,0,0.13);
     }
 
-    /* ================= LOGO SOSIAL MEDIA ================= */
+    /* ===== LOGO ===== */
 
     .social-logo {
-      width: 70px;
-      height: 70px;
+      width: 75px;
+      height: 75px;
       margin: 0 auto 18px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 18px;
+
+      border-radius: 20px;
+
       background: #174d3a;
+
+      box-shadow:
+        0 8px 20px rgba(23,77,58,0.20);
     }
 
     .social-logo svg {
-      width: 43px;
-      height: 43px;
+      width: 45px;
+      height: 45px;
       fill: white;
     }
 
@@ -356,6 +424,7 @@
     .contact-card p {
       color: #65786e;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .contact-card a {
@@ -371,19 +440,23 @@
 
     .contact-card a:hover {
       background: #174d3a;
+      transform: translateY(-2px);
     }
 
-    /* ================= LOKASI ================= */
+    /* ===== LOKASI ===== */
 
     .location-section {
       background: #edf4ef;
+      padding: 75px 0;
     }
 
     .location-box {
       background: white;
       border-radius: 20px;
       padding: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.09);
     }
 
     .location-info {
@@ -415,10 +488,11 @@
       border: 0;
     }
 
-    /* ================= INFORMASI ================= */
+    /* ===== INFORMASI ===== */
 
     .info-section {
       background: white;
+      padding: 75px 0;
     }
 
     .info-box {
@@ -440,7 +514,7 @@
       line-height: 1.8;
     }
 
-    /* ================= FOOTER ================= */
+    /* ===== FOOTER ===== */
 
     footer {
       background: #103a2c;
@@ -454,7 +528,7 @@
       font-size: 14px;
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* ===== RESPONSIVE ===== */
 
     @media (max-width: 900px) {
 
@@ -519,7 +593,7 @@
 
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- ===== HEADER ===== -->
 
   <header>
     <div class="container">
@@ -543,7 +617,7 @@
   </header>
 
 
-  <!-- ================= HERO ================= -->
+  <!-- ===== HERO ===== -->
 
   <section class="hero">
 
@@ -560,15 +634,20 @@
 
       <div class="hero-line"></div>
 
-      <p>Kecamatan Tebas • Kabupaten Sambas</p>
-      <p>Kalimantan Barat</p>
+      <p>
+        Kecamatan Tebas • Kabupaten Sambas
+      </p>
+
+      <p>
+        Kalimantan Barat
+      </p>
 
     </div>
 
   </section>
 
 
-  <!-- ================= BUKU TAMU ================= -->
+  <!-- ===== BUKU TAMU ===== -->
 
   <section class="guestbook-section">
 
@@ -578,22 +657,26 @@
 
         <h2>📖 Buku Tamu</h2>
 
+        <div class="guestbook-title-line"></div>
+
         <p>
-          Silakan tinggalkan pesan, saran, atau kesan
-          untuk Desa Maktangguk.
+          Selamat datang di Desa Maktangguk.
+          Silakan tinggalkan pesan, kesan, atau saran Anda.
         </p>
 
         <form id="guestForm">
 
           <div class="form-group">
 
-            <label for="nama">Nama</label>
+            <label for="nama">
+              Nama
+            </label>
 
             <input
               type="text"
               id="nama"
               name="nama"
-              placeholder="Masukkan nama kamu"
+              placeholder="Masukkan nama Anda"
               required
             >
 
@@ -602,26 +685,14 @@
 
           <div class="form-group">
 
-            <label for="email">Email</label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Masukkan email"
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="pesan">Pesan</label>
+            <label for="pesan">
+              Pesan
+            </label>
 
             <textarea
               id="pesan"
               name="pesan"
-              placeholder="Tulis pesan atau saran kamu..."
+              placeholder="Tuliskan pesan, kesan, atau saran..."
               required
             ></textarea>
 
@@ -632,7 +703,7 @@
             type="submit"
             class="submit-btn"
           >
-            Kirim Pesan
+            Kirim
           </button>
 
         </form>
@@ -644,7 +715,7 @@
   </section>
 
 
-  <!-- ================= MEDIA SOSIAL ================= -->
+  <!-- ===== MEDIA SOSIAL ===== -->
 
   <section class="contact-section">
 
@@ -652,7 +723,9 @@
 
       <div class="section-title">
 
-        <span class="label">MEDIA SOSIAL</span>
+        <span class="label">
+          MEDIA SOSIAL
+        </span>
 
         <h2>Hubungi Kami</h2>
 
@@ -667,15 +740,14 @@
       <div class="contact-grid">
 
 
-        <!-- ================= WHATSAPP ================= -->
+        <!-- WHATSAPP -->
 
         <div class="contact-card">
 
           <div class="social-logo">
 
-            <!-- LOGO WHATSAPP -->
-
             <svg viewBox="0 0 24 24">
+
               <path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0
               C5.49 0 .16 5.33 .16 11.89c0 2.1.55 4.15
               1.6 5.96L.05 24l6.29-1.65a11.9 11.9 0 0 0
@@ -696,6 +768,7 @@
               c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64
               .71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42
               .25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+
             </svg>
 
           </div>
@@ -705,8 +778,6 @@
           <p>
             Hubungi kami melalui WhatsApp.
           </p>
-
-          <!-- GANTI NOMOR DI SINI -->
 
           <a
             href="https://wa.me/6200000000000"
@@ -718,13 +789,11 @@
         </div>
 
 
-        <!-- ================= INSTAGRAM ================= -->
+        <!-- INSTAGRAM -->
 
         <div class="contact-card">
 
           <div class="social-logo">
-
-            <!-- LOGO INSTAGRAM -->
 
             <svg viewBox="0 0 24 24">
 
@@ -747,8 +816,6 @@
             Ikuti informasi dan dokumentasi desa.
           </p>
 
-          <!-- GANTI LINK INSTAGRAM DI SINI -->
-
           <a
             href="https://www.instagram.com/"
             target="_blank"
@@ -759,13 +826,11 @@
         </div>
 
 
-        <!-- ================= GITHUB ================= -->
+        <!-- GITHUB -->
 
         <div class="contact-card">
 
           <div class="social-logo">
-
-            <!-- LOGO GITHUB -->
 
             <svg viewBox="0 0 24 24">
 
@@ -795,8 +860,6 @@
             Lihat website dan proyek Desa Maktangguk.
           </p>
 
-          <!-- GANTI LINK GITHUB DI SINI -->
-
           <a
             href="https://github.com/"
             target="_blank"
@@ -806,7 +869,6 @@
 
         </div>
 
-
       </div>
 
     </div>
@@ -814,7 +876,7 @@
   </section>
 
 
-  <!-- ================= LOKASI ================= -->
+  <!-- ===== LOKASI ===== -->
 
   <section class="location-section">
 
@@ -822,7 +884,9 @@
 
       <div class="section-title">
 
-        <span class="label">LOKASI</span>
+        <span class="label">
+          LOKASI
+        </span>
 
         <h2>Lokasi Desa Maktangguk</h2>
 
@@ -849,8 +913,6 @@
         </div>
 
 
-        <!-- ================= GOOGLE MAPS ================= -->
-
         <div class="map-container">
 
           <iframe
@@ -868,7 +930,7 @@
   </section>
 
 
-  <!-- ================= INFORMASI ================= -->
+  <!-- ===== INFORMASI ===== -->
 
   <section class="info-section">
 
@@ -885,9 +947,10 @@
         </p>
 
         <p>
-          Halaman kontak ini dibuat untuk memudahkan
-          pengunjung mendapatkan informasi mengenai
-          lokasi dan media komunikasi Desa Maktangguk.
+          Halaman kontak ini menjadi sarana untuk
+          memudahkan pengunjung memperoleh informasi
+          mengenai lokasi dan media komunikasi Desa
+          Maktangguk.
         </p>
 
       </div>
@@ -897,7 +960,7 @@
   </section>
 
 
-  <!-- ================= FOOTER ================= -->
+  <!-- ===== FOOTER ===== -->
 
   <footer>
 
@@ -912,7 +975,7 @@
   </footer>
 
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- ===== JAVASCRIPT BUKU TAMU ===== -->
 
   <script>
 
@@ -922,9 +985,7 @@
 
       event.preventDefault();
 
-      alert(
-        "Terima kasih! Pesan kamu sudah dikirim."
-      );
+      alert("Terima kasih! Pesan kamu sudah dikirim.");
 
       form.reset();
 
