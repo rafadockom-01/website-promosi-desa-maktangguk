@@ -961,580 +961,350 @@ tr.unread td:first-child{
 
 <script>
 
-/* ================= DATA CONTOH ================= */
+/* ================= GOOGLE APPS SCRIPT ================= */
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycby-DhouyE-B_pd3zYmSNbUb4uj7VTe-fhX-eDrygyEgHfKt9tPXiNm93Qef1EUL2eLO/exec";
 
-let guestbookData = [
-
-    {
-        nama:"Contoh Nama",
-        asal:"Desa Maktangguk",
-        pesan:"Selamat datang di website Desa Maktangguk.",
-        status:"Baru",
-        tanggapan:"Belum ada tanggapan.",
-        waktuDibaca:"",
-        waktuDibalas:""
-    },
-
-    {
-        nama:"Rafa",
-        asal:"Kecamatan Tebas",
-        pesan:"Bagaimana cara mendapatkan informasi layanan masyarakat?",
-        status:"Sudah Dibaca",
-        tanggapan:"Silakan melihat menu Layanan Masyarakat.",
-        waktuDibaca:"Hari ini",
-        waktuDibalas:"Hari ini"
-    }
-
-];
-
+let guestbookData = [];
 let selectedIndex = null;
 
-
 /* ================= LOGIN ================= */
-
 function loginAdmin(event){
-
     event.preventDefault();
 
-    const password =
-        document.getElementById("password").value;
-
-    const message =
-        document.getElementById("loginMessage");
-
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("loginMessage");
 
     if(password === "Rafa2009"){
-
-        message.className = "message success";
-
-        message.innerHTML =
-            "✅ Password Benar";
-
-        setTimeout(function(){
-
-            document.getElementById("loginPage").style.display =
-                "none";
-
-            document.getElementById("dashboardPage").style.display =
-                "block";
-
-            document.getElementById("password").value = "";
-
-            loadDashboard();
-
-        },500);
-
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("dashboardPage").style.display = "block";
+        message.innerHTML = "";
+        loadDashboard();
     }else{
-
         message.className = "message error";
-
-        message.innerHTML =
-            "❌ Password Salah";
-
-        document.getElementById("password").value = "";
-
+        message.innerHTML = "❌ Password salah.";
     }
-
 }
-
-
-/* ================= LIHAT PASSWORD ================= */
 
 function togglePassword(){
-
-    const input =
-        document.getElementById("password");
-
-    const icon =
-        document.getElementById("eyeIcon");
-
+    const input = document.getElementById("password");
+    const icon = document.getElementById("eyeIcon");
 
     if(input.type === "password"){
-
         input.type = "text";
-
-        icon.className =
-            "fa-solid fa-eye-slash";
-
+        icon.className = "fa-solid fa-eye-slash";
     }else{
-
         input.type = "password";
-
-        icon.className =
-            "fa-solid fa-eye";
-
+        icon.className = "fa-solid fa-eye";
     }
-
 }
 
-
-/* ================= DASHBOARD ================= */
-
-function loadDashboard(){
-
-    document.getElementById("totalTamu").innerText =
-        guestbookData.length;
-
-    document.getElementById("totalPesan").innerText =
-        guestbookData.length;
-
-    const jumlahBalasan =
-        guestbookData.filter(
-            data =>
-            data.tanggapan &&
-            data.tanggapan !== "Belum ada tanggapan."
-        ).length;
-
-    document.getElementById("totalBalasan").innerText =
-        jumlahBalasan;
-
-
-    tampilkanData(guestbookData);
-
-}
-
-
-/* ================= TAMPIL DATA ================= */
-
-function tampilkanData(data){
-
-    const table =
-        document.getElementById("guestbookTable");
-
-    table.innerHTML = "";
-
-
-    if(data.length === 0){
-
-        table.innerHTML = `
-            <tr>
-                <td colspan="5" style="text-align:center;padding:30px;">
-                    Tidak ada data ditemukan.
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    data.forEach(function(item){
-
-        const originalIndex =
-            guestbookData.indexOf(item);
-
-
-        let badge = "";
-
-        if(item.status === "Baru"){
-
-            badge = `
-                <span class="badge baru">
-                    <i class="fa-solid fa-circle"></i>
-                    Belum Dibaca
-                </span>
-            `;
-
-        }else if(item.status === "Sudah Dibaca"){
-
-            badge = `
-                <span class="badge dibaca">
-                    <i class="fa-solid fa-check"></i>
-                    Sudah Dibaca
-                </span>
-            `;
-
-        }else{
-
-            badge = `
-                <span class="badge dibalas">
-                    <i class="fa-solid fa-reply"></i>
-                    Sudah Dibalas
-                </span>
-            `;
-
-        }
-
-
-        const row =
-            document.createElement("tr");
-
-
-        if(item.status === "Baru"){
-
-            row.classList.add("unread");
-
-        }
-
-
-        row.innerHTML = `
-
-            <td class="nama">
-                ${escapeHTML(item.nama)}
-            </td>
-
-            <td>
-                ${escapeHTML(item.asal)}
-            </td>
-
-            <td class="pesan-singkat">
-                ${escapeHTML(item.pesan)}
-            </td>
-
-            <td>
-                ${badge}
-            </td>
-
-            <td>
-
-                <div class="action-buttons">
-
-                    <button
-                        class="action-btn view-btn"
-                        title="Lihat pesan"
-                        onclick="lihatPesan(${originalIndex})"
-                    >
-                        <i class="fa-solid fa-eye"></i>
-                    </button>
-
-
-                    <button
-                        class="action-btn reply-btn"
-                        title="Balas"
-                        onclick="bukaBalas(${originalIndex})"
-                    >
-                        <i class="fa-solid fa-reply"></i>
-                    </button>
-
-
-                    <button
-                        class="action-btn forward-btn"
-                        title="Teruskan"
-                        onclick="bukaTeruskan(${originalIndex})"
-                    >
-                        <i class="fa-solid fa-share"></i>
-                    </button>
-
-
-                    <button
-                        class="action-btn delete-btn"
-                        title="Hapus"
-                        onclick="hapusData(${originalIndex})"
-                    >
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-
-                </div>
-
-            </td>
-
-        `;
-
-
-        table.appendChild(row);
-
-    });
-
-}
-
-
-/* ================= LIHAT PESAN ================= */
-
-function lihatPesan(index){
-
-    selectedIndex = index;
-
-    const item =
-        guestbookData[index];
-
-
-    /*
-       Jika pesan masih "Baru",
-       otomatis berubah menjadi
-       "Sudah Dibaca".
-    */
-
-    if(item.status === "Baru"){
-
-        item.status = "Sudah Dibaca";
-
-        item.waktuDibaca =
-            new Date().toLocaleString("id-ID");
-
-    }
-
-
-    document.getElementById("detailNama").innerText =
-        item.nama;
-
-    document.getElementById("detailAsal").innerText =
-        item.asal;
-
-    document.getElementById("detailPesan").innerText =
-        item.pesan;
-
-    document.getElementById("detailTanggapan").innerText =
-        item.tanggapan;
-
-    document.getElementById("detailStatus").innerText =
-        item.status;
-
-
-    document.getElementById("replyText").value =
-        "";
-
-
-    document.getElementById("detailModal").style.display =
-        "flex";
-
-
-    loadDashboard();
-
-}
-
-
-/* ================= BUKA BALAS ================= */
-
-function bukaBalas(index){
-
-    lihatPesan(index);
-
-    setTimeout(function(){
-
-        document.getElementById("replyText").focus();
-
-    },100);
-
-}
-
-
-/* ================= BALAS PESAN ================= */
-
-function balasPesan(){
-
-    if(selectedIndex === null){
-        return;
-    }
-
-
-    const text =
-        document.getElementById("replyText").value.trim();
-
-
-    if(text === ""){
-
-        alert("Silakan tulis tanggapan terlebih dahulu.");
-
-        return;
-
-    }
-
-
-    guestbookData[selectedIndex].tanggapan =
-        text;
-
-    guestbookData[selectedIndex].status =
-        "Sudah Dibalas";
-
-    guestbookData[selectedIndex].waktuDibalas =
-        new Date().toLocaleString("id-ID");
-
-
-    alert("✅ Balasan berhasil disimpan.");
-
-
-    closeModal();
-
-    loadDashboard();
-
-}
-
-
-/* ================= TERUSKAN ================= */
-
-function bukaTeruskan(index){
-
-    lihatPesan(index);
-
-    setTimeout(function(){
-
-        document.getElementById("replyText").focus();
-
-    },100);
-
-}
-
-
-function teruskanPesan(){
-
-    if(selectedIndex === null){
-        return;
-    }
-
-
-    const item =
-        guestbookData[selectedIndex];
-
-
-    const text =
-        document.getElementById("replyText").value.trim();
-
-
-    if(text === ""){
-
-        alert(
-            "Tulis keterangan penerusan terlebih dahulu."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       Untuk sekarang fitur teruskan
-       menyimpan catatan penerusan.
-    */
-
-    guestbookData[selectedIndex].tanggapan =
-        "Diteruskan: " + text;
-
-
-    guestbookData[selectedIndex].status =
-        "Sudah Dibaca";
-
-
-    alert(
-        "↗️ Pesan berhasil ditandai untuk diteruskan."
-    );
-
-
-    closeModal();
-
-    loadDashboard();
-
-}
-
-
-/* ================= HAPUS DATA ================= */
-
-function hapusData(index){
-
-    const yakin =
-        confirm(
-            "Apakah kamu yakin ingin menghapus pesan ini?"
-        );
-
-
-    if(!yakin){
-        return;
-    }
-
-
-    guestbookData.splice(index,1);
-
-
-    loadDashboard();
-
-}
-
-
-/* ================= CARI DATA ================= */
-
-function searchData(){
-
-    const keyword =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    const hasil =
-        guestbookData.filter(function(item){
-
-            return (
-                item.nama.toLowerCase().includes(keyword) ||
-                item.asal.toLowerCase().includes(keyword) ||
-                item.pesan.toLowerCase().includes(keyword)
-            );
-
+/* ================= LOAD DATA DARI GOOGLE SHEET ================= */
+async function loadDashboard(){
+    const tbody = document.getElementById("guestbookTable");
+    tbody.innerHTML =
+        '<tr><td colspan="5" style="text-align:center;padding:30px">⏳ Mengambil data dari Buku Tamu...</td></tr>';
+
+    try{
+        const response = await fetch(SCRIPT_URL + "?action=getMessages&_=" + Date.now(), {
+            method:"GET",
+            cache:"no-store"
         });
 
+        const hasil = await response.json();
 
-    tampilkanData(hasil);
+        if(!hasil.success){
+            throw new Error(hasil.error || "Data tidak dapat diambil.");
+        }
 
+        guestbookData = Array.isArray(hasil.data) ? hasil.data : [];
+        updateStats();
+        tampilkanData(guestbookData);
+
+    }catch(error){
+        console.error(error);
+        tbody.innerHTML =
+            '<tr><td colspan="5" style="text-align:center;padding:30px;color:#c43c3c">❌ Gagal mengambil data. Pastikan Google Apps Script sudah mendukung GET/action=getMessages.</td></tr>';
+        updateStats();
+    }
 }
 
-
-/* ================= TUTUP MODAL ================= */
-
-function closeModal(){
-
-    document.getElementById("detailModal").style.display =
-        "none";
-
-    selectedIndex = null;
-
+function updateStats(){
+    document.getElementById("totalTamu").textContent = guestbookData.length;
+    document.getElementById("totalPesan").textContent = guestbookData.length;
+    document.getElementById("totalBalasan").textContent =
+        guestbookData.filter(item => item.status === "Sudah Dibalas").length;
 }
 
+/* ================= TAMPILKAN DATA ================= */
+function tampilkanData(data){
+    const tbody = document.getElementById("guestbookTable");
 
-/* ================= LOGOUT ================= */
-
-function logoutAdmin(){
-
-    const yakin =
-        confirm("Yakin ingin keluar dari Admin?");
-
-
-    if(!yakin){
+    if(!data.length){
+        tbody.innerHTML =
+            '<tr><td colspan="5" style="text-align:center;padding:30px;color:#718078">Belum ada pesan dari masyarakat.</td></tr>';
         return;
     }
 
+    tbody.innerHTML = data.map((item) => {
+        const realIndex = guestbookData.indexOf(item);
+        const status = item.status || "Baru";
+        const statusClass =
+            status === "Sudah Dibalas" ? "dibalas" :
+            status === "Sudah Dibaca" ? "dibaca" : "baru";
 
-    document.getElementById("dashboardPage").style.display =
-        "none";
-
-    document.getElementById("loginPage").style.display =
-        "flex";
-
-    document.getElementById("loginMessage").innerHTML =
-        "";
-
+        return `
+        <tr class="${status === "Baru" ? "unread" : ""}">
+            <td class="nama">${escapeHTML(item.nama || "-")}</td>
+            <td>${escapeHTML(item.asal || "-")}</td>
+            <td class="pesan-singkat">${escapeHTML(item.pesan || "-")}</td>
+            <td>
+                <span class="badge ${statusClass}">
+                    ${status === "Baru" ? "🟡" : status === "Sudah Dibalas" ? "🔵" : "🟢"}
+                    ${escapeHTML(status)}
+                </span>
+            </td>
+            <td>
+                <div class="action-buttons">
+                    <button class="action-btn view-btn" title="Lihat"
+                        onclick="lihatPesan(${realIndex})">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                    <button class="action-btn reply-btn" title="Balas"
+                        onclick="bukaBalas(${realIndex})">
+                        <i class="fa-solid fa-reply"></i>
+                    </button>
+                    <button class="action-btn forward-btn" title="Teruskan"
+                        onclick="bukaTeruskan(${realIndex})">
+                        <i class="fa-solid fa-share"></i>
+                    </button>
+                    <button class="action-btn delete-btn" title="Hapus"
+                        onclick="hapusData(${realIndex})">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>`;
+    }).join("");
 }
 
+/* ================= DETAIL ================= */
+function lihatPesan(index){
+    selectedIndex = index;
+    const item = guestbookData[index];
 
-/* ================= AMANKAN TEKS ================= */
+    if(!item) return;
 
-function escapeHTML(text){
+    document.getElementById("detailNama").textContent = item.nama || "-";
+    document.getElementById("detailAsal").textContent = item.asal || "-";
+    document.getElementById("detailPesan").textContent = item.pesan || "-";
+    document.getElementById("detailStatus").textContent = item.status || "Baru";
+    document.getElementById("detailTanggapan").textContent =
+        item.tanggapan || "Belum ada tanggapan.";
+    document.getElementById("replyText").value = "";
 
-    const div =
-        document.createElement("div");
+    document.getElementById("detailModal").style.display = "flex";
 
-    div.textContent =
-        text;
-
-    return div.innerHTML;
-
+    /* Tandai dibaca di server */
+    if((item.status || "Baru") === "Baru"){
+        updateMessage(index, {
+            status:"Sudah Dibaca",
+            waktuDibaca:new Date().toLocaleString("id-ID")
+        }, false);
+    }
 }
 
+function bukaBalas(index){
+    lihatPesan(index);
+    setTimeout(() => document.getElementById("replyText").focus(), 100);
+}
 
-/* ================= KLIK LUAR MODAL ================= */
+/* ================= UPDATE SERVER ================= */
+async function updateMessage(index, fields, closeAfter=true){
+    const item = guestbookData[index];
+    if(!item) return false;
 
-window.onclick = function(event){
+    try{
+        const data = new URLSearchParams();
+        data.append("action", "updateMessage");
 
-    const modal =
-        document.getElementById("detailModal");
+        if(item.id !== undefined && item.id !== null && item.id !== ""){
+            data.append("id", item.id);
+        }else{
+            data.append("row", item.row || index + 2);
+        }
 
+        Object.keys(fields).forEach(key => data.append(key, fields[key]));
 
-    if(event.target === modal){
+        const response = await fetch(SCRIPT_URL, {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body:data.toString()
+        });
 
-        closeModal();
+        const hasil = await response.json();
 
+        if(!hasil.success){
+            throw new Error(hasil.error || "Update gagal.");
+        }
+
+        Object.assign(item, fields);
+
+        if(closeAfter){
+            closeModal();
+            loadDashboard();
+        }else{
+            updateStats();
+            tampilkanData(guestbookData);
+            document.getElementById("detailStatus").textContent = item.status || "Sudah Dibaca";
+        }
+
+        return true;
+
+    }catch(error){
+        console.error(error);
+        alert("❌ Gagal memperbarui data: " + error.message);
+        return false;
+    }
+}
+
+/* ================= BALAS PESAN ================= */
+async function balasPesan(){
+    if(selectedIndex === null) return;
+
+    const text = document.getElementById("replyText").value.trim();
+
+    if(!text){
+        alert("Silakan tulis tanggapan terlebih dahulu.");
+        return;
     }
 
+    const berhasil = await updateMessage(selectedIndex, {
+        tanggapan:text,
+        status:"Sudah Dibalas",
+        waktuDibalas:new Date().toLocaleString("id-ID")
+    });
+
+    if(berhasil){
+        alert("✅ Balasan berhasil disimpan.");
+    }
+}
+
+/* ================= TERUSKAN ================= */
+async function teruskanPesan(){
+    if(selectedIndex === null) return;
+
+    const text = document.getElementById("replyText").value.trim();
+
+    if(!text){
+        alert("Tulis keterangan penerusan terlebih dahulu.");
+        return;
+    }
+
+    const berhasil = await updateMessage(selectedIndex, {
+        tanggapan:"Diteruskan: " + text,
+        status:"Sudah Dibaca"
+    });
+
+    if(berhasil){
+        alert("↗️ Pesan berhasil ditandai untuk diteruskan.");
+    }
+}
+
+function bukaTeruskan(index){
+    lihatPesan(index);
+    setTimeout(() => document.getElementById("replyText").focus(), 100);
+}
+
+/* ================= HAPUS DATA ================= */
+async function hapusData(index){
+    const item = guestbookData[index];
+    if(!item) return;
+
+    const yakin = confirm("Apakah kamu yakin ingin menghapus pesan ini?");
+    if(!yakin) return;
+
+    try{
+        const data = new URLSearchParams();
+        data.append("action", "deleteMessage");
+
+        if(item.id !== undefined && item.id !== null && item.id !== ""){
+            data.append("id", item.id);
+        }else{
+            data.append("row", item.row || index + 2);
+        }
+
+        const response = await fetch(SCRIPT_URL, {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body:data.toString()
+        });
+
+        const hasil = await response.json();
+
+        if(!hasil.success){
+            throw new Error(hasil.error || "Penghapusan gagal.");
+        }
+
+        alert("🗑️ Pesan berhasil dihapus.");
+        loadDashboard();
+
+    }catch(error){
+        console.error(error);
+        alert("❌ Gagal menghapus data: " + error.message);
+    }
+}
+
+/* ================= CARI DATA ================= */
+function searchData(){
+    const keyword =
+        document.getElementById("searchInput").value.toLowerCase().trim();
+
+    const hasil = guestbookData.filter(item =>
+        String(item.nama || "").toLowerCase().includes(keyword) ||
+        String(item.asal || "").toLowerCase().includes(keyword) ||
+        String(item.pesan || "").toLowerCase().includes(keyword) ||
+        String(item.status || "").toLowerCase().includes(keyword)
+    );
+
+    tampilkanData(hasil);
+}
+
+/* ================= MODAL ================= */
+function closeModal(){
+    document.getElementById("detailModal").style.display = "none";
+    selectedIndex = null;
+}
+
+/* ================= LOGOUT ================= */
+function logoutAdmin(){
+    const yakin = confirm("Yakin ingin keluar dari Admin?");
+    if(!yakin) return;
+
+    document.getElementById("dashboardPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("loginMessage").innerHTML = "";
+    document.getElementById("password").value = "";
+    guestbookData = [];
+}
+
+/* ================= AMANKAN TEKS ================= */
+function escapeHTML(text){
+    const div = document.createElement("div");
+    div.textContent = text == null ? "" : String(text);
+    return div.innerHTML;
+}
+
+/* ================= KLIK LUAR MODAL ================= */
+window.onclick = function(event){
+    const modal = document.getElementById("detailModal");
+    if(event.target === modal) closeModal();
 };
+
 
 </script>
 
