@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Layanan Masyarakat - Desa Maktangguk</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: #234d3c;
+      background: #f4f8f5;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       DAUN JATUH
+    ========================= */
+
+    .leaf {
+      position: fixed;
+      top: -50px;
+      z-index: 50;
+      pointer-events: none;
+      font-size: 22px;
+      opacity: 0.65;
+      animation: falling linear infinite;
+    }
+
+    .leaf:nth-child(1) {
+      left: 8%;
+      animation-duration: 10s;
+      animation-delay: 0s;
+    }
+
+    .leaf:nth-child(2) {
+      left: 25%;
+      animation-duration: 13s;
+      animation-delay: 2s;
+    }
+
+    .leaf:nth-child(3) {
+      left: 45%;
+      animation-duration: 11s;
+      animation-delay: 4s;
+    }
+
+    .leaf:nth-child(4) {
+      left: 68%;
+      animation-duration: 14s;
+      animation-delay: 1s;
+    }
+
+    .leaf:nth-child(5) {
+      left: 88%;
+      animation-duration: 12s;
+      animation-delay: 5s;
+    }
+
+    @keyframes falling {
+
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(50vh) translateX(50px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(110vh) translateX(-40px) rotate(360deg);
+      }
+
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+
+      background: rgba(23, 77, 58, 0.94);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .navbar {
+      width: 92%;
+      max-width: 1150px;
+      margin: auto;
+
+      min-height: 75px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+
+      font-size: 22px;
+    }
+
+    .logo-text h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+    }
+
+    .logo-text span {
+      font-size: 10px;
+      opacity: 0.75;
+    }
+
+    nav ul {
+      list-style: none;
+
+      display: flex;
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      opacity: 0.7;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+
+      min-height: 68vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      color: white;
+
+      position: relative;
+
+      background:
+        linear-gradient(
+          rgba(17, 72, 52, 0.72),
+          rgba(17, 72, 52, 0.82)
+        ),
+        url("profile6.jpg") center / cover no-repeat;
+    }
+
+    .hero-content {
+      width: 92%;
+      max-width: 800px;
+
+      padding: 40px 20px;
+    }
+
+    .hero-icon {
+      width: 75px;
+      height: 75px;
+
+      margin: 0 auto 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+
+      font-size: 36px;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 54px;
+
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 17px;
+
+      line-height: 1.7;
+
+      opacity: 0.9;
+    }
+
+    /* =========================
+       CONTAINER
+    ========================= */
+
+    .container {
+      width: 92%;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    /* =========================
+       BUKU TAMU
+    ========================= */
+
+    .guestbook-section {
+      padding: 90px 0;
+
+      background:
+        linear-gradient(
+          rgba(20, 67, 50, 0.55),
+          rgba(20, 67, 50, 0.70)
+        ),
+        url("profile6.jpg") center / cover fixed no-repeat;
+    }
+
+    .guestbook-card {
+
+      max-width: 700px;
+
+      margin: auto;
+
+      padding: 45px;
+
+      border-radius: 30px;
+
+      background: rgba(255,255,255,0.94);
+
+      backdrop-filter: blur(15px);
+
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.25);
+
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .guestbook-heading {
+      text-align: center;
+
+      margin-bottom: 30px;
+    }
+
+    .book-icon {
+
+      width: 60px;
+      height: 60px;
+
+      margin: 0 auto 15px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: #e3f0e8;
+
+      border-radius: 18px;
+
+      font-size: 30px;
+    }
+
+    .guestbook-heading h2 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 34px;
+
+      color: #174d3a;
+
+      margin-bottom: 8px;
+    }
+
+    .guestbook-heading p {
+
+      color: #708078;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+    .decorative-line {
+
+      width: 65px;
+      height: 3px;
+
+      background: #2f795c;
+
+      margin: 16px auto 0;
+
+      border-radius: 10px;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      color: #285542;
+    }
+
+    .form-group input,
+    .form-group textarea {
+
+      width: 100%;
+
+      padding: 14px 16px;
+
+      border: 1px solid #d6e4dc;
+
+      border-radius: 14px;
+
+      background: #f9fbfa;
+
+      font-family: "DM Sans", sans-serif;
+
+      font-size: 14px;
+
+      color: #234d3c;
+
+      outline: none;
+
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+
+      border-color: #2f795c;
+
+      background: white;
+
+      box-shadow:
+        0 0 0 4px rgba(47,121,92,0.10);
+    }
+
+    .form-group textarea {
+
+      min-height: 150px;
+
+      resize: vertical;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .send-button {
+
+      width: 100%;
+
+      border: none;
+
+      padding: 15px;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #174d3a,
+          #2f795c
+        );
+
+      color: white;
+
+      font-family: "DM Sans", sans-serif;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 10px 25px rgba(23,77,58,0.25);
+
+      transition: 0.3s;
+    }
+
+    .send-button:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 30px rgba(23,77,58,0.30);
+    }
+
+    .send-button:active {
+
+      transform: translateY(0);
+    }
+
+    /* =========================
+       PENUTUP
+    ========================= */
+
+    .closing {
+
+      padding: 75px 20px;
+
+      text-align: center;
+
+      background: white;
+    }
+
+    .closing-icon {
+
+      font-size: 35px;
+
+      margin-bottom: 15px;
+    }
+
+    .closing h2 {
+
+      font-family: "Playfair Display", serif;
+
+      color: #174d3a;
+
+      font-size: 28px;
+
+      margin-bottom: 10px;
+    }
+
+    .closing p {
+
+      color: #708078;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+      background: #174d3a;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 25px 20px;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+    footer strong {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav ul li a {
+        font-size: 11px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .navbar {
+        min-height: 65px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 60vh;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .guestbook-section {
+        padding: 55px 0;
+      }
+
+      .guestbook-card {
+        padding: 28px 20px;
+        border-radius: 22px;
+      }
+
+      .guestbook-heading h2 {
+        font-size: 29px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- DAUN JATUH -->
+  <div class="leaf">🍃</div>
+  <div class="leaf">🍃</div>
+  <div class="leaf">🍃</div>
+  <div class="leaf">🍃</div>
+  <div class="leaf">🍃</div>
+
+
+  <!-- NAVBAR -->
+  <header>
+
+    <div class="navbar">
+
+      <a href="index.html" class="logo">
+
+        <div class="logo-icon">
+          🌿
+        </div>
+
+        <div class="logo-text">
+
+          <h2>Desa Maktangguk</h2>
+
+          <span>Layanan Masyarakat</span>
+
+        </div>
+
+      </a>
+
+
+      <nav>
+
+        <ul>
+
+          <li>
+            <a href="index.html">Beranda</a>
+          </li>
+
+          <li>
+            <a href="profil.html">Profil</a>
+          </li>
+
+          <li>
+            <a href="sejarah.html">Sejarah</a>
+          </li>
+
+          <li>
+            <a href="potensi.html">Potensi</a>
+          </li>
+
+          <li>
+            <a href="galeri.html">Galeri</a>
+          </li>
+
+          <li>
+            <a href="layanan-masyarakat.html">
+              Layanan Masyarakat
+            </a>
+          </li>
+
+          <li>
+            <a href="kontak.html">Kontak</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-icon">
+        🤝
+      </div>
+
+      <h1>
+        Layanan Masyarakat
+      </h1>
+
+      <p>
+        Ruang bagi masyarakat untuk menyampaikan pesan,
+        kesan, dan saran kepada Desa Maktangguk.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUKU TAMU -->
+  <section class="guestbook-section">
+
+    <div class="container">
+
+      <div class="guestbook-card">
+
+        <div class="guestbook-heading">
+
+          <div class="book-icon">
+            📖
+          </div>
+
+          <h2>
+            Buku Tamu
+          </h2>
+
+          <p>
+            Silakan tinggalkan pesan untuk
+            Desa Maktangguk.
+          </p>
+
+          <div class="decorative-line"></div>
+
+        </div>
+
+
+        <form id="guestbookForm">
+
+          <!-- NAMA -->
+          <div class="form-group">
+
+            <label for="nama">
+              Nama
+            </label>
+
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              placeholder="Masukkan nama kamu"
+              required
+            >
+
+          </div>
+
+
+          <!-- ASAL -->
+          <div class="form-group">
+
+            <label for="asal">
+              Asal
+            </label>
+
+            <input
+              type="text"
+              id="asal"
+              name="asal"
+              placeholder="Contoh: Pontianak"
+              required
+            >
+
+          </div>
+
+
+          <!-- PESAN -->
+          <div class="form-group">
+
+            <label for="pesan">
+              Pesan
+            </label>
+
+            <textarea
+              id="pesan"
+              name="pesan"
+              placeholder="Tuliskan pesan kamu..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <!-- BUTTON -->
+          <button
+            type="submit"
+            class="send-button"
+          >
+            🌿 Kirim Pesan
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PENUTUP -->
+  <section class="closing">
+
+    <div class="closing-icon">
+      🌱
+    </div>
+
+    <h2>
+      Terima Kasih Telah Berkunjung
+    </h2>
+
+    <p>
+      Partisipasi masyarakat menjadi bagian penting
+      dalam perkembangan Desa Maktangguk.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <strong>
+      Desa Maktangguk
+    </strong>
+
+    <br>
+
+    Kecamatan Tebas • Kabupaten Sambas • Kalimantan Barat
+
+    <br>
+
+    © 2026 Desa Maktangguk
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    document
+      .getElementById("guestbookForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alert(
+          "Terima kasih! Pesan kamu berhasil dikirim."
+        );
+
+        this.reset();
+
+      });
+
+  </script>
+
+</body>
+</html>
