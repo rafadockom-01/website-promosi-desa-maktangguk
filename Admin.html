@@ -4,415 +4,259 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin - Desa Maktangguk</title>
+<title>Admin Desa Maktangguk</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Montserrat',sans-serif;
-    min-height:100vh;
     background:#f5f7f2;
-    color:#174f36;
+    color:#174d35;
 }
 
-/* =========================
-   LOGIN
-========================= */
+/* ================= LOGIN ================= */
 
 #loginPage{
     min-height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
-    padding:25px;
-
+    padding:20px;
     background:
-        linear-gradient(
-            rgba(4,77,43,.94),
-            rgba(2,54,35,.97)
-        );
-
+        linear-gradient(rgba(3,70,43,.82),rgba(3,70,43,.82)),
+        url("profile.6.jpg");
+    background-size:cover;
+    background-position:center;
     position:relative;
     overflow:hidden;
 }
 
-.leaf{
-    position:absolute;
-    color:#d9ef70;
-    opacity:.45;
-    pointer-events:none;
-    animation:jatuh linear infinite;
-}
-
-.leaf:nth-child(1){
-    left:5%;
-    font-size:30px;
-    animation-duration:9s;
-}
-
-.leaf:nth-child(2){
-    left:25%;
-    font-size:22px;
-    animation-duration:12s;
-    animation-delay:2s;
-}
-
-.leaf:nth-child(3){
-    left:50%;
-    font-size:28px;
-    animation-duration:10s;
-    animation-delay:3s;
-}
-
-.leaf:nth-child(4){
-    left:75%;
-    font-size:22px;
-    animation-duration:13s;
-    animation-delay:1s;
-}
-
-.leaf:nth-child(5){
-    left:92%;
-    font-size:32px;
-    animation-duration:11s;
-    animation-delay:4s;
-}
-
-@keyframes jatuh{
-
-    0%{
-        top:-80px;
-        transform:translateX(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateX(70px) rotate(180deg);
-    }
-
-    100%{
-        top:110vh;
-        transform:translateX(-50px) rotate(360deg);
-    }
-
-}
-
 .login-card{
     width:100%;
-    max-width:470px;
-
-    padding:45px 40px;
-
+    max-width:430px;
     background:white;
-
-    border-radius:30px;
-
+    padding:45px 35px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
     text-align:center;
-
     position:relative;
-    z-index:5;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
+    z-index:10;
 }
 
-.admin-icon{
-    width:90px;
-    height:90px;
-
+.login-icon{
+    width:85px;
+    height:85px;
     margin:0 auto 20px;
-
+    border-radius:50%;
+    background:#e8f2dc;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    border-radius:50%;
-
-    background:#eaf3d2;
-
-    border:3px solid #d9ef70;
-
-    color:#12603e;
-
+    color:#17613e;
     font-size:38px;
 }
 
 .login-card h1{
     font-family:'DM Serif Display',serif;
-
-    color:#12603e;
-
-    font-size:42px;
-
+    font-size:38px;
     margin-bottom:8px;
+    color:#145536;
 }
 
 .login-card p{
-    color:#718275;
-
-    font-family:'Playfair Display',serif;
-
-    font-style:italic;
-
-    margin-bottom:28px;
-}
-
-.decor{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:25px;
-}
-
-.decor span{
-    width:55px;
-    height:2px;
-
-    background:#d5b958;
-}
-
-.decor i{
-    color:#b49637;
+    color:#718078;
+    font-size:14px;
+    margin-bottom:30px;
 }
 
 .input-group{
-    text-align:left;
-    margin-bottom:20px;
-}
-
-.input-group label{
-    display:block;
-
-    margin-bottom:8px;
-
-    font-size:14px;
-    font-weight:600;
-
-    color:#315c48;
-}
-
-.input-box{
     position:relative;
+    margin-bottom:18px;
 }
 
-.lock-icon{
+.input-group i{
     position:absolute;
-
     left:17px;
     top:50%;
-
     transform:translateY(-50%);
-
-    color:#639276;
-
-    z-index:3;
-
-    pointer-events:none;
+    color:#54816a;
 }
 
-.input-box input{
+.input-group input{
     width:100%;
     height:52px;
-
-    padding:0 55px 0 48px;
-
-    border:2px solid #dce7df;
-
-    border-radius:15px;
-
+    padding:0 50px;
+    border:2px solid #dce5dc;
+    border-radius:14px;
     outline:none;
-
-    background:white;
-
-    color:#174f36;
-
     font-family:'Montserrat',sans-serif;
-
-    font-size:15px;
-
-    position:relative;
-    z-index:1;
+    font-size:14px;
+    color:#174d35;
+    background:white;
 }
 
-.input-box input:focus{
-    border-color:#4f956f;
-
-    box-shadow:
-        0 0 0 4px rgba(79,149,111,.1);
+.input-group input:focus{
+    border-color:#26784f;
 }
 
 .show-password{
     position:absolute;
-
-    right:7px;
+    right:15px;
     top:50%;
-
     transform:translateY(-50%);
-
-    width:40px;
-    height:40px;
-
-    border:0;
-
-    background:transparent;
-
-    color:#789184;
-
+    border:none;
+    background:none;
+    color:#54816a;
     cursor:pointer;
-
-    z-index:5;
-
-    border-radius:10px;
-}
-
-.show-password:hover{
-    background:#edf4ef;
-    color:#12603e;
+    font-size:16px;
 }
 
 .login-btn{
     width:100%;
-
-    padding:16px;
-
-    border:0;
-
-    border-radius:17px;
-
-    background:#12603e;
-
+    height:52px;
+    border:none;
+    border-radius:14px;
+    background:#17613e;
     color:white;
-
     font-family:'Montserrat',sans-serif;
-
     font-size:15px;
-
     font-weight:700;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .login-btn:hover{
-    background:#0d4b30;
-    transform:translateY(-3px);
+    background:#0d472d;
+    transform:translateY(-2px);
 }
 
 .message{
-    min-height:25px;
-
-    margin-top:17px;
-
+    min-height:24px;
+    margin-top:18px;
     font-size:14px;
-
-    font-weight:700;
+    font-weight:600;
 }
 
-.error{
-    color:#c74b4b;
+.message.success{
+    color:#258052;
 }
 
+.message.error{
+    color:#c43c3c;
+}
 
-/* =========================
-   DASHBOARD
-========================= */
+/* DAUN */
+
+.leaf{
+    position:absolute;
+    color:#d9ed70;
+    opacity:.7;
+    animation:jatuh linear infinite;
+}
+
+.leaf:nth-child(1){
+    left:5%;
+    font-size:28px;
+    animation-duration:8s;
+}
+
+.leaf:nth-child(2){
+    left:20%;
+    font-size:20px;
+    animation-duration:11s;
+}
+
+.leaf:nth-child(3){
+    left:40%;
+    font-size:30px;
+    animation-duration:9s;
+}
+
+.leaf:nth-child(4){
+    left:65%;
+    font-size:22px;
+    animation-duration:12s;
+}
+
+.leaf:nth-child(5){
+    left:85%;
+    font-size:32px;
+    animation-duration:10s;
+}
+
+@keyframes jatuh{
+    0%{
+        top:-60px;
+        transform:rotate(0deg);
+    }
+
+    100%{
+        top:110%;
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= DASHBOARD ================= */
 
 #dashboardPage{
     display:none;
-
     min-height:100vh;
-
-    background:#f5f7f2;
 }
 
-/* NAVBAR */
-
 .dashboard-nav{
-    height:75px;
-
-    padding:0 6%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
     background:#064d2f;
-
     color:white;
+    padding:18px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
 }
 
 .dashboard-logo{
     display:flex;
     align-items:center;
-    gap:10px;
-
-    font-family:'Playfair Display',serif;
-
-    font-size:22px;
-    font-weight:700;
+    gap:12px;
+    font-family:'DM Serif Display',serif;
+    font-size:25px;
 }
 
 .dashboard-logo i{
     color:#d9ef70;
-    font-size:28px;
 }
 
 .logout-btn{
-    border:1px solid rgba(255,255,255,.4);
-
+    border:1px solid rgba(255,255,255,.5);
     background:transparent;
-
     color:white;
-
-    padding:10px 17px;
-
-    border-radius:25px;
-
+    padding:10px 18px;
+    border-radius:20px;
     cursor:pointer;
-
     font-family:'Montserrat',sans-serif;
-
     font-weight:600;
 }
 
 .logout-btn:hover{
-    background:#f1d878;
-    color:#145334;
+    background:white;
+    color:#064d2f;
 }
 
-
-/* CONTENT */
-
-.dashboard-content{
-    width:88%;
+.dashboard-container{
     max-width:1250px;
-
-    margin:40px auto 70px;
+    margin:auto;
+    padding:45px 5%;
 }
 
 .dashboard-title{
@@ -421,401 +265,392 @@ body{
 
 .dashboard-title h1{
     font-family:'DM Serif Display',serif;
-
-    font-size:42px;
-
-    color:#12603e;
-
-    margin-bottom:6px;
+    font-size:45px;
+    color:#145536;
 }
 
 .dashboard-title p{
-    color:#6d8175;
-
-    font-size:14px;
+    color:#718078;
+    margin-top:5px;
 }
 
-
-/* STAT CARD */
+/* STATISTIK */
 
 .stats{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
-
     margin-bottom:35px;
 }
 
 .stat-card{
     background:white;
-
-    border-radius:20px;
-
+    border-radius:18px;
     padding:25px;
-
+    box-shadow:0 8px 25px rgba(20,80,50,.08);
     display:flex;
-
     align-items:center;
-
     gap:18px;
-
-    box-shadow:
-        0 8px 25px rgba(30,80,55,.08);
-
-    border:1px solid #e4ece5;
 }
 
 .stat-icon{
     width:55px;
     height:55px;
-
     border-radius:15px;
-
+    background:#e8f2dc;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:#eaf3d2;
-
-    color:#12603e;
-
+    color:#17613e;
     font-size:23px;
 }
 
 .stat-card h3{
-    font-size:13px;
-
-    color:#75877c;
-
-    margin-bottom:5px;
-}
-
-.stat-card strong{
     font-size:27px;
-
-    color:#12603e;
+    color:#174d35;
 }
 
+.stat-card p{
+    color:#758279;
+    font-size:13px;
+}
 
-/* TOOLBAR */
+/* BUKU TAMU */
 
-.guestbook-section{
+.guestbook{
     background:white;
-
-    border-radius:24px;
-
-    padding:28px;
-
-    box-shadow:
-        0 8px 25px rgba(30,80,55,.08);
-
-    border:1px solid #e4ece5;
+    border-radius:22px;
+    box-shadow:0 8px 25px rgba(20,80,50,.08);
+    overflow:hidden;
 }
 
-.section-header{
+.guestbook-header{
+    padding:25px;
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
-
+    align-items:center;
     gap:20px;
-
-    margin-bottom:25px;
+    border-bottom:1px solid #edf0ec;
 }
 
-.section-header h2{
+.guestbook-header h2{
     font-family:'DM Serif Display',serif;
-
-    font-size:30px;
-
-    color:#12603e;
+    font-size:28px;
 }
 
 .search-box{
     position:relative;
-
-    width:260px;
 }
 
 .search-box i{
     position:absolute;
-
     left:14px;
     top:50%;
-
     transform:translateY(-50%);
-
-    color:#789184;
+    color:#7a8980;
 }
 
 .search-box input{
-    width:100%;
-
-    padding:12px 15px 12px 40px;
-
-    border:2px solid #e1e9e3;
-
-    border-radius:13px;
-
+    width:250px;
+    height:42px;
+    border:1px solid #dce4dc;
+    border-radius:12px;
+    padding:0 15px 0 40px;
     outline:none;
-
     font-family:'Montserrat',sans-serif;
 }
 
-.search-box input:focus{
-    border-color:#4f956f;
-}
-
-
-/* TABLE */
-
 .table-wrapper{
-    width:100%;
-
     overflow-x:auto;
 }
 
 table{
     width:100%;
-
     border-collapse:collapse;
-
     min-width:850px;
 }
 
-thead{
-    background:#edf4ef;
-}
-
 th{
-    text-align:left;
-
-    padding:15px 13px;
-
-    color:#315c48;
-
+    background:#f5f8f3;
+    color:#37634d;
     font-size:13px;
-
-    white-space:nowrap;
+    text-align:left;
+    padding:16px;
 }
 
 td{
-    padding:15px 13px;
-
-    border-bottom:1px solid #edf1ed;
-
-    color:#536c5e;
-
+    padding:17px 16px;
+    border-top:1px solid #edf0ec;
     font-size:13px;
-
-    vertical-align:top;
+    color:#52685b;
 }
 
-tbody tr:hover{
-    background:#fafcf9;
+tr.unread{
+    background:#f8fcf5;
 }
 
-.status{
-    display:inline-block;
+tr.unread td:first-child{
+    border-left:4px solid #26784f;
+}
 
-    padding:6px 10px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
+.nama{
+    color:#174d35;
     font-weight:700;
+}
 
-    background:#e8f4df;
+.pesan-singkat{
+    max-width:280px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
 
-    color:#287048;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.badge.baru{
+    background:#fff1d6;
+    color:#a96d08;
+}
+
+.badge.dibaca{
+    background:#e3f3e8;
+    color:#26734b;
+}
+
+.badge.dibalas{
+    background:#e5eefc;
+    color:#315d9c;
+}
+
+.action-buttons{
+    display:flex;
+    gap:7px;
 }
 
 .action-btn{
-    border:0;
-
-    padding:8px 11px;
-
+    width:34px;
+    height:34px;
+    border:none;
     border-radius:9px;
-
     cursor:pointer;
-
-    margin-right:4px;
-
-    background:#edf4ef;
-
-    color:#12603e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s;
 }
 
-.action-btn:hover{
-    background:#dcebe1;
+.view-btn{
+    background:#e8f2dc;
+    color:#17613e;
+}
+
+.reply-btn{
+    background:#e5eefc;
+    color:#315d9c;
+}
+
+.forward-btn{
+    background:#f4eadb;
+    color:#9b651b;
 }
 
 .delete-btn{
-    color:#c74b4b;
+    background:#fde8e8;
+    color:#c43c3c;
 }
 
-.empty{
-    text-align:center;
-
-    padding:35px;
-
-    color:#8a9990;
+.action-btn:hover{
+    transform:translateY(-2px);
 }
 
-
-/* =========================
-   MODAL
-========================= */
+/* ================= MODAL ================= */
 
 .modal{
     display:none;
-
     position:fixed;
-
+    z-index:999;
     inset:0;
-
     background:rgba(0,0,0,.5);
-
-    z-index:100;
-
-    align-items:center;
-
-    justify-content:center;
-
     padding:20px;
-}
-
-.modal-box{
-    width:100%;
-    max-width:500px;
-
-    background:white;
-
-    border-radius:22px;
-
-    padding:30px;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
-
-.modal-header{
-    display:flex;
-
-    justify-content:space-between;
-
     align-items:center;
-
-    margin-bottom:20px;
+    justify-content:center;
 }
 
-.modal-header h3{
-    font-family:'DM Serif Display',serif;
-
-    color:#12603e;
-
-    font-size:27px;
+.modal-content{
+    width:100%;
+    max-width:650px;
+    max-height:90vh;
+    overflow-y:auto;
+    background:white;
+    border-radius:22px;
+    padding:30px;
+    position:relative;
 }
 
-.close-modal{
-    width:35px;
-    height:35px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:#edf4ef;
-
-    color:#12603e;
-
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    border:none;
+    background:none;
+    font-size:25px;
+    color:#718078;
     cursor:pointer;
 }
 
-.modal-content p{
-    margin-bottom:13px;
+.modal-content h2{
+    font-family:'DM Serif Display',serif;
+    font-size:32px;
+    color:#145536;
+    margin-bottom:22px;
+}
 
-    color:#536c5e;
+.detail-row{
+    margin-bottom:17px;
+}
 
+.detail-row label{
+    display:block;
+    color:#789084;
+    font-size:12px;
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.detail-row div{
+    color:#294f3b;
+    line-height:1.7;
     font-size:14px;
-
-    line-height:1.6;
 }
 
-.modal-content strong{
-    color:#174f36;
+.message-box{
+    background:#f5f8f3;
+    padding:15px;
+    border-radius:12px;
 }
 
+.reply-area{
+    margin-top:20px;
+    border-top:1px solid #e7ece7;
+    padding-top:20px;
+}
 
-/* =========================
-   MOBILE
-========================= */
+.reply-area h3{
+    font-size:16px;
+    margin-bottom:10px;
+    color:#174d35;
+}
 
-@media(max-width:750px){
+.reply-area textarea{
+    width:100%;
+    min-height:110px;
+    border:1px solid #d8e2d9;
+    border-radius:12px;
+    padding:13px;
+    resize:vertical;
+    outline:none;
+    font-family:'Montserrat',sans-serif;
+    font-size:13px;
+}
 
-    .login-card{
-        padding:35px 24px;
-    }
+.reply-area textarea:focus{
+    border-color:#26784f;
+}
 
-    .login-card h1{
-        font-size:35px;
-    }
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
 
-    .dashboard-nav{
-        padding:0 20px;
-    }
+.modal-btn{
+    border:none;
+    border-radius:11px;
+    padding:11px 17px;
+    cursor:pointer;
+    font-family:'Montserrat',sans-serif;
+    font-weight:600;
+}
 
-    .dashboard-logo{
-        font-size:18px;
-    }
+.modal-reply{
+    background:#17613e;
+    color:white;
+}
 
-    .dashboard-logo i{
-        font-size:23px;
-    }
+.modal-forward{
+    background:#f4eadb;
+    color:#855719;
+}
 
-    .dashboard-content{
-        width:92%;
+.modal-close{
+    background:#edf1ed;
+    color:#52685b;
+}
 
-        margin-top:30px;
-    }
+/* ================= RESPONSIVE ================= */
 
-    .dashboard-title h1{
-        font-size:35px;
-    }
+@media(max-width:800px){
 
     .stats{
         grid-template-columns:1fr;
     }
 
-    .guestbook-section{
-        padding:20px 15px;
+    .dashboard-title h1{
+        font-size:37px;
     }
 
-    .section-header{
-        align-items:flex-start;
-
+    .guestbook-header{
         flex-direction:column;
+        align-items:flex-start;
     }
 
-    .search-box{
+    .search-box,
+    .search-box input{
         width:100%;
     }
 
+    .dashboard-nav{
+        padding:15px 5%;
+    }
+
+    .dashboard-logo{
+        font-size:20px;
+    }
 }
 
+@media(max-width:500px){
+
+    .login-card{
+        padding:35px 22px;
+    }
+
+    .login-card h1{
+        font-size:32px;
+    }
+
+    .dashboard-container{
+        padding:30px 4%;
+    }
+
+    .modal-content{
+        padding:25px 20px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-
-<!-- =========================
-     LOGIN PAGE
-========================= -->
+<!-- ================= LOGIN ================= -->
 
 <section id="loginPage">
 
@@ -839,129 +674,90 @@ tbody tr:hover{
         <i class="fa-solid fa-leaf"></i>
     </div>
 
-
     <div class="login-card">
 
-        <div class="admin-icon">
+        <div class="login-icon">
             <i class="fa-solid fa-user-shield"></i>
         </div>
 
-        <h1>Admin</h1>
+        <h1>Admin Desa</h1>
 
         <p>
-            Panel Pengelolaan Desa Maktangguk
+            Silakan masukkan password untuk masuk
+            ke Dashboard Admin.
         </p>
-
-        <div class="decor">
-
-            <span></span>
-
-            <i class="fa-solid fa-leaf"></i>
-
-            <span></span>
-
-        </div>
-
 
         <form onsubmit="loginAdmin(event)">
 
             <div class="input-group">
 
-                <label for="password">
-                    Password Admin
-                </label>
+                <i class="fa-solid fa-lock"></i>
 
-                <div class="input-box">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password"
+                    autocomplete="off"
+                    required
+                >
 
-                    <i class="fa-solid fa-lock lock-icon"></i>
-
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Masukkan password"
-                        autocomplete="off"
-                        required
-                    >
-
-                    <button
-                        type="button"
-                        class="show-password"
-                        onclick="togglePassword()">
-
-                        <i
-                            class="fa-solid fa-eye"
-                            id="eye">
-                        </i>
-
-                    </button>
-
-                </div>
+                <button
+                    type="button"
+                    class="show-password"
+                    onclick="togglePassword()"
+                >
+                    <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                </button>
 
             </div>
 
-
             <button
                 type="submit"
-                class="login-btn">
-
+                class="login-btn"
+            >
                 <i class="fa-solid fa-right-to-bracket"></i>
-
-                Masuk sebagai Admin
-
+                &nbsp; Masuk Admin
             </button>
 
         </form>
 
-
-        <div
-            id="loginMessage"
-            class="message">
-        </div>
+        <div id="loginMessage" class="message"></div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     DASHBOARD ADMIN
-========================= -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboardPage">
 
     <nav class="dashboard-nav">
 
         <div class="dashboard-logo">
-
             <i class="fa-solid fa-leaf"></i>
-
             Desa Maktangguk
-
         </div>
 
         <button
             class="logout-btn"
-            onclick="logoutAdmin()">
-
+            onclick="logoutAdmin()"
+        >
             <i class="fa-solid fa-right-from-bracket"></i>
-
             Keluar
-
         </button>
 
     </nav>
 
 
-    <main class="dashboard-content">
+    <main class="dashboard-container">
 
         <div class="dashboard-title">
 
-            <h1>
-                Dashboard Admin
-            </h1>
+            <h1>Dashboard Admin</h1>
 
             <p>
-                Kelola data Buku Tamu Desa Maktangguk
+                Kelola pesan dan Buku Tamu masyarakat Desa Maktangguk.
             </p>
 
         </div>
@@ -974,21 +770,12 @@ tbody tr:hover{
             <div class="stat-card">
 
                 <div class="stat-icon">
-
                     <i class="fa-solid fa-users"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Total Tamu
-                    </h3>
-
-                    <strong id="totalData">
-                        0
-                    </strong>
-
+                    <h3 id="totalTamu">0</h3>
+                    <p>Total Tamu</p>
                 </div>
 
             </div>
@@ -997,21 +784,12 @@ tbody tr:hover{
             <div class="stat-card">
 
                 <div class="stat-icon">
-
                     <i class="fa-solid fa-envelope"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Total Pesan
-                    </h3>
-
-                    <strong id="totalPesan">
-                        0
-                    </strong>
-
+                    <h3 id="totalPesan">0</h3>
+                    <p>Total Pesan</p>
                 </div>
 
             </div>
@@ -1020,21 +798,12 @@ tbody tr:hover{
             <div class="stat-card">
 
                 <div class="stat-icon">
-
-                    <i class="fa-solid fa-comments"></i>
-
+                    <i class="fa-solid fa-reply"></i>
                 </div>
 
                 <div>
-
-                    <h3>
-                        Tanggapan
-                    </h3>
-
-                    <strong id="totalTanggapan">
-                        0
-                    </strong>
-
+                    <h3 id="totalBalasan">0</h3>
+                    <p>Sudah Dibalas</p>
                 </div>
 
             </div>
@@ -1044,13 +813,11 @@ tbody tr:hover{
 
         <!-- BUKU TAMU -->
 
-        <section class="guestbook-section">
+        <section class="guestbook">
 
-            <div class="section-header">
+            <div class="guestbook-header">
 
-                <h2>
-                    Buku Tamu
-                </h2>
+                <h2>Buku Tamu</h2>
 
                 <div class="search-box">
 
@@ -1075,38 +842,16 @@ tbody tr:hover{
                     <thead>
 
                         <tr>
-
-                            <th>
-                                No
-                            </th>
-
-                            <th>
-                                Nama
-                            </th>
-
-                            <th>
-                                Asal
-                            </th>
-
-                            <th>
-                                Pesan
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Aksi
-                            </th>
-
+                            <th>Nama</th>
+                            <th>Asal</th>
+                            <th>Pesan</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
 
                     </thead>
 
-                    <tbody id="guestbookBody">
-
-                    </tbody>
+                    <tbody id="guestbookTable"></tbody>
 
                 </table>
 
@@ -1119,35 +864,94 @@ tbody tr:hover{
 </section>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- ================= DETAIL MODAL ================= -->
 
-<div
-    class="modal"
-    id="detailModal">
+<div id="detailModal" class="modal">
 
-    <div class="modal-box">
+    <div class="modal-content">
 
-        <div class="modal-header">
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            &times;
+        </button>
 
-            <h3>
-                Detail Pesan
-            </h3>
+        <h2>Detail Pesan</h2>
 
-            <button
-                class="close-modal"
-                onclick="closeModal()">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
+        <div class="detail-row">
+            <label>Nama</label>
+            <div id="detailNama"></div>
         </div>
 
-        <div
-            class="modal-content"
-            id="modalContent">
+        <div class="detail-row">
+            <label>Asal</label>
+            <div id="detailAsal"></div>
+        </div>
+
+        <div class="detail-row">
+            <label>Pesan</label>
+            <div
+                id="detailPesan"
+                class="message-box"
+            ></div>
+        </div>
+
+        <div class="detail-row">
+            <label>Status</label>
+            <div id="detailStatus"></div>
+        </div>
+
+        <div class="detail-row">
+            <label>Tanggapan Admin</label>
+            <div
+                id="detailTanggapan"
+                class="message-box"
+            ></div>
+        </div>
+
+
+        <!-- BALAS -->
+
+        <div class="reply-area">
+
+            <h3>
+                <i class="fa-solid fa-reply"></i>
+                Balas Pesan
+            </h3>
+
+            <textarea
+                id="replyText"
+                placeholder="Tulis tanggapan untuk masyarakat..."
+            ></textarea>
+
+            <div class="modal-buttons">
+
+                <button
+                    class="modal-btn modal-reply"
+                    onclick="balasPesan()"
+                >
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Kirim Balasan
+                </button>
+
+                <button
+                    class="modal-btn modal-forward"
+                    onclick="teruskanPesan()"
+                >
+                    <i class="fa-solid fa-share"></i>
+                    Teruskan
+                </button>
+
+                <button
+                    class="modal-btn modal-close"
+                    onclick="closeModal()"
+                >
+                    Tutup
+                </button>
+
+            </div>
+
         </div>
 
     </div>
@@ -1157,9 +961,7 @@ tbody tr:hover{
 
 <script>
 
-/* =========================
-   DATA CONTOH
-========================= */
+/* ================= DATA CONTOH ================= */
 
 let guestbookData = [
 
@@ -1168,15 +970,27 @@ let guestbookData = [
         asal:"Desa Maktangguk",
         pesan:"Selamat datang di website Desa Maktangguk.",
         status:"Baru",
-        tanggapan:"Belum ada tanggapan."
+        tanggapan:"Belum ada tanggapan.",
+        waktuDibaca:"",
+        waktuDibalas:""
+    },
+
+    {
+        nama:"Rafa",
+        asal:"Kecamatan Tebas",
+        pesan:"Bagaimana cara mendapatkan informasi layanan masyarakat?",
+        status:"Sudah Dibaca",
+        tanggapan:"Silakan melihat menu Layanan Masyarakat.",
+        waktuDibaca:"Hari ini",
+        waktuDibalas:"Hari ini"
     }
 
 ];
 
+let selectedIndex = null;
 
-/* =========================
-   LOGIN
-========================= */
+
+/* ================= LOGIN ================= */
 
 function loginAdmin(event){
 
@@ -1188,13 +1002,10 @@ function loginAdmin(event){
     const message =
         document.getElementById("loginMessage");
 
+
     if(password === "Rafa2009"){
 
-        message.className =
-            "message";
-
-        message.style.color =
-            "#258052";
+        message.className = "message success";
 
         message.innerHTML =
             "✅ Password Benar";
@@ -1215,8 +1026,7 @@ function loginAdmin(event){
 
     }else{
 
-        message.className =
-            "message error";
+        message.className = "message error";
 
         message.innerHTML =
             "❌ Password Salah";
@@ -1228,252 +1038,460 @@ function loginAdmin(event){
 }
 
 
-/* =========================
-   SHOW PASSWORD
-========================= */
+/* ================= LIHAT PASSWORD ================= */
 
 function togglePassword(){
 
-    const password =
+    const input =
         document.getElementById("password");
 
-    const eye =
-        document.getElementById("eye");
+    const icon =
+        document.getElementById("eyeIcon");
 
-    if(password.type === "password"){
 
-        password.type = "text";
+    if(input.type === "password"){
 
-        eye.classList.remove("fa-eye");
+        input.type = "text";
 
-        eye.classList.add("fa-eye-slash");
+        icon.className =
+            "fa-solid fa-eye-slash";
 
     }else{
 
-        password.type = "password";
+        input.type = "password";
 
-        eye.classList.remove("fa-eye-slash");
-
-        eye.classList.add("fa-eye");
+        icon.className =
+            "fa-solid fa-eye";
 
     }
 
 }
 
 
-/* =========================
-   DASHBOARD
-========================= */
+/* ================= DASHBOARD ================= */
 
 function loadDashboard(){
 
-    const body =
-        document.getElementById("guestbookBody");
-
-    body.innerHTML = "";
-
-    document.getElementById("totalData").innerText =
+    document.getElementById("totalTamu").innerText =
         guestbookData.length;
 
     document.getElementById("totalPesan").innerText =
         guestbookData.length;
 
-    const tanggapan =
+    const jumlahBalasan =
         guestbookData.filter(
-            item => item.tanggapan !== "Belum ada tanggapan."
+            data =>
+            data.tanggapan &&
+            data.tanggapan !== "Belum ada tanggapan."
         ).length;
 
-    document.getElementById("totalTanggapan").innerText =
-        tanggapan;
+    document.getElementById("totalBalasan").innerText =
+        jumlahBalasan;
 
 
-    if(guestbookData.length === 0){
+    tampilkanData(guestbookData);
 
-        body.innerHTML = `
+}
+
+
+/* ================= TAMPIL DATA ================= */
+
+function tampilkanData(data){
+
+    const table =
+        document.getElementById("guestbookTable");
+
+    table.innerHTML = "";
+
+
+    if(data.length === 0){
+
+        table.innerHTML = `
             <tr>
-                <td colspan="6" class="empty">
-                    Belum ada data Buku Tamu.
+                <td colspan="5" style="text-align:center;padding:30px;">
+                    Tidak ada data ditemukan.
                 </td>
             </tr>
         `;
 
         return;
-
     }
 
 
-    guestbookData.forEach(function(item,index){
+    data.forEach(function(item){
 
-        body.innerHTML += `
+        const originalIndex =
+            guestbookData.indexOf(item);
 
-            <tr>
 
-                <td>
-                    ${index + 1}
-                </td>
+        let badge = "";
 
-                <td>
-                    <strong>${escapeHTML(item.nama)}</strong>
-                </td>
+        if(item.status === "Baru"){
 
-                <td>
-                    ${escapeHTML(item.asal)}
-                </td>
+            badge = `
+                <span class="badge baru">
+                    <i class="fa-solid fa-circle"></i>
+                    Belum Dibaca
+                </span>
+            `;
 
-                <td>
-                    ${escapeHTML(item.pesan)}
-                </td>
+        }else if(item.status === "Sudah Dibaca"){
 
-                <td>
+            badge = `
+                <span class="badge dibaca">
+                    <i class="fa-solid fa-check"></i>
+                    Sudah Dibaca
+                </span>
+            `;
 
-                    <span class="status">
-                        ${escapeHTML(item.status)}
-                    </span>
+        }else{
 
-                </td>
+            badge = `
+                <span class="badge dibalas">
+                    <i class="fa-solid fa-reply"></i>
+                    Sudah Dibalas
+                </span>
+            `;
 
-                <td>
+        }
+
+
+        const row =
+            document.createElement("tr");
+
+
+        if(item.status === "Baru"){
+
+            row.classList.add("unread");
+
+        }
+
+
+        row.innerHTML = `
+
+            <td class="nama">
+                ${escapeHTML(item.nama)}
+            </td>
+
+            <td>
+                ${escapeHTML(item.asal)}
+            </td>
+
+            <td class="pesan-singkat">
+                ${escapeHTML(item.pesan)}
+            </td>
+
+            <td>
+                ${badge}
+            </td>
+
+            <td>
+
+                <div class="action-buttons">
 
                     <button
-                        class="action-btn"
-                        onclick="lihatPesan(${index})">
-
+                        class="action-btn view-btn"
+                        title="Lihat pesan"
+                        onclick="lihatPesan(${originalIndex})"
+                    >
                         <i class="fa-solid fa-eye"></i>
-
                     </button>
+
+
+                    <button
+                        class="action-btn reply-btn"
+                        title="Balas"
+                        onclick="bukaBalas(${originalIndex})"
+                    >
+                        <i class="fa-solid fa-reply"></i>
+                    </button>
+
+
+                    <button
+                        class="action-btn forward-btn"
+                        title="Teruskan"
+                        onclick="bukaTeruskan(${originalIndex})"
+                    >
+                        <i class="fa-solid fa-share"></i>
+                    </button>
+
 
                     <button
                         class="action-btn delete-btn"
-                        onclick="hapusData(${index})">
-
+                        title="Hapus"
+                        onclick="hapusData(${originalIndex})"
+                    >
                         <i class="fa-solid fa-trash"></i>
-
                     </button>
 
-                </td>
+                </div>
 
-            </tr>
+            </td>
 
         `;
+
+
+        table.appendChild(row);
 
     });
 
 }
 
 
-/* =========================
-   LIHAT PESAN
-========================= */
+/* ================= LIHAT PESAN ================= */
 
 function lihatPesan(index){
+
+    selectedIndex = index;
 
     const item =
         guestbookData[index];
 
-    document.getElementById("modalContent").innerHTML = `
 
-        <p>
-            <strong>Nama:</strong><br>
-            ${escapeHTML(item.nama)}
-        </p>
+    /*
+       Jika pesan masih "Baru",
+       otomatis berubah menjadi
+       "Sudah Dibaca".
+    */
 
-        <p>
-            <strong>Asal:</strong><br>
-            ${escapeHTML(item.asal)}
-        </p>
+    if(item.status === "Baru"){
 
-        <p>
-            <strong>Pesan:</strong><br>
-            ${escapeHTML(item.pesan)}
-        </p>
+        item.status = "Sudah Dibaca";
 
-        <p>
-            <strong>Status:</strong><br>
-            ${escapeHTML(item.status)}
-        </p>
+        item.waktuDibaca =
+            new Date().toLocaleString("id-ID");
 
-        <p>
-            <strong>Tanggapan:</strong><br>
-            ${escapeHTML(item.tanggapan)}
-        </p>
+    }
 
-    `;
+
+    document.getElementById("detailNama").innerText =
+        item.nama;
+
+    document.getElementById("detailAsal").innerText =
+        item.asal;
+
+    document.getElementById("detailPesan").innerText =
+        item.pesan;
+
+    document.getElementById("detailTanggapan").innerText =
+        item.tanggapan;
+
+    document.getElementById("detailStatus").innerText =
+        item.status;
+
+
+    document.getElementById("replyText").value =
+        "";
+
 
     document.getElementById("detailModal").style.display =
         "flex";
 
-}
-
-
-/* =========================
-   TUTUP MODAL
-========================= */
-
-function closeModal(){
-
-    document.getElementById("detailModal").style.display =
-        "none";
-
-}
-
-
-/* =========================
-   HAPUS DATA
-========================= */
-
-function hapusData(index){
-
-    const yakin =
-        confirm("Apakah kamu yakin ingin menghapus data ini?");
-
-    if(!yakin){
-        return;
-    }
-
-    guestbookData.splice(index,1);
 
     loadDashboard();
 
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* ================= BUKA BALAS ================= */
 
-function searchData(){
+function bukaBalas(index){
 
-    const keyword =
-        document.getElementById("searchInput").value.toLowerCase();
+    lihatPesan(index);
 
-    const rows =
-        document.querySelectorAll("#guestbookBody tr");
+    setTimeout(function(){
 
-    rows.forEach(function(row){
+        document.getElementById("replyText").focus();
 
-        const text =
-            row.innerText.toLowerCase();
-
-        if(text.includes(keyword)){
-
-            row.style.display = "";
-
-        }else{
-
-            row.style.display = "none";
-
-        }
-
-    });
+    },100);
 
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* ================= BALAS PESAN ================= */
+
+function balasPesan(){
+
+    if(selectedIndex === null){
+        return;
+    }
+
+
+    const text =
+        document.getElementById("replyText").value.trim();
+
+
+    if(text === ""){
+
+        alert("Silakan tulis tanggapan terlebih dahulu.");
+
+        return;
+
+    }
+
+
+    guestbookData[selectedIndex].tanggapan =
+        text;
+
+    guestbookData[selectedIndex].status =
+        "Sudah Dibalas";
+
+    guestbookData[selectedIndex].waktuDibalas =
+        new Date().toLocaleString("id-ID");
+
+
+    alert("✅ Balasan berhasil disimpan.");
+
+
+    closeModal();
+
+    loadDashboard();
+
+}
+
+
+/* ================= TERUSKAN ================= */
+
+function bukaTeruskan(index){
+
+    lihatPesan(index);
+
+    setTimeout(function(){
+
+        document.getElementById("replyText").focus();
+
+    },100);
+
+}
+
+
+function teruskanPesan(){
+
+    if(selectedIndex === null){
+        return;
+    }
+
+
+    const item =
+        guestbookData[selectedIndex];
+
+
+    const text =
+        document.getElementById("replyText").value.trim();
+
+
+    if(text === ""){
+
+        alert(
+            "Tulis keterangan penerusan terlebih dahulu."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Untuk sekarang fitur teruskan
+       menyimpan catatan penerusan.
+    */
+
+    guestbookData[selectedIndex].tanggapan =
+        "Diteruskan: " + text;
+
+
+    guestbookData[selectedIndex].status =
+        "Sudah Dibaca";
+
+
+    alert(
+        "↗️ Pesan berhasil ditandai untuk diteruskan."
+    );
+
+
+    closeModal();
+
+    loadDashboard();
+
+}
+
+
+/* ================= HAPUS DATA ================= */
+
+function hapusData(index){
+
+    const yakin =
+        confirm(
+            "Apakah kamu yakin ingin menghapus pesan ini?"
+        );
+
+
+    if(!yakin){
+        return;
+    }
+
+
+    guestbookData.splice(index,1);
+
+
+    loadDashboard();
+
+}
+
+
+/* ================= CARI DATA ================= */
+
+function searchData(){
+
+    const keyword =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const hasil =
+        guestbookData.filter(function(item){
+
+            return (
+                item.nama.toLowerCase().includes(keyword) ||
+                item.asal.toLowerCase().includes(keyword) ||
+                item.pesan.toLowerCase().includes(keyword)
+            );
+
+        });
+
+
+    tampilkanData(hasil);
+
+}
+
+
+/* ================= TUTUP MODAL ================= */
+
+function closeModal(){
+
+    document.getElementById("detailModal").style.display =
+        "none";
+
+    selectedIndex = null;
+
+}
+
+
+/* ================= LOGOUT ================= */
 
 function logoutAdmin(){
+
+    const yakin =
+        confirm("Yakin ingin keluar dari Admin?");
+
+
+    if(!yakin){
+        return;
+    }
+
 
     document.getElementById("dashboardPage").style.display =
         "none";
@@ -1487,30 +1505,28 @@ function logoutAdmin(){
 }
 
 
-/* =========================
-   AMANKAN TEKS
-========================= */
+/* ================= AMANKAN TEKS ================= */
 
 function escapeHTML(text){
 
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
 
 }
 
 
-/* =========================
-   KLIK LUAR MODAL
-========================= */
+/* ================= KLIK LUAR MODAL ================= */
 
 window.onclick = function(event){
 
     const modal =
         document.getElementById("detailModal");
+
 
     if(event.target === modal){
 
